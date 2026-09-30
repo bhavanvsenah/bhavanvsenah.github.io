@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none" stroke="#000" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+  <!-- A vajra lying on its side: a central sphere, a lotus bulb on each side
+       and three prongs meeting at each tip. The left half mirrors the right. -->
+  <circle cx="50" cy="20" r="3.5" fill="#000" fill-opacity="0.22"/>
+  <g id="half">
+    <ellipse cx="56" cy="20" rx="1.4" ry="5"/>
+    <path d="M58 20C60 13 67 13 69 20C67 27 60 27 58 20Z" fill="#000" fill-opacity="0.22"/>
+    <path d="M69 20H96"/>
+    <path d="M69 16C78 7 87 10 90 20"/>
+    <path d="M69 24C78 33 87 30 90 20"/>
+  </g>
+  <use href="#half" transform="matrix(-1 0 0 1 100 0)"/>
+</svg>

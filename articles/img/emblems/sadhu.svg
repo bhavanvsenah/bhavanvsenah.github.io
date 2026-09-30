@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round">
+  <!-- Tripundra: three lines of ash across the brow, the middle one parted
+       by a bindu. -->
+  <path d="M12 7Q50 3 88 7"/>
+  <path d="M10 15Q27 12.3 43 11.6"/>
+  <path d="M57 11.6Q73 12.3 90 15"/>
+  <path d="M12 23Q50 19 88 23"/>
+  <circle cx="50" cy="11.4" r="3.2" fill="#000" stroke="none"/>
+</svg>

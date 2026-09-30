@@ -1,0 +1,40 @@
+# The public repository holds the site: pages, styles, scripts, pictures,
+# fonts, articles and translations (dharma/), plus tools/md2html.py, which
+# builds the article pages from their Markdown, and tools/stamp.py, which
+# marks the start page's styles, scripts and pictures with versions.
+# Everything else in this folder stays local: the rest of tools/ (glow-map
+# generator, import of the Dharma translation, lettering of the leaf, the
+# site icon).
+# A new top-level site file must be added to the list below.
+
+/*
+
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/favicon.ico
+!/favicon.svg
+!/apple-touch-icon.png
+!/styles.css
+!/app.js
+!/glow.js
+!/glowmaps.js
+!/catalog.js
+!/celts.json
+!/dharma.json
+!/pics/
+!/fonts/
+!/articles/
+!/dharma/
+
+# Of tools/, only the article builder and the version marks.
+!/tools/
+/tools/*
+!/tools/md2html.py
+!/tools/stamp.py
+
+# Editor and system leftovers inside the published folders.
+.DS_Store
+Thumbs.db
+*~
+*.swp

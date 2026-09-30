@@ -1,0 +1,420 @@
+@font-face {
+  font-family: "Old Standard";
+  src: url("fonts/old-standard-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Old Standard";
+  src: url("fonts/old-standard-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --graphite: #0f0c0a;
+  --text: #dad6cd;
+  --muted: #8f9196;
+  --move-time: 0.55s;
+  --move: var(--move-time) cubic-bezier(0.2, 0.75, 0.25, 1);
+  --fade: 0.45s ease;
+
+  background: var(--graphite);
+  color: var(--text);
+  font-family: "Old Standard", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+}
+
+/* Glow colour of each section: moss green on stone, gold on the wheel. */
+.celts {
+  --glow: #a6d98a;
+}
+
+.dharma {
+  --glow: #f2cc55;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* One screen, never scrolls; a long catalogue scrolls inside its panel. */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* The doors, the leaf and the titles of texts are buttons: they switch views
+   within this page, and a browser shows no address over a button as it does
+   over a link. Their own frame, background and tap flash are dropped; the
+   focus ring shows for the keyboard only (:focus-visible). */
+button {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* First paint and snapping back a faded catalogue happen without animation. */
+.instant,
+.instant * {
+  transition: none !important;
+}
+
+/* Doors: on the start screen each image is centred in its half of the page.
+   With a catalogue open, app.js moves both into the top corners (--corner)
+   and the chosen one keeps glowing. */
+
+.doors {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  pointer-events: none;
+}
+
+.door {
+  --scale: 1;
+  --inset: clamp(0.75rem, 3vw, 3rem);
+  --heat: 0;
+  display: block;
+  width: calc(min(100% - 2 * var(--inset), 26rem, 72dvh) * var(--scale));
+  border-radius: 50%;
+  pointer-events: auto;
+  transition: transform var(--move);
+}
+
+/* 0.73 would match the stone's radius (606 of 1254 px) to the outer radius
+   of the wheel's rim (443 of 1254 px); set a little larger by eye. */
+.door.celts {
+  --scale: 0.8;
+}
+
+.door img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* A tight inner glow plus a wide halo, scaled by --heat from 0 to 1.
+   glow.js raises --heat as the pointer moves from the middle of the page
+   towards the opaque pixels. */
+.door img {
+  filter:
+    drop-shadow(0 0 calc(1.25rem * var(--heat)) color-mix(in oklab, var(--glow) calc(60% * var(--heat)), transparent))
+    drop-shadow(0 0 calc(4rem * var(--heat)) color-mix(in oklab, var(--glow) calc(45% * var(--heat)), transparent));
+}
+
+/* Without glow.js the glow simply follows hover. */
+:root:not(.proximity) .door img {
+  transition: filter 0.2s ease-out;
+}
+
+:root:not(.proximity) .door:hover {
+  --heat: 1;
+}
+
+.door:focus-visible {
+  --heat: 1 !important;
+  outline: 2px solid var(--glow);
+  outline-offset: 0.75rem;
+}
+
+/* Corners. The door is scaled down by --k, so glow sizes here are given
+   before scaling. glow.js holds the chosen door at --heat 1 and lights the
+   other one as the pointer approaches it, as on the start screen. */
+
+.stage[data-section] .door {
+  transform: var(--corner);
+}
+
+.stage[data-section] .door img {
+  filter:
+    drop-shadow(0 0 calc(3rem * var(--heat)) color-mix(in oklab, var(--glow) calc(100% * var(--heat)), transparent))
+    drop-shadow(0 0 calc(9rem * var(--heat)) color-mix(in oklab, var(--glow) calc(70% * var(--heat)), transparent));
+}
+
+:root:not(.proximity) .stage[data-section] .door[aria-current] {
+  --heat: 1;
+}
+
+.stage[data-section] .door:focus-visible {
+  outline-width: calc(2px / var(--k));
+  outline-offset: calc(6px / var(--k));
+}
+
+/* The leaf: a palm leaf that floats down to the top of the start screen and
+   now and then turns over its long edge, as the leaves of a pothi do. Its two
+   sides are two pictures. It leads to the page about the artel, and rises out
+   of sight while a catalogue or a text is open. */
+
+.leaf {
+  --drop: calc(-100% - 3rem); /* just above the top edge */
+  --heat: 0;
+  position: fixed;
+  top: clamp(0.75rem, 3.5dvh, 2.5rem);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  /* The leaf is about 8.5 : 1, so at 85dvh wide it is 10dvh tall and ends
+     above the doors, which start at 14dvh at the least. */
+  width: min(clamp(24rem, 56vw, 50rem), 94vw, 85dvh);
+  margin: 0 auto;
+  border-radius: 1rem;
+  perspective: 40rem;
+  filter: drop-shadow(0 0 calc(1.5rem * var(--heat)) color-mix(in oklab, #f0dca0 calc(55% * var(--heat)), transparent));
+  /* It comes a second after the doors, both on the first visit and back
+     on the start screen. */
+  animation: leaf-in 2.8s cubic-bezier(0.2, 0.7, 0.2, 1) 1s backwards;
+  transition:
+    translate 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) 1s,
+    opacity 2.4s ease 1s,
+    filter 0.2s ease-out;
+}
+
+.leaf:hover,
+.leaf:focus-visible {
+  --heat: 1;
+}
+
+.leaf:focus-visible {
+  outline: 2px solid #f0dca0;
+  outline-offset: 0.5rem;
+}
+
+/* Hidden while a catalogue or a text is open, over the entrance animation
+   too: on a page opened straight into a text the animation starts before
+   app.js marks the section, and Chrome would carry the leaf in all the same.
+   !important declarations outrank animations but not transitions, so the
+   leaf still rises away and comes back smoothly. */
+.stage[data-section] .leaf {
+  translate: 0 var(--drop) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+  transition:
+    translate 0.6s ease-in,
+    opacity 0.45s ease-in;
+}
+
+@keyframes leaf-in {
+  from {
+    translate: 0 var(--drop);
+    opacity: 0;
+  }
+}
+
+/* Both sides share one cell; the back one is turned over in advance. */
+.leaf-card {
+  display: grid;
+  transform-style: preserve-3d;
+  animation: leaf-turn 8.6s ease-in-out 2s infinite;
+}
+
+.stage[data-section] .leaf-card {
+  animation-play-state: paused;
+}
+
+.leaf img {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  backface-visibility: hidden;
+}
+
+.leaf img + img {
+  transform: rotateX(0.5turn);
+}
+
+/* Rests on each side for three seconds, turns over in 1.3 s. */
+@keyframes leaf-turn {
+  0%,
+  35% {
+    transform: rotateX(0turn);
+  }
+
+  50%,
+  85% {
+    transform: rotateX(0.5turn);
+  }
+
+  100% {
+    transform: rotateX(1turn);
+  }
+}
+
+/* Panels: the two catalogues and the reader for a text. Each fills the
+   window, and the corner doors float above it, so a text scrolls up to
+   the top edge. "down" waits off-screen, "up" slides in from below,
+   "fading" dims in place when another panel opens; a reader waits as
+   "loading" while its text loads. */
+
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--graphite);
+  transform: translateY(100%);
+  transition: transform var(--move), opacity var(--fade);
+}
+
+.panel[data-state="up"] {
+  z-index: 1;
+  transform: none;
+}
+
+.panel[data-state="fading"] {
+  transform: none;
+  opacity: 0;
+  transition: opacity var(--fade);
+}
+
+/* A reader off screen is hidden once it has slid down, not made inert as a
+   catalogue is: a text loaded into an inert frame kept moving by its
+   scrollbar only, not with the wheel or the touchpad. For the same reason a
+   reader loads its next text as "loading", just below the screen and not
+   hidden, and comes up once the text is in (app.js). */
+.reader[data-state="down"] {
+  visibility: hidden;
+  transition: transform var(--move), opacity var(--fade), visibility 0s linear var(--move-time);
+}
+
+/* A catalogue starts below the corner doors (--catalog-top, set by app.js). */
+.catalog {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: calc(var(--catalog-top, 7rem) + clamp(1rem, 5vh, 3.5rem)) 1.5rem 4rem;
+}
+
+/* The text is a page of its own, shown whole in a frame that scrolls inside
+   the panel; app.js brings the panel up once the text has loaded. */
+.reader iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.books {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.book + .book {
+  margin-top: 3rem;
+}
+
+.book h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* A title with a text behind it is underlined like a link and lights up in
+   the section's glow colour. */
+.book h3 button {
+  text-decoration: underline 1px color-mix(in oklab, currentColor 35%, transparent);
+  text-underline-offset: 0.18em;
+  transition: color 0.2s ease-out;
+}
+
+.book h3 button:hover,
+.book h3 button:focus-visible {
+  color: var(--glow);
+  text-decoration-color: currentColor;
+}
+
+.book p {
+  margin: 0.5rem 0 0;
+}
+
+/* The author stands above the title, as on a title page. */
+.book .author {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.6rem);
+  font-style: italic;
+}
+
+/* The languages of the original, under the title. */
+.book .from {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.book .status {
+  color: var(--glow);
+  font-size: 1rem;
+}
+
+.catalog-note {
+  max-width: 32rem;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door,
+  .panel,
+  .panel[data-state="fading"],
+  .reader[data-state="down"],
+  .leaf,
+  .stage[data-section] .leaf,
+  .book h3 button,
+  :root:not(.proximity) .door img {
+    transition: none;
+  }
+
+  .leaf,
+  .leaf-card {
+    animation: none;
+  }
+}
+
+::selection {
+  background: var(--text);
+  color: var(--graphite);
+}

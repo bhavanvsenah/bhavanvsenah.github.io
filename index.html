@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0f0c0a">
+    <title>Переводы</title>
+    <link rel="icon" href="favicon.ico?v=46c3e51f" sizes="32x32">
+    <link rel="icon" href="favicon.svg?v=8a195af5" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=58ca8389">
+    <link rel="stylesheet" href="styles.css?v=c026cf81">
+  </head>
+  <body>
+    <main class="stage">
+      <h1 class="visually-hidden">Переводы</h1>
+
+      <nav class="doors" aria-label="Разделы">
+        <button class="door celts" type="button" data-route="celts">
+          <img src="pics/celts02.webp?v=ee50752b" alt="Кельты" width="1254" height="1254">
+        </button>
+        <button class="door dharma" type="button" data-route="dharma">
+          <img src="pics/dharmawheel01.webp?v=df797b80" alt="Дхарма" width="1254" height="1254">
+        </button>
+      </nav>
+
+      <button class="leaf" type="button" data-route="articles/about">
+        <span class="leaf-card">
+          <img src="pics/leaf-devanagari.webp?v=5dfc1188" alt="Артель желѣзныхъ толмачей" width="2000" height="235">
+          <img src="pics/leaf-celtic.webp?v=11564116" alt="" width="2000" height="235">
+        </span>
+      </button>
+
+      <section class="panel catalog celts" data-catalog="celts" data-state="down" aria-labelledby="celts-title" inert>
+        <h2 id="celts-title" class="visually-hidden" tabindex="-1">Кельты</h2>
+        <ul class="books"></ul>
+      </section>
+
+      <section class="panel catalog dharma" data-catalog="dharma" data-state="down" aria-labelledby="dharma-title" inert>
+        <h2 id="dharma-title" class="visually-hidden" tabindex="-1">Дхарма</h2>
+        <ul class="books"></ul>
+      </section>
+
+      <section class="panel reader" data-state="down" aria-label="Текст">
+        <iframe title="Текст"></iframe>
+      </section>
+      <section class="panel reader" data-state="down" aria-label="Текст">
+        <iframe title="Текст"></iframe>
+      </section>
+    </main>
+    <script src="glowmaps.js?v=3def60d9"></script>
+    <script src="app.js?v=2c23ab26"></script>
+    <script src="glow.js?v=1f50557f"></script>
+    <script src="catalog.js?v=3174fd21"></script>
+  </body>
+</html>

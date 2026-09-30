@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="#000" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- A four-leaf clover: four heart-shaped leaves round the centre. -->
+  <g fill="#000" fill-opacity="0.22">
+    <path id="leaf" d="M20 19C17 16 11 13 12 8.5C13 4.5 18 4.5 20 8.5C22 4.5 27 4.5 28 8.5C29 13 23 16 20 19Z"/>
+    <use href="#leaf" transform="rotate(90 20 20)"/>
+    <use href="#leaf" transform="rotate(180 20 20)"/>
+    <use href="#leaf" transform="rotate(270 20 20)"/>
+  </g>
+</svg>

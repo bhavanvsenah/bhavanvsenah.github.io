@@ -1,0 +1,377 @@
+/* Article pages, built by tools/md2html.py. Same night and type as the
+   start page: graphite ground, Old Standard, Noto Serif Tibetan for Tibetan
+   and Noto Serif Devanagari for Devanagari. Both carry their whole script
+   and load only on a page that uses it. */
+
+@font-face {
+  font-family: "Old Standard";
+  src: url("../fonts/old-standard-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Old Standard";
+  src: url("../fonts/old-standard-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Old Standard";
+  src: url("../fonts/old-standard-bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif Tibetan";
+  src: url("../fonts/noto-serif-tibetan.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+0F00-0FFF;
+}
+
+@font-face {
+  font-family: "Noto Serif Devanagari";
+  src: url("../fonts/noto-serif-devanagari.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+0900-097F, U+1CD0-1CFF, U+A8E0-A8FF;
+}
+
+:root {
+  color-scheme: dark;
+  --graphite: #0f0c0a;
+  --text: #dad6cd;
+  --muted: #8f9196;
+
+  /* Speakers: bright yellow for Bhavan, light blue for Klod, moss green
+     (the celts glow) for Astra, a light bright red for the lama, bright
+     lilac for the sadhu. */
+  --bhavan: #f4d03f;
+  --pandit: #f4d03f; /* the yellow of Bhavan, whose picture he took over */
+  --klod: #8fc9f5;
+  --astra: #a6d98a;
+  --lama: #ff5263;
+  --sadhu: #c792ea;
+
+  /* Every size on the page is in rem, so a larger root scales the whole
+     layout: 18px on a laptop and, from about 1600px up, growing with the
+     window to ~30px on 4K and ~50px on 8K at 100 % system scaling. */
+  font-size: calc(1.125 * max(100%, 0.46vw + 0.54rem));
+
+  background: var(--graphite);
+  color: var(--text);
+  font-family: "Old Standard", "Noto Serif Tibetan", "Noto Serif Devanagari", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* The text is justified, with Russian hyphenation (lang="ru") so that
+   narrow screens get no gaps between words. Headings, captions and the
+   signature set their own alignment. */
+.article {
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 0 1rem 5rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in oklab, currentColor 35%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Title block */
+
+h1 {
+  margin: 1rem 0 0.25rem;
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.genre {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.tldr {
+  margin: 0 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.95em;
+}
+
+.tldr strong {
+  color: var(--text);
+}
+
+/* Right-aligned and as wide as its longest line, so a short verse sits
+   flush with the right edge of the text. */
+.epigraph {
+  width: fit-content;
+  max-width: 27rem;
+  margin: 0 0 3rem auto;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.epigraph p {
+  margin: 0 0 0.75rem;
+}
+
+/* An original followed by its translation (the Old Irish of the play):
+   the original in the celts' moss green. */
+.epigraph:has(p + p + .source) p:first-child {
+  color: var(--astra);
+}
+
+.epigraph .source {
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+/* Acts and the cast */
+
+h2 {
+  clear: both;
+  margin: 3.5rem 0 1.5rem;
+  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.cast p {
+  margin: 0 0 1rem;
+}
+
+/* A page that is only cast lists, not a play, keeps them in a narrower
+   column, so each description runs about as tall as its avatar; a list
+   without a heading of its own starts well below the title. */
+.roster {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+h1 + .roster {
+  margin-top: 3rem;
+}
+
+/* In a roster each description opens with its character's emblem, in the
+   character's colour, which also sets it well apart from the one before.
+   The drawings in img/emblems/ are masks filled with that colour, save the
+   vajra, which is gold, and the ash of the tripundra, which is light grey;
+   the Celtic cross is a picture. */
+.roster .persona::before {
+  content: "";
+  display: block;
+  width: var(--emblem-width, 2.4rem);
+  height: 2.4rem;
+  margin: 3rem auto 1.5rem;
+  background: var(--emblem-colour);
+  -webkit-mask: var(--emblem) center / contain no-repeat;
+  mask: var(--emblem) center / contain no-repeat;
+}
+
+.roster h2 + .persona::before {
+  margin-top: 0;
+}
+
+.roster .persona.klod::before {
+  width: 2.8rem;
+  height: 2.8rem;
+  background: url("img/emblems/klod.webp") center / contain no-repeat;
+  -webkit-mask: none;
+  mask: none;
+}
+
+.roster .persona.astra {
+  --emblem: url("img/emblems/astra.svg");
+  --emblem-colour: var(--astra);
+}
+
+.roster .persona.lama {
+  --emblem: url("img/emblems/lama.svg");
+  --emblem-colour: #f2cc55; /* the gold of the dharma door's glow */
+  --emblem-width: 6rem;
+}
+
+.roster .persona.sadhu {
+  --emblem: url("img/emblems/sadhu.svg");
+  --emblem-colour: #c8c6c1;
+  --emblem-width: 6rem;
+}
+
+.roster .persona.pandit {
+  --emblem: url("img/emblems/pandit.svg");
+  --emblem-colour: #d97757; /* Anthropic's orange, which Klod wore before */
+}
+
+/* Each character's description holds its own avatar, so the pictures
+   never stack into each other. */
+.persona {
+  display: flow-root;
+}
+
+.persona.bhavan strong {
+  color: var(--bhavan);
+}
+
+.persona.pandit strong {
+  color: var(--pandit);
+}
+
+.persona.klod strong {
+  color: var(--klod);
+}
+
+.persona.astra strong {
+  color: var(--astra);
+}
+
+.persona.lama strong {
+  color: var(--lama);
+}
+
+.persona.sadhu strong {
+  color: var(--sadhu);
+}
+
+/* Body paragraphs and speakers' lines open with an indent, as in Russian
+   books; epigraphs, remarks, the cast list and captions go without. */
+.article > p:not([class]),
+.act > p:not([class]),
+.line {
+  text-indent: 1.5em;
+}
+
+/* A paragraph without a speaker's name continues the previous speaker and
+   keeps the same spacing. */
+.line,
+.act > p:not([class]) {
+  margin: 0 0 0.7rem;
+}
+
+/* A speaker's name is bold, in the speaker's colour. */
+.who {
+  font-weight: 700;
+}
+
+.bhavan .who {
+  color: var(--bhavan);
+}
+
+.klod .who {
+  color: var(--klod);
+}
+
+.astra .who {
+  color: var(--astra);
+}
+
+.lama .who {
+  color: var(--lama);
+}
+
+.sadhu .who {
+  color: var(--sadhu);
+}
+
+.aside,
+.remark {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.remark {
+  margin: 1.25rem 0 1.25rem 2rem;
+}
+
+/* The avatars alternate: right of the first description, left of the
+   second, and so on. The text follows the figure's outline (shape-outside,
+   set per image), or its box when opened as a file. */
+.avatar {
+  float: right;
+  width: clamp(9rem, 40vw, 20rem);
+  height: auto;
+  margin: 0 0 0.5rem 1rem;
+  shape-image-threshold: 0.35;
+  shape-margin: 0.8rem;
+}
+
+.persona:nth-of-type(even) .avatar {
+  float: left;
+  margin: 0 1rem 0.5rem 0;
+}
+
+/* Scans and their captions */
+
+figure {
+  clear: both;
+  margin: 1.75rem 0;
+}
+
+figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+
+figcaption {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.88em;
+  font-style: italic;
+  text-align: center;
+}
+
+/* The author's signature under a short page. */
+.signature {
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: right;
+}
+
+/* A word struck out by the author, dimmed like the asides. */
+del {
+  color: var(--muted);
+}
+
+/* Model names in `backticks`, as they are written in code. */
+code {
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+  background: color-mix(in oklab, var(--text) 9%, transparent);
+  font-family: ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.82em;
+}
+
+::selection {
+  background: var(--text);
+  color: var(--graphite);
+}
