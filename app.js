@@ -12,7 +12,7 @@
 // its signature) and lead back to it: there either door goes one level up.
 // Two readers take turns, so a text opened from a text slides up over it.
 // State lives in the URL hash: #dharma for a catalogue,
-// #dharma/trisharanasaptati for the text dharma/trisharanasaptati.html,
+// #dharma/Toh3971_Trisharanasaptati for dharma/Toh3971_Trisharanasaptati.html,
 // #articles/about for articles/about.html.
 {
   const stage = document.querySelector('.stage');
@@ -39,7 +39,8 @@
   // A catalogue name; or a catalogue name, or "articles", and the name of a
   // page in that folder.
   const parse = (value) => {
-    const [, folder, page] = /^([a-z]+)(?:\/([a-z0-9-]+))?$/.exec(value) ?? [];
+    if (value === 'dharma/trisharanasaptati') return 'dharma/Toh3971_Trisharanasaptati';
+    const [, folder, page] = /^([a-z]+)(?:\/([A-Za-z0-9_-]+))?$/.exec(value) ?? [];
     return catalogs.has(folder) || (page && folder === 'articles') ? value : '';
   };
 
@@ -53,7 +54,12 @@
     }
   };
 
-  const routeFromUrl = () => parse(decode(location.hash.slice(1)));
+  const routeFromUrl = () => {
+    const value = decode(location.hash.slice(1));
+    const next = parse(value);
+    if (next && next !== value) history.replaceState(null, '', `#${next}`);
+    return next;
+  };
 
   // The route of a page of this site that the reader can show, or ''; also ''
   // for an address the browser cannot parse.
