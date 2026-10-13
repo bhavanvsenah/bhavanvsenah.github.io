@@ -9,7 +9,7 @@
     <link rel="icon" href="favicon.ico?v=46c3e51f" sizes="32x32">
     <link rel="icon" href="favicon.svg?v=8a195af5" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png?v=58ca8389">
-    <link rel="stylesheet" href="styles.css?v=c026cf81">
+    <link rel="stylesheet" href="styles.css?v=cc1f865e">
   </head>
   <body>
     <main class="stage">
@@ -32,13 +32,19 @@
       </button>
 
       <section class="panel catalog celts" data-catalog="celts" data-state="down" aria-labelledby="celts-title" inert>
-        <h2 id="celts-title" class="visually-hidden" tabindex="-1">Кельты</h2>
-        <ul class="books"></ul>
+        <header class="catalog-head">
+          <h2 id="celts-title" tabindex="-1">Кельтские тексты</h2>
+          <p class="catalog-updated">Последнее обновление: <time datetime="2026-10-13">13 октября 2026</time></p>
+        </header>
+        <ul class="books" role="list"></ul>
       </section>
 
       <section class="panel catalog dharma" data-catalog="dharma" data-state="down" aria-labelledby="dharma-title" inert>
-        <h2 id="dharma-title" class="visually-hidden" tabindex="-1">Дхарма</h2>
-        <ul class="books"></ul>
+        <header class="catalog-head">
+          <h2 id="dharma-title" tabindex="-1">Дхарма</h2>
+          <p class="catalog-updated">Последнее обновление: <time datetime="2026-10-13">13 октября 2026</time></p>
+        </header>
+        <ul class="books" role="list"></ul>
       </section>
 
       <section class="panel reader" data-state="down" aria-label="Текст">
@@ -51,6 +57,6 @@
     <script src="glowmaps.js?v=3def60d9"></script>
     <script src="app.js?v=4843baab"></script>
     <script src="glow.js?v=1f50557f"></script>
-    <script src="catalog.js?v=3174fd21"></script>
+    <script src="catalog.js?v=1f57c5f7"></script>
   </body>
 </html>

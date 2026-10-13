@@ -3,7 +3,8 @@
     "author": "Чандракирти",
     "title": "Семьдесят шлок о принятии трёх прибежищ",
     "from": "перевод с тибетского и санскрита",
-    "status": "альфа-версия",
-    "href": "dharma/Toh3971_Trisharanasaptati.html"
+    "status": "бета-версия",
+    "href": "dharma/Toh3971_Trisharanasaptati.html",
+    "formats": { "pdf": null, "fb2": null }
   }
 ]
