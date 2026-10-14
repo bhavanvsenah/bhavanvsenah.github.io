@@ -297,7 +297,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .stanza-links a{min-width:1.6em;text-align:center}
   a{color:var(--link);text-underline-offset:.15em}
   a:focus-visible{outline:2px solid var(--link);outline-offset:4px}
-  [tabindex="-1"]:focus-visible{outline:2px solid var(--link);outline-offset:4px}
+  [tabindex="-1"]:focus{outline:none}
   :target{scroll-margin-top:1rem}
   .stanza-text{display:flow-root;border-left:3px solid var(--rule);padding-left:.8rem}
   .stanza-text>.verse{margin-bottom:0}
@@ -320,13 +320,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .review-number a,.review-number span{color:var(--review);text-decoration:none}
   .review-number a:hover{text-decoration:underline}
   .anchor-glow{position:relative;isolation:isolate}
-  .anchor-glow::before{content:"";position:absolute;inset:-4px;z-index:-1;pointer-events:none;
+  .anchor-glow::before{content:"";position:absolute;inset:-20px;z-index:-1;pointer-events:none;
     background:rgba(155,67,15,.2);border-radius:.35rem;
-    -webkit-mask-image:linear-gradient(to right,transparent,#000 14px,#000 calc(100% - 14px),transparent),
-      linear-gradient(to bottom,transparent,#000 14px,#000 calc(100% - 14px),transparent);
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 30px,#000 calc(100% - 30px),transparent),
+      linear-gradient(to bottom,transparent,#000 30px,#000 calc(100% - 30px),transparent);
     -webkit-mask-composite:source-in;
-    mask-image:linear-gradient(to right,transparent,#000 14px,#000 calc(100% - 14px),transparent),
-      linear-gradient(to bottom,transparent,#000 14px,#000 calc(100% - 14px),transparent);
+    mask-image:linear-gradient(to right,transparent,#000 30px,#000 calc(100% - 30px),transparent),
+      linear-gradient(to bottom,transparent,#000 30px,#000 calc(100% - 30px),transparent);
     mask-composite:intersect;opacity:0;transform:scale(.98);transform-origin:center;
     animation:anchor-glow-in .6s ease-out forwards}
   .anchor-glow.anchor-glow-out::before{animation:anchor-glow-out .7s ease-in forwards}
