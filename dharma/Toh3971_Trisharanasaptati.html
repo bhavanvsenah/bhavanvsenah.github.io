@@ -322,11 +322,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .anchor-glow{position:relative;isolation:isolate}
   .anchor-glow::before{content:"";position:absolute;inset:-4px;z-index:-1;pointer-events:none;
     background:rgba(155,67,15,.2);border-radius:.35rem;
-    -webkit-mask-image:linear-gradient(to right,transparent,#000 8px,#000 calc(100% - 8px),transparent),
-      linear-gradient(to bottom,transparent,#000 8px,#000 calc(100% - 8px),transparent);
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 14px,#000 calc(100% - 14px),transparent),
+      linear-gradient(to bottom,transparent,#000 14px,#000 calc(100% - 14px),transparent);
     -webkit-mask-composite:source-in;
-    mask-image:linear-gradient(to right,transparent,#000 8px,#000 calc(100% - 8px),transparent),
-      linear-gradient(to bottom,transparent,#000 8px,#000 calc(100% - 8px),transparent);
+    mask-image:linear-gradient(to right,transparent,#000 14px,#000 calc(100% - 14px),transparent),
+      linear-gradient(to bottom,transparent,#000 14px,#000 calc(100% - 14px),transparent);
     mask-composite:intersect;opacity:0;transform:scale(.98);transform-origin:center;
     animation:anchor-glow-in .6s ease-out forwards}
   .anchor-glow.anchor-glow-out::before{animation:anchor-glow-out .7s ease-in forwards}
