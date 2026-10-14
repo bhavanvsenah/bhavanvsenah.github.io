@@ -322,14 +322,18 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .anchor-glow{position:relative;isolation:isolate}
   .anchor-glow::before{content:"";position:absolute;inset:-20px;z-index:-1;pointer-events:none;
     background:rgba(255,128,18,.22);border-radius:.35rem;
-    --glow-edge:transparent,rgba(0,0,0,.028) 3px,rgba(0,0,0,.104) 6px,rgba(0,0,0,.216) 9px,
-      rgba(0,0,0,.352) 12px,rgba(0,0,0,.5) 15px,rgba(0,0,0,.648) 18px,rgba(0,0,0,.784) 21px,
-      rgba(0,0,0,.896) 24px,rgba(0,0,0,.972) 27px,#000 30px,#000 calc(100% - 30px),
-      rgba(0,0,0,.972) calc(100% - 27px),rgba(0,0,0,.896) calc(100% - 24px),
-      rgba(0,0,0,.784) calc(100% - 21px),rgba(0,0,0,.648) calc(100% - 18px),
-      rgba(0,0,0,.5) calc(100% - 15px),rgba(0,0,0,.352) calc(100% - 12px),
-      rgba(0,0,0,.216) calc(100% - 9px),rgba(0,0,0,.104) calc(100% - 6px),
-      rgba(0,0,0,.028) calc(100% - 3px),transparent;
+    --glow-fade:min(70px,50%);
+    --glow-edge:transparent,rgba(0,0,0,.028) calc(var(--glow-fade)*.1),
+      rgba(0,0,0,.104) calc(var(--glow-fade)*.2),rgba(0,0,0,.216) calc(var(--glow-fade)*.3),
+      rgba(0,0,0,.352) calc(var(--glow-fade)*.4),rgba(0,0,0,.5) calc(var(--glow-fade)*.5),
+      rgba(0,0,0,.648) calc(var(--glow-fade)*.6),rgba(0,0,0,.784) calc(var(--glow-fade)*.7),
+      rgba(0,0,0,.896) calc(var(--glow-fade)*.8),rgba(0,0,0,.972) calc(var(--glow-fade)*.9),
+      #000 var(--glow-fade),#000 calc(100% - var(--glow-fade)),
+      rgba(0,0,0,.972) calc(100% - var(--glow-fade)*.9),rgba(0,0,0,.896) calc(100% - var(--glow-fade)*.8),
+      rgba(0,0,0,.784) calc(100% - var(--glow-fade)*.7),rgba(0,0,0,.648) calc(100% - var(--glow-fade)*.6),
+      rgba(0,0,0,.5) calc(100% - var(--glow-fade)*.5),rgba(0,0,0,.352) calc(100% - var(--glow-fade)*.4),
+      rgba(0,0,0,.216) calc(100% - var(--glow-fade)*.3),rgba(0,0,0,.104) calc(100% - var(--glow-fade)*.2),
+      rgba(0,0,0,.028) calc(100% - var(--glow-fade)*.1),transparent;
     -webkit-mask-image:linear-gradient(to right,var(--glow-edge)),linear-gradient(to bottom,var(--glow-edge));
     -webkit-mask-composite:source-in;
     mask-image:linear-gradient(to right,var(--glow-edge)),linear-gradient(to bottom,var(--glow-edge));
