@@ -208,7 +208,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   :root{color-scheme:dark;
         --tib:#aed9a4; --skt:#e8c66a; --svc:#b8b1a8; --ink:#e0ddd8;
         --app:#ccc6bd; --muted:#c2bcb4; --rule:#59483a; --paper:#0f0c0a;
-        --link:#d7be8b; --review:#f28a82; --eng:#9fcbee; --chi:#c9b0e8;
+        --link:#d7be8b; --review:#827b75; --annotation:#f28a82; --eng:#9fcbee; --chi:#c9b0e8;
         --reading-step:3pt}
   html{min-height:100%;background:var(--paper)}
   body{font:calc(1.375rem + var(--reading-step))/1.65 Georgia,"Times New Roman",serif;color:var(--ink);
@@ -259,7 +259,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .coll .annotation-list{margin:.2rem 0;padding:0;list-style:none}
   .coll .annotation-item{position:relative;display:grid;
     grid-template-columns:max-content minmax(0,1fr);gap:.65rem;align-items:baseline}
-  .annotation-number{color:var(--app);font-variant-numeric:tabular-nums;text-decoration:none}
+  .annotation-number{color:var(--annotation);font-variant-numeric:tabular-nums;text-decoration:none}
   .annotation-body{min-width:0}
   .annotation-back{font-size:1em;text-decoration:none}
   .skt{color:var(--skt)}
@@ -274,7 +274,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .colophon{margin-top:3rem;padding-top:1.3rem;border-top:2px solid var(--ink)}
   .colophon .tib{line-height:2.05;margin:.7rem 0;white-space:normal;font-size:calc(1.35rem + var(--reading-step))}
   .colophon .rus{white-space:normal}
-  sup.fn a,sup.annotation-ref a{color:var(--app);text-decoration:none;font-size:calc(.8em + var(--reading-step) * .4)}
+  sup.fn a,sup.annotation-ref a{color:var(--annotation);text-decoration:none;font-size:calc(.8em + var(--reading-step) * .4)}
   section.footnotes{margin-top:3.2rem;font-size:calc(1.05rem + var(--reading-step));color:var(--muted)}
   section.footnotes li{margin:.5rem 0}
   .edition-note,.verse .rus,.colophon,.invocation{font-size:1.08em}
@@ -320,7 +320,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     :root{color-scheme:light;--reading-step:0pt;
           --tib:#235a2c; --skt:#75520d; --svc:#625a4f; --ink:#212121;
           --app:#455a64; --muted:#424242; --rule:#cdbf9e; --paper:#fff;
-          --link:#405a72; --review:#b21f2d; --eng:#1f4f8f; --chi:#5b3f8c}
+          --link:#405a72; --review:#b21f2d; --annotation:#455a64; --eng:#1f4f8f; --chi:#5b3f8c}
     .review-number{display:none!important}
     html{background:#fff}
     body{background:#fff;max-width:100%;font-size:12pt;padding:0}
