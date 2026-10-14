@@ -322,14 +322,20 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .anchor-glow{position:relative;isolation:isolate}
   .anchor-glow::before{content:"";position:absolute;inset:-20px;z-index:-1;pointer-events:none;
     background:rgba(255,128,18,.22);border-radius:.35rem;
-    -webkit-mask-image:linear-gradient(to right,transparent,#000 30px,#000 calc(100% - 30px),transparent),
-      linear-gradient(to bottom,transparent,#000 30px,#000 calc(100% - 30px),transparent);
+    --glow-edge:transparent,rgba(0,0,0,.028) 3px,rgba(0,0,0,.104) 6px,rgba(0,0,0,.216) 9px,
+      rgba(0,0,0,.352) 12px,rgba(0,0,0,.5) 15px,rgba(0,0,0,.648) 18px,rgba(0,0,0,.784) 21px,
+      rgba(0,0,0,.896) 24px,rgba(0,0,0,.972) 27px,#000 30px,#000 calc(100% - 30px),
+      rgba(0,0,0,.972) calc(100% - 27px),rgba(0,0,0,.896) calc(100% - 24px),
+      rgba(0,0,0,.784) calc(100% - 21px),rgba(0,0,0,.648) calc(100% - 18px),
+      rgba(0,0,0,.5) calc(100% - 15px),rgba(0,0,0,.352) calc(100% - 12px),
+      rgba(0,0,0,.216) calc(100% - 9px),rgba(0,0,0,.104) calc(100% - 6px),
+      rgba(0,0,0,.028) calc(100% - 3px),transparent;
+    -webkit-mask-image:linear-gradient(to right,var(--glow-edge)),linear-gradient(to bottom,var(--glow-edge));
     -webkit-mask-composite:source-in;
-    mask-image:linear-gradient(to right,transparent,#000 30px,#000 calc(100% - 30px),transparent),
-      linear-gradient(to bottom,transparent,#000 30px,#000 calc(100% - 30px),transparent);
+    mask-image:linear-gradient(to right,var(--glow-edge)),linear-gradient(to bottom,var(--glow-edge));
     mask-composite:intersect;opacity:0;transform:scale(.98);transform-origin:center;
-    animation:anchor-glow-in .6s ease-out forwards}
-  .anchor-glow.anchor-glow-out::before{animation:anchor-glow-out .7s ease-in forwards}
+    animation:anchor-glow-in 1.2s ease-in-out forwards}
+  .anchor-glow.anchor-glow-out::before{animation:anchor-glow-out 1.4s ease-in-out forwards}
   @keyframes anchor-glow-in{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
   @keyframes anchor-glow-out{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.98)}}
   @media (prefers-reduced-motion:reduce){
@@ -1869,8 +1875,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         block.classList.add('anchor-glow-out');
         timer = window.setTimeout(() => {
           if (current === generation) clearGlow();
-        }, 700);
-      }, 10000);
+        }, 1400);
+      }, reducedMotion.matches ? 3000 : 4200);
     });
   }
 
