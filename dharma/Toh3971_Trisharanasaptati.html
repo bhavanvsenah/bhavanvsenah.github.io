@@ -1884,8 +1884,14 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     if (url.origin !== here.origin || url.pathname !== here.pathname ||
         url.search !== here.search || !url.hash) return;
     event.preventDefault();
-    if (here.hash !== url.hash) window.history.pushState(null, '', url.hash);
-    navigate(url.hash);
+    if (here.hash === url.hash) {
+      navigate(url.hash);
+    } else {
+      clearGlow();
+      window.cancelAnimationFrame(frame);
+      generation++;
+      here.hash = url.hash;
+    }
   });
 
   window.addEventListener('hashchange', () => navigate(window.location.hash));
