@@ -1,0 +1,1656 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Ким Маккон — Древнеирландская грамматика и хрестоматия</title>
+<style>
+  :root{color-scheme:dark;
+        --tib:#aed9a4; --skt:#e8c66a; --svc:#b8b1a8; --ink:#e0ddd8;
+        --app:#ccc6bd; --muted:#c2bcb4; --rule:#59483a; --paper:#0f0c0a;
+        --link:#d7be8b; --review:#827b75; --annotation:#f28a82; --eng:#9fcbee; --chi:#c9b0e8;
+        --reading-step:3pt}
+  html{min-height:100%;background:var(--paper)}
+  body{font:calc(1.375rem + var(--reading-step))/1.65 Georgia,"Times New Roman",serif;color:var(--ink);
+       margin:0 auto;max-width:72rem;padding:2.5rem 2.25rem 5rem;background:transparent;
+       overflow-wrap:anywhere}
+  header{text-align:center;border-bottom:1px solid var(--rule);padding:1.5rem 0 2rem;margin-bottom:2.2rem}
+  header .book-author{font-size:calc(1.2rem + var(--reading-step));letter-spacing:.08em;margin:0 0 1.3rem}
+  header .toc-no{color:var(--muted);font-size:calc(.9rem + var(--reading-step));margin:1.5rem 0 0}
+  header h1{font-size:calc(clamp(1.85rem,3.4vw,2.7rem) + var(--reading-step));line-height:1.28;margin:0 auto 1rem;
+    max-width:24ch;font-weight:normal;text-wrap:balance}
+  header .skt{font-size:calc(1.2rem + var(--reading-step));margin:.4rem 0}
+  header .tib{font-size:calc(1.3rem + var(--reading-step));line-height:2;margin:.4rem auto;max-width:40rem}
+  header dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1.1rem;
+            font-size:calc(1rem + var(--reading-step));margin:1.4rem 0 0;text-align:left}
+  header dt{color:var(--svc)} header dd{margin:0}
+  .folio{color:var(--svc);font-size:calc(.9rem + var(--reading-step));float:right;margin-left:1rem;user-select:none}
+  .title-block,.verse,.colophon{clear:both}
+  .title-block{margin:1.6rem 0 2rem;padding-top:.5rem}
+  .title-block .rus{text-align:center;line-height:1.7;text-wrap:pretty;padding:1rem 0 1.8rem}
+  .work-title{font-size:calc(1.75rem + var(--reading-step));line-height:1.4;font-weight:normal;max-width:28ch;
+    margin:0 auto .8rem;text-wrap:balance}
+  .work-subtitle{font-size:calc(1.05rem + var(--reading-step));color:var(--muted);margin:0 0 2rem}
+  .invocation{margin:0}
+  .original-title{border-top:1px solid var(--rule);padding-top:.8rem}
+  .original-title .language-key{margin:0 0 .3rem}
+  .title-block .tib{font-size:calc(1.25rem + var(--reading-step));line-height:2.1}
+  .verse{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:0 2.5rem;
+         margin:1.6rem 0;border-top:1px dotted var(--rule);padding-top:1.15rem}
+  .tib,.gtib{color:var(--tib);font-family:"Embedded Noto Serif Tibetan","Embedded Jomolhari","Noto Serif Tibetan","Jomolhari","Tibetan Machine Uni",serif}
+  .gtib{font-size:1.08em}
+  .verse .tib{font-size:calc(1.45rem + var(--reading-step));line-height:2.05;
+    inline-size:fit-content;max-inline-size:100%;min-inline-size:0;justify-self:end;text-align:start}
+  .verse .rus{line-height:1.65}
+  .verse .pada{display:block;margin:0 0 .15rem}
+  .verse .n{font-weight:bold;color:var(--ink)}
+  .verse .gline{display:flex;flex-wrap:wrap;gap:.2rem .85rem;
+    font-size:calc(.92em + var(--reading-step) * .08);line-height:1.5;color:var(--muted);margin:.12rem 0 .55rem}
+  .verse .gline .gloss{white-space:nowrap;font-size:1em}
+  .comm{margin:.6rem 0 .8rem}
+  .comm .lbl{font-size:calc(.85rem + var(--reading-step));color:var(--svc);letter-spacing:.08em;text-transform:uppercase;
+    text-align:start;hyphens:manual}
+  .coll{margin:.5rem 0 2rem;font-size:calc(1.02rem + var(--reading-step));color:var(--app)}
+  .coll .coll-title{color:var(--app);font-size:calc(.9rem + var(--reading-step));letter-spacing:.08em;
+    text-transform:uppercase;margin:0 0 .45rem}
+  .coll>summary{cursor:pointer;padding:.35rem 0}
+  .coll>summary:focus-visible{outline:2px solid var(--link);outline-offset:4px}
+  .coll .bridge{color:var(--svc);font-size:calc(.95rem + var(--reading-step));margin:.2rem 0 .5rem}
+  .coll ul{margin:.2rem 0;padding-left:1.2rem}
+  .coll li{margin:.3rem 0}
+  .coll .annotation-list{margin:.2rem 0;padding:0;list-style:none}
+  .coll .annotation-item{position:relative;display:grid;
+    grid-template-columns:max-content minmax(0,1fr);gap:.65rem;align-items:baseline}
+  .annotation-number{color:var(--annotation);font-variant-numeric:tabular-nums;text-decoration:none}
+  .annotation-body{min-width:0}
+  .annotation-back{font-size:1em;text-decoration:none}
+  .bibliography-back{font-size:1em;text-decoration:none;white-space:nowrap}
+  .skt{color:var(--skt)}
+  .eng{color:var(--eng)}
+  .chi{color:var(--chi);font-family:"Noto Serif CJK SC","Noto Serif CJK TC","Source Han Serif SC","Songti SC","SimSun",serif}
+  .jpn{color:var(--chi)}
+  .jpn-cjk{color:var(--chi);font-family:"Noto Serif CJK JP","Source Han Serif JP","Hiragino Mincho ProN","Yu Mincho","Noto Serif CJK SC",serif}
+  .wl{color:var(--muted)}
+  /* Shrinking em sizes need a supplement so inherited +3pt is not reduced. */
+  .gloss{font-size:calc(.88em + var(--reading-step) * .12);color:var(--muted);white-space:nowrap}
+  .svc-note{font-size:calc(.92rem + var(--reading-step));color:var(--muted)}
+  .colophon{margin-top:3rem;padding-top:1.3rem;border-top:2px solid var(--ink)}
+  .colophon .tib{line-height:2.05;margin:.7rem 0;white-space:normal;font-size:calc(1.35rem + var(--reading-step))}
+  .colophon .rus{white-space:normal}
+  sup.fn a,sup.annotation-ref a{color:var(--annotation);text-decoration:none;font-size:calc(.8em + var(--reading-step) * .4)}
+  section.footnotes{margin-top:3.2rem;font-size:calc(1.05rem + var(--reading-step));color:var(--muted)}
+  section.footnotes li{margin:.5rem 0}
+  .edition-note,.verse .rus,.colophon,.invocation{font-size:1.08em}
+  .edition-note{line-height:1.65;margin:1.5rem 0 2rem;overflow-wrap:anywhere}
+  .edition-note h3{font-size:1.2em;line-height:1.4;margin-top:1.8rem}
+  .stanza-quotes{margin:.8rem 0 2rem}
+  .stanza-quote{font-size:calc(1.375rem + var(--reading-step));margin:1rem 0;padding:.6rem 1rem;
+    border-left:2px solid var(--rule)}
+  .stanza-quote .block-heading{margin:0 0 .6rem}
+  .stanza-quote .verse{margin:.3rem 0;border:0;padding:0}
+  .stanza-quote .colophon{margin:0;border:0;padding:0}
+  .brief-quote-text{font-size:1.08em;margin:.2rem 0}
+  nav.toc{font-size:1.08em;border-bottom:1px solid var(--rule);padding-bottom:1.5rem}
+  nav.toc ul{padding-left:1.3rem}
+  nav.toc li{margin:.15rem 0}
+  nav.toc ul ul{padding-left:1.1rem}
+  .stanza-links{display:flex;flex-wrap:wrap;gap:.3rem .8rem}
+  .stanza-links a{min-width:1.6em;text-align:center}
+  a{color:var(--link);text-underline-offset:.15em}
+  a:focus-visible{outline:2px solid var(--link);outline-offset:4px}
+  [tabindex="-1"]:focus{outline:none}
+  :target{scroll-margin-top:1rem}
+  .stanza-text{display:flow-root;border-left:3px solid var(--rule);padding-left:.8rem}
+  .stanza-text>.verse{margin-bottom:0}
+  article[id^="stanza-"]>.coll,article[id^="stanza-"]>.svc-note{margin-left:1.4rem}
+  /* Continue the verse rule across the gap and summary only, never the open notes. */
+  article[id^="stanza-"]>.coll>summary{position:relative}
+  article[id^="stanza-"]>.coll>summary::before{content:"";position:absolute;
+    left:-1.4rem;top:-.5rem;bottom:0;width:3px;background:var(--rule);pointer-events:none}
+  article[id^="stanza-"]{margin-bottom:2rem}
+  .block-heading{font-size:calc(.95rem + var(--reading-step));font-weight:normal;margin:1.5rem 0 0;color:var(--muted)}
+  .block-heading a{text-decoration:none}
+  .language-key{font-size:calc(1rem + var(--reading-step));color:var(--muted)}
+  .references{margin-top:2.5rem;border-top:1px solid var(--rule);padding-top:1rem;
+    font-size:calc(1.05rem + var(--reading-step));line-height:1.65;overflow-wrap:anywhere}
+  .references h2,.footnotes h2{font-size:calc(1.25rem + var(--reading-step));font-weight:normal}
+  .references dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:.4rem 1rem}
+  .references dt{font-weight:bold}.references dd{margin:0}
+  /* Justify prose only; verse lines, headings, labels and note numbers keep their alignment. */
+  .edition-note>p,.edition-note section>p,.annotation-body,.comm,
+  .colophon .rus,.colophon .tib,.references li,.references dd{
+    text-align:justify;hyphens:auto}
+  .review-number{font:600 calc(.6em + var(--reading-step) * .4)/1 system-ui,sans-serif;vertical-align:super;
+    margin-right:.35em;white-space:nowrap}
+  .review-number a,.review-number span{color:var(--review);text-decoration:none}
+  .review-number a:hover{text-decoration:underline}
+  @media print{
+    :root{color-scheme:light;--reading-step:0pt;
+          --tib:#235a2c; --skt:#75520d; --svc:#625a4f; --ink:#212121;
+          --app:#455a64; --muted:#424242; --rule:#cdbf9e; --paper:#fff;
+          --link:#405a72; --review:#b21f2d; --annotation:#455a64; --eng:#1f4f8f; --chi:#5b3f8c}
+    .review-number{display:none!important}
+    .bibliography-back{display:none!important}
+    .anchor-glow::before{display:none!important}
+    [tabindex="-1"]:focus-visible{outline:none}
+    details.coll::details-content{content-visibility:visible;display:block}
+    details.coll>.annotation-list{display:block!important}
+    details.coll>summary{display:block;cursor:auto}
+    html{background:#fff}
+    body{background:#fff;max-width:100%;font-size:12pt;padding:0}
+    @page{size:A5;margin:18mm 14mm;
+          @bottom-center{content:counter(page);font-size:9pt;color:var(--svc)}}
+    .stanza-quotes,.stanza-quotes>blockquote{display:block}
+    .stanza-quote{font-size:12pt;break-inside:avoid-page}
+    article{break-inside:avoid-page}
+    .verse{break-inside:avoid}
+    .folio{float:none;display:block;text-align:right;font-size:8pt}
+    .gloss,.verse .gline .gloss{white-space:normal}
+  }
+  @media (max-width:1100px){
+    body{padding:1.2rem 1rem 3rem}
+    header dl,.references dl{display:block}
+    header dd,.references dd{margin-bottom:.7rem}
+    .verse{grid-template-columns:1fr}
+    .gloss,.verse .gline .gloss{white-space:normal}
+    .coll,.colophon,.svc-note{overflow-wrap:anywhere}
+  }
+
+
+  /* Rounded-rectangular light, underneath all text. Every spatial size is a percentage.
+     The outer box is 4/3 of the block: centre-to-edge : exterior halo = 3:1 on each axis. */
+  .anchor-glow{position:relative}
+  .anchor-glow::before{content:"";position:absolute;inset:calc(-100% / 6);z-index:-1;pointer-events:none;
+    background:rgba(255,128,18,.22);
+    -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0.00000000) 0%,rgba(0,0,0,0.03440793) 2.5%,rgba(0,0,0,0.11826721) 5%,rgba(0,0,0,0.22847803) 7.5%,rgba(0,0,0,0.34857216) 10%,rgba(0,0,0,0.46730042) 12.5%,rgba(0,0,0,0.57744801) 15%,rgba(0,0,0,0.67485198) 17.5%,rgba(0,0,0,0.75759616) 20%,rgba(0,0,0,0.82536089) 22.5%,rgba(0,0,0,0.87890625) 25%,rgba(0,0,0,0.91966901) 27.5%,rgba(0,0,0,0.94945536) 30%,rgba(0,0,0,0.97021269) 32.5%,rgba(0,0,0,0.98386561) 35%,rgba(0,0,0,0.99220276) 37.5%,rgba(0,0,0,0.99680256) 40%,rgba(0,0,0,0.99898776) 42.5%,rgba(0,0,0,0.99980001) 45%,rgba(0,0,0,0.99998750) 47.5%,rgba(0,0,0,1.00000000) 50%,rgba(0,0,0,0.99998750) 52.5%,rgba(0,0,0,0.99980001) 55%,rgba(0,0,0,0.99898776) 57.5%,rgba(0,0,0,0.99680256) 60%,rgba(0,0,0,0.99220276) 62.5%,rgba(0,0,0,0.98386561) 65%,rgba(0,0,0,0.97021269) 67.5%,rgba(0,0,0,0.94945536) 70%,rgba(0,0,0,0.91966901) 72.5%,rgba(0,0,0,0.87890625) 75%,rgba(0,0,0,0.82536089) 77.5%,rgba(0,0,0,0.75759616) 80%,rgba(0,0,0,0.67485198) 82.5%,rgba(0,0,0,0.57744801) 85%,rgba(0,0,0,0.46730042) 87.5%,rgba(0,0,0,0.34857216) 90%,rgba(0,0,0,0.22847803) 92.5%,rgba(0,0,0,0.11826721) 95%,rgba(0,0,0,0.03440793) 97.5%,rgba(0,0,0,0.00000000) 100%),linear-gradient(0deg,rgba(0,0,0,0.00000000) 0%,rgba(0,0,0,0.03440793) 2.5%,rgba(0,0,0,0.11826721) 5%,rgba(0,0,0,0.22847803) 7.5%,rgba(0,0,0,0.34857216) 10%,rgba(0,0,0,0.46730042) 12.5%,rgba(0,0,0,0.57744801) 15%,rgba(0,0,0,0.67485198) 17.5%,rgba(0,0,0,0.75759616) 20%,rgba(0,0,0,0.82536089) 22.5%,rgba(0,0,0,0.87890625) 25%,rgba(0,0,0,0.91966901) 27.5%,rgba(0,0,0,0.94945536) 30%,rgba(0,0,0,0.97021269) 32.5%,rgba(0,0,0,0.98386561) 35%,rgba(0,0,0,0.99220276) 37.5%,rgba(0,0,0,0.99680256) 40%,rgba(0,0,0,0.99898776) 42.5%,rgba(0,0,0,0.99980001) 45%,rgba(0,0,0,0.99998750) 47.5%,rgba(0,0,0,1.00000000) 50%,rgba(0,0,0,0.99998750) 52.5%,rgba(0,0,0,0.99980001) 55%,rgba(0,0,0,0.99898776) 57.5%,rgba(0,0,0,0.99680256) 60%,rgba(0,0,0,0.99220276) 62.5%,rgba(0,0,0,0.98386561) 65%,rgba(0,0,0,0.97021269) 67.5%,rgba(0,0,0,0.94945536) 70%,rgba(0,0,0,0.91966901) 72.5%,rgba(0,0,0,0.87890625) 75%,rgba(0,0,0,0.82536089) 77.5%,rgba(0,0,0,0.75759616) 80%,rgba(0,0,0,0.67485198) 82.5%,rgba(0,0,0,0.57744801) 85%,rgba(0,0,0,0.46730042) 87.5%,rgba(0,0,0,0.34857216) 90%,rgba(0,0,0,0.22847803) 92.5%,rgba(0,0,0,0.11826721) 95%,rgba(0,0,0,0.03440793) 97.5%,rgba(0,0,0,0.00000000) 100%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,rgba(0,0,0,0.00000000) 0%,rgba(0,0,0,0.03440793) 2.5%,rgba(0,0,0,0.11826721) 5%,rgba(0,0,0,0.22847803) 7.5%,rgba(0,0,0,0.34857216) 10%,rgba(0,0,0,0.46730042) 12.5%,rgba(0,0,0,0.57744801) 15%,rgba(0,0,0,0.67485198) 17.5%,rgba(0,0,0,0.75759616) 20%,rgba(0,0,0,0.82536089) 22.5%,rgba(0,0,0,0.87890625) 25%,rgba(0,0,0,0.91966901) 27.5%,rgba(0,0,0,0.94945536) 30%,rgba(0,0,0,0.97021269) 32.5%,rgba(0,0,0,0.98386561) 35%,rgba(0,0,0,0.99220276) 37.5%,rgba(0,0,0,0.99680256) 40%,rgba(0,0,0,0.99898776) 42.5%,rgba(0,0,0,0.99980001) 45%,rgba(0,0,0,0.99998750) 47.5%,rgba(0,0,0,1.00000000) 50%,rgba(0,0,0,0.99998750) 52.5%,rgba(0,0,0,0.99980001) 55%,rgba(0,0,0,0.99898776) 57.5%,rgba(0,0,0,0.99680256) 60%,rgba(0,0,0,0.99220276) 62.5%,rgba(0,0,0,0.98386561) 65%,rgba(0,0,0,0.97021269) 67.5%,rgba(0,0,0,0.94945536) 70%,rgba(0,0,0,0.91966901) 72.5%,rgba(0,0,0,0.87890625) 75%,rgba(0,0,0,0.82536089) 77.5%,rgba(0,0,0,0.75759616) 80%,rgba(0,0,0,0.67485198) 82.5%,rgba(0,0,0,0.57744801) 85%,rgba(0,0,0,0.46730042) 87.5%,rgba(0,0,0,0.34857216) 90%,rgba(0,0,0,0.22847803) 92.5%,rgba(0,0,0,0.11826721) 95%,rgba(0,0,0,0.03440793) 97.5%,rgba(0,0,0,0.00000000) 100%),linear-gradient(0deg,rgba(0,0,0,0.00000000) 0%,rgba(0,0,0,0.03440793) 2.5%,rgba(0,0,0,0.11826721) 5%,rgba(0,0,0,0.22847803) 7.5%,rgba(0,0,0,0.34857216) 10%,rgba(0,0,0,0.46730042) 12.5%,rgba(0,0,0,0.57744801) 15%,rgba(0,0,0,0.67485198) 17.5%,rgba(0,0,0,0.75759616) 20%,rgba(0,0,0,0.82536089) 22.5%,rgba(0,0,0,0.87890625) 25%,rgba(0,0,0,0.91966901) 27.5%,rgba(0,0,0,0.94945536) 30%,rgba(0,0,0,0.97021269) 32.5%,rgba(0,0,0,0.98386561) 35%,rgba(0,0,0,0.99220276) 37.5%,rgba(0,0,0,0.99680256) 40%,rgba(0,0,0,0.99898776) 42.5%,rgba(0,0,0,0.99980001) 45%,rgba(0,0,0,0.99998750) 47.5%,rgba(0,0,0,1.00000000) 50%,rgba(0,0,0,0.99998750) 52.5%,rgba(0,0,0,0.99980001) 55%,rgba(0,0,0,0.99898776) 57.5%,rgba(0,0,0,0.99680256) 60%,rgba(0,0,0,0.99220276) 62.5%,rgba(0,0,0,0.98386561) 65%,rgba(0,0,0,0.97021269) 67.5%,rgba(0,0,0,0.94945536) 70%,rgba(0,0,0,0.91966901) 72.5%,rgba(0,0,0,0.87890625) 75%,rgba(0,0,0,0.82536089) 77.5%,rgba(0,0,0,0.75759616) 80%,rgba(0,0,0,0.67485198) 82.5%,rgba(0,0,0,0.57744801) 85%,rgba(0,0,0,0.46730042) 87.5%,rgba(0,0,0,0.34857216) 90%,rgba(0,0,0,0.22847803) 92.5%,rgba(0,0,0,0.11826721) 95%,rgba(0,0,0,0.03440793) 97.5%,rgba(0,0,0,0.00000000) 100%);mask-composite:intersect;
+    mask-size:100% 100%;mask-repeat:no-repeat;
+    opacity:0;animation:anchor-glow 4.9s ease-in-out forwards}
+  /* 1.8s rise, 1s hold, 2.1s fade. */
+  @keyframes anchor-glow{from,to{opacity:0}36.7347%,57.1429%{opacity:1}}
+  /* Light beyond the page column must not create horizontal scrolling. */
+  html:has(.anchor-glow){overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){
+    .anchor-glow::before{animation:none;opacity:1}}
+
+/* Адаптация общей книжной страницы к прозаическому учебнику. */
+:root{--skt:#c5e58a;--link:#c5e58a}
+body{max-width:82rem}
+main{max-width:76ch;margin-inline:auto}
+.anchor-glow::before{background:rgba(197,229,138,.22)}
+main h1{font-size:1.55em;line-height:1.35;font-weight:normal;margin-top:2.5rem}
+main h2{font-size:1.3em;line-height:1.4;font-weight:normal;margin-top:2rem}
+main h3{font-size:1.12em;line-height:1.4;font-weight:normal;margin-top:1.7rem}
+main h1,main h2,main h3{text-wrap:balance}
+.book-paragraph{margin:1.3rem 0;border-left:0;padding-left:0}
+.book-paragraph>p{margin:0;text-indent:1.25em;text-align:justify;hyphens:auto}
+.book-paragraph em{color:var(--skt)}
+.phonetic{white-space:nowrap;text-wrap:nowrap;hyphens:none;overflow-wrap:normal}
+.edition-scope{font-size:.85em;color:var(--muted)}
+.book-original-title{font-style:italic;color:var(--muted);font-size:.9em}
+.book-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8em;color:var(--muted)}
+nav.toc h2{font-weight:normal;font-size:1.15em}
+nav.toc .toc-level-2{margin-left:1rem}
+nav.toc .toc-level-3{margin-left:2rem}
+table{border-collapse:collapse;max-width:100%;font-size:.9em}
+th,td{padding:.35em .6em;border-bottom:1px solid var(--rule);vertical-align:top}
+.book-table{max-width:100%;overflow:visible;margin:1.3rem 0;border-left:0;padding-left:0}
+.book-table table{width:100%;min-width:0;max-width:100%;table-layout:fixed}
+.book-table th,.book-table td{white-space:normal;overflow-wrap:anywhere;hyphens:auto;padding-inline:.45em}
+.book-table em{color:var(--skt)}
+.book-table:focus-visible{outline:2px solid var(--link);outline-offset:4px}
+@media(max-width:700px){
+  .book-paragraph>p{text-align:start;hyphens:manual}
+  main{max-width:100%}
+  nav.toc .toc-level-3{margin-left:1rem}
+}
+@media print{
+  :root{--skt:#3f5b17;--link:#3f5b17}
+  body,main{max-width:100%}
+  body{padding:0}
+  .book-footer{display:none}
+  .book-paragraph{break-inside:auto}
+  .book-table tr{break-inside:avoid}
+}
+</style><meta name="description" content="Ким Маккон. Русский научный перевод грамматики и хрестоматии древнеирландского языка. Альфа-версия, перевод не завершён."></head><body>
+<!-- MD 01-preliminaries.md SHA256 92daa81c342c8e6d6296e98c42246637ab668108923f8b52b43396cbc280d600 -->
+<!-- MD 02-noun-adjective-article.md SHA256 692237b215f93a261999ac9ec91d9a5067f5da28f7a214762ed83cf093c724a1 -->
+<header><p class="book-author">Ким Маккон</p>
+<h1>Начальная грамматика и хрестоматия древнеирландского языка</h1>
+<p class="book-original-title">A First Old Irish Grammar and Reader (2005)</p>
+<p class="edition-scope">Альфа-версия — перевод не завершён. Рабочий русский перевод. Книга переведена частично;
+доступные разделы перечислены в оглавлении ниже.</p></header>
+<nav class="toc" id="contents" aria-label="Оглавление"><h2>Содержание</h2><ul><li class="toc-level-1"><a href="#chapter-i">Глава I. Предварительные сведения</a></li>
+<li class="toc-level-2"><a href="#i-a">A. Введение</a></li>
+<li class="toc-level-3"><a href="#i-a1">A.1. Основные этапы развития ирландского языка</a></li>
+<li class="toc-level-3"><a href="#i-a2">A.2. Источники древнеирландского периода</a></li>
+<li class="toc-level-3"><a href="#i-a3">A.3. Древне- и среднеирландские тексты, сохранившиеся в позднейших рукописях</a></li>
+<li class="toc-level-3"><a href="#i-a4">A.4. Основные цели этой книги</a></li>
+<li class="toc-level-2"><a href="#i-b">B. Орфография и произношение</a></li>
+<li class="toc-level-3"><a href="#i-b1">B.1. Смычные и соответствующие щелевые согласные</a></li>
+<li class="toc-level-3"><a href="#i-b2">B.2. Носовые и плавные согласные</a></li>
+<li class="toc-level-3"><a href="#i-b3">B.3. Сибилянт и f</a></li>
+<li class="toc-level-3"><a href="#i-b4">B.4. Гласные под ударением и в конце слова</a></li>
+<li class="toc-level-3"><a href="#i-b5">B.5. «Широкие», или непалатальные, и «узкие», или палатальные, согласные</a></li>
+<li class="toc-level-3"><a href="#i-b6">B.6. Безударные гласные внутри слова</a></li>
+<li class="toc-level-3"><a href="#i-b7">B.7. Дифтонги</a></li>
+<li class="toc-level-3"><a href="#i-b8">B.8. Начальные мутации</a></li>
+<li class="toc-level-1"><a href="#chapter-ii">Глава II. Существительное, прилагательное и артикль</a></li>
+<li class="toc-level-2"><a href="#ii-a">A. Существительное</a></li>
+<li class="toc-level-3"><a href="#ii-a1">A.1. Основные категории</a></li>
+<li class="toc-level-3"><a href="#ii-a2">A.2. Основные типы склонения существительных</a></li>
+<li class="toc-level-3"><a href="#ii-a3">A.3. Полные парадигмы склонения</a></li>
+<li class="toc-level-3"><a href="#ii-a4">A.4. Дополнительные замечания о склонении существительных</a></li>
+<li class="toc-level-3"><a href="#ii-a5">A.5. Практика чтения</a></li>
+<li class="toc-level-2"><a href="#ii-b">B. Прилагательные</a></li>
+<li class="toc-level-3"><a href="#ii-b1">B.1. Основные сведения</a></li>
+<li class="toc-level-3"><a href="#ii-b2">B.2. Практика чтения</a></li>
+<li class="toc-level-3"><a href="#ii-b3">B.3. Степени сравнения</a></li></ul></nav>
+<main id="translation"><h1 class="stanza-text" id="chapter-i">Глава I. Предварительные сведения</h1>
+<h2 class="stanza-text" id="i-a">A. Введение</h2>
+<h3 class="stanza-text" id="i-a1">A.1. Основные этапы развития ирландского языка</h3>
+<div class="stanza-text book-paragraph" id="i-a1-p01">
+<p><span id="i-pdf-001"></span>Ирландский (или гэльский, включая шотландскую и мэнскую разновидности; OIr. <em>Goídelc</em>, ModIr. <em>Gaeilge</em> и т. д.) — кельтский язык, ближайшими родственниками которого являются три языка бриттской кельтской группы: валлийский, корнский и бретонский. Ирландский и бриттские языки составляют две ветви островной кельтской общности, в которой, вероятно, развились определённые особенности — прежде всего двойное, «абсолютное» и «конъюнктное», словоизменение глагола, рассматриваемое в III.A.3 и V.A.1c, — ещё в Британии на протяжении нескольких столетий до и после середины I тысячелетия до н. э., прежде чем эта языковая общность некоторое время спустя распространилась в Ирландию. После этого ирландский (или гойдельский) и бриттские языки стали расходиться, развиваясь каждый на своём острове. Более отдалённое родство связывает островные кельтские языки с недостаточно засвидетельствованными и давно исчезнувшими кельтскими языками континента, в частности с кельтиберским в Испании (несколько надписей I и II веков до н. э.) и галльским (засвидетельствованным главным образом разнообразными надписями, датируемыми периодом от V века до н. э. приблизительно до III века н. э.) во Франции, Северной Италии и в полосе территорий, простирающейся на восток вдоль Дуная вплоть до центральной части нынешней Турции. Все эти языки вместе образуют кельтскую семью — если воспользоваться ставшим общепринятым лингвистическим термином, введённым выдающимся валлийским учёным Эдвардом Ллуйдом в начале XVIII века. Ещё более отдалённое родство связывает её с различными другими языковыми семьями: германской (например, английский, немецкий и скандинавские языки), италийской (прежде всего латинский и его современные романские потомки, такие как итальянский, испанский и французский), балтийской (прежде всего литовский и латышский), славянской (например, польский, сербохорватский и русский), албанской, греческой, армянской, индоиранской (подразделяющейся, в свою очередь, на иранскую и индийскую ветви), а также с давно исчезнувшими анатолийской (прежде всего хеттский, засвидетельствованный во II тысячелетии до н. э. в Малой Азии, то есть на территории нынешней Турции) и тохарской (засвидетельствованной с VI по VIII век н. э. в бассейне Карим, ныне на востоке Китая). В конечном счёте все они являются ветвями обширной индоевропейской языковой семьи. Предполагается, что она восходит к общему предку, известному как праиндоевропейский язык, от которого не осталось письменных памятников, поскольку его носители не умели писать, но на котором, по всей вероятности, говорили примерно в IV–III тысячелетиях до н. э. где-то в Восточной Европе или Западной Азии; наиболее вероятной в настоящее время считается область непосредственно к северу от Чёрного моря.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a1-p02">
+<p>По-видимому, ирландский язык последовательно развивался своим путём в Ирландии на протяжении большей части тысячелетия, прежде чем его начали записывать: сначала в очень кратких огамических надписях приблизительно с начала V века н. э., а затем, в течение VII века н. э., в связных рукописных текстах. До этого его предшественник прошёл вместе с другими языками ряд устанавливаемых общих этапов развития: островной кельтский этап (совместно с бриттскими кельтскими языками) примерно в середине I тысячелетия до н. э., пракельтский этап (совместно со всеми известными кельтскими языками, мёртвыми и живыми) примерно в конце II и начале I тысячелетия до н. э. и, наконец, праиндоевропейский этап, который, вероятно, завершился в течение III тысячелетия до н. э. В отсутствие письменных свидетельств эти этапы доступны изучению лишь посредством научного сравнительно-исторического анализа и реконструкции. На этой основе развитие ирландского языка можно проследить — по крайней мере, в общих чертах — примерно на пять тысяч лет в прошлое, хотя его непосредственно засвидетельствованная история начинается не ранее чем приблизительно шестнадцать столетий назад со скудных огамических свидетельств, а сам язык<span id="i-pdf-002"></span> достаточно полно документирован лишь на протяжении последних тринадцати столетий или около того, с возникновением рукописной традиции. Длительный период, не оставивший письменных свидетельств, можно считать предысторией языка, а более короткий период с момента появления более или менее непрерывных записей — его историей, хотя и этот период длиннее, чем у любого другого западноевропейского языка, кроме латинского. Именно последний, разумеется, представляет здесь основной интерес.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a1-p03">
+<p>Языковой этап V–VI веков н. э. лучше всего обозначать как <strong>праирландский (Primitive Irish)</strong>. Он лишь в ограниченной степени принадлежит историческому периоду благодаря крайне скудной документации — примерно двум сотням коротких, формульных огамических надписей. Они, в сочетании с данными сравнительно-исторического языкознания, показывают, что это был переломный этап: ирландский претерпел крупные изменения, преобразовавшие в основе своей «древнеиндоевропейский» облик, сходный, скажем, с обликом континентальных кельтских языков или латинского, в существенно иной тип, некоторые важнейшие черты которого с тех пор характеризуют ирландский язык (ср. замечания об огамическом INIGENA и древнеирландском <em>ingen</em> ‘дочь’ ниже, в B.8).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a1-p04">
+<p>Надёжных рукописных свидетельств о языке VII века немного, однако их достаточно, чтобы показать: <strong>ранний древнеирландский (Early Old Irish)</strong> этого периода не слишком отличался от «классического» <strong>древнеирландского (Old Irish)</strong> двух последующих столетий; основные расхождения были сравнительно незначительными и носили фонетический характер (см. VI.B.6a). В X веке возник этап литературного языка, известный как <strong>среднеирландский (Middle Irish)</strong> (см. XII), для которого были характерны значительные новшества и колебания прежде всего в морфологии, особенно в глагольной системе. Примерно в конце XII века он, в свою очередь, уступил место заметно более упорядоченной грамматической системе, известной как <strong>ранненовоирландский (Early Modern Irish)</strong>, остававшейся в употреблении приблизительно до конца XVI века. После этого в текстах всё чаще обнаруживаются различные диалектные и иные черты, свойственные нынешнему <strong>современному ирландскому (Modern Irish)</strong>. Итак, ирландский язык обладает непрерывной текстовой традицией на основе латинского алфавита, восходящей по меньшей мере к VII веку н. э. Эта грамматика и хрестоматия посвящена главным образом ранней, или «древнеирландской», части указанного развития — периоду приблизительно с конца VII до начала X века н. э.; заключительная же глава даёт первоначальное представление о последующем «среднеирландском» этапе, продолжавшемся примерно до конца XII века.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a1-p05">
+<p>Длительное развитие, завершившееся формированием древнеирландского языка, каким мы знаем его из различных источников, разумеется, не протекало в полной изоляции. Как и в случае других засвидетельствованных языков, можно обнаружить определённые внешние влияния. Так, иногда утверждалось, что, хотя основные звуки и формы древнеирландского языка, то есть его фонологию и морфологию, обычно можно объяснить как результат непрерывного внутреннего изменения, прослеживаемого через пракельтский до самого праиндоевропейского, некоторые важнейшие особенности его синтаксиса, в частности порядка слов, обусловлены так называемым «субстратным» влиянием неиндоевропейского языка или языков, с которыми столкнулись ранние кельтоязычные поселенцы в Британии и Ирландии. Однако в отсутствие каких-либо свидетельств о докельтской речи на этих островах подобное утверждение остаётся не более чем недоказанным и недоказуемым предположением. Большинство исследователей в этой области отвергло такой подход на том веском основании, что рассматриваемые особенности допускают правдоподобное объяснение внутренним развитием языка.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a1-p06">
+<p>Различные исследования других языков показали, что внешние влияния с наибольшей вероятностью проявляются в лексике; кельтские языки, их островная группа и ирландский не составляют исключения из этой тенденции. Хотя для основной части их словаря можно установить более широкие<span id="i-pdf-003"></span> индоевропейские связи, ирландский и бриттские кельтские языки всё же содержат ряд явно родственных слов, таких как OIr. <em>mucc</em> и MW <em>moch-en</em> ‘свинья’ (&lt; <em>*mukk-</em>), OIr. <em>brat</em> и MW <em>breth-yn</em> ‘плащ’ (&lt; <em>*bratt-</em>), OIr. <em>fannall</em> и MW <em>gwennawl</em> ‘ласточка’ (&lt; <em>*we/aNāl-</em>). Эти слова не только не имеют очевидных родственных соответствий в других индоевропейских языках, но и обладают явно неиндоевропейским обликом. Поэтому вероятно, что они были заимствованы из неизвестного нам неиндоевропейского языка или языков на доисторическом этапе ирландского (или бриттского), островного кельтского либо пракельтского языка. Учитывая уже отмеченную недостаточность документации галльского и кельтиберского, отсутствие до сих пор засвидетельствованных сходных форм в этих языках едва ли достаточно, чтобы доказать, что такие внешние элементы проникли в соответствующий язык или языки на островном, а не на более раннем пракельтском этапе. Напротив, их засвидетельствованность в одном или обоих этих языках даёт прочные основания предполагать заимствование уже на пракельтском этапе. Примером служит PC, но, по-видимому, не IE <em>*kurmi</em> ‘эль’, лежащее в основе OIr. <em>cuirm</em>, OW <em>curum</em> (MW <em>cwrwf</em>), Gaul. <em>curmi</em>, Celtib. <em>kurmi-</em>. Однако подобные слова позволяют лишь изредка получить представление о ранних доисторических заимствованиях из неустановленных источников.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a1-p07">
+<p>Неудивительно, что первым достоверно устанавливаемым внешним источником заимствований в ирландский — как, впрочем, и в бриттские языки — является латинский. Как официальный язык Римской империи и Католической церкви он не только пережил падение первой, но и сумел распространиться за пределы прежних имперских границ. Если не считать немногочисленных предположительно дохристианских заимствований, связанных с торговлей и мореплаванием, таких как OIr. <em>ingor</em> ‘якорь’ (Lat. <em>ancora</em>), основная масса ранних латинских заимствований, как и следовало ожидать, по-видимому, вошла в древнеирландский вслед за распространением христианства в Ирландии, произошедшим не позднее первой половины V века н. э. Подробные исследования различных способов адаптации значительного числа ранних латинских заимствований в ирландском показали, что это был практически непрерывный процесс на протяжении первых двух столетий после утверждения христианства и что главным его источником была Британия — чего и можно было ожидать, учитывая недвусмысленно засвидетельствованное британское происхождение св. Патрика. Древнеирландские слова латинского происхождения обычно отмечены в словаре, включающем, в частности, следующие: <em>abb</em> ‘аббат’, <em>aíne</em> ‘пост’, <em>aingel</em> ‘ангел’, <em>apstanit</em> ‘воздержание’, <em>apstal</em> ‘апостол’, <em>bachall</em> ‘пастырский посох’, <em>baithis</em> ‘крещение’, <em>baitsid</em> ‘крестит’, <em>bendachaid</em> ‘благословляет’, <em>bendacht</em> ‘благословение’, <em>caille</em> ‘покрывало’, <em>caindel</em> ‘свеча’, <em>caland</em> ‘первое (число месяца)’, <em>castót</em> ‘целомудрие’, <em>cell</em> ‘церковь’, <em>cland</em> ‘потомство’, <em>con:secra</em> ‘освящённый’, <em>credal</em> ‘благочестивый’, <em>crésen</em> ‘христианин’, <em>demun</em> ‘демон, дьявол’, <em>descipul</em> ‘ученик’, <em>domnach</em> ‘воскресенье, церковь’, <em>dúr</em> ‘твёрдый’, <em>ecla(i)s</em> ‘церковь’, <em>epscop</em> ‘епископ’, <em>fetarlic</em> ‘Ветхий Завет/Закон’, <em>fín</em> ‘вино’, <em>geinti</em> ‘язычники’, <em>grád</em> ‘степень, ранг’, <em>ifern</em> ‘ад’, <em>intliucht</em> ‘интеллект’, <em>latrann</em> ‘разбойник’, <em>lebor</em> ‘книга’, <em>loc</em> ‘место’, <em>manach</em> ‘монах’, <em>martar</em> ‘мученик’, <em>matan</em> ‘утро’, <em>meirtrech</em> ‘блудница, проститутка’, <em>membur</em> ‘член, конечность’, <em>mías</em> ‘стол’, <em>múr</em> ‘стена’, <em>mo/untar</em> или <em>muinter</em> ‘община, последователи’, <em>omaldóit</em> ‘смирение’, <em>peccad</em> ‘грех’, <em>penn(a)it</em> ‘покаяние’, <em>pían</em> ‘наказание, боль’, <em>port</em> ‘место’, <em>praind</em> ‘трапеза’, <em>precept</em> ‘проповедь’, <em>pridchid</em> ‘проповедует’, <em>prím-</em> ‘первый’, <em>sén</em> ‘знак’, <em>senad</em> ‘синод’, <em>síans</em> ‘смысл’, <em>spirut</em> ‘дух’, <em>sroigled</em> ‘бичевание’, <em>tempul</em> ‘храм, церковь’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a1-p08">
+<p>Гораздо более ограниченное внешнее языковое влияние — на этот раз со стороны скандинавского германского языка, обычно называемого древнескандинавским, — было связано с появлением викингов в отдельных частях Ирландии в течение IX века. Очевидным временем заимствования небольшого числа скандинавских слов в ирландский следует считать X–XII века. Поэтому скандинавское воздействие на древнеирландский было ничтожным, а влияние на среднеирландскую литературу — лишь незначительным: большинство заимствований скандинавского происхождения впервые засвидетельствовано в рукописях более поздних, чем XII век. Как и следовало ожидать, такие ирландские заимствования,<span id="i-pdf-004"></span> как <em>margad</em> ‘рынок’ (ON <em>markaðr</em>), <em>stiúir</em> ‘руль’ (ON <em>stýri</em>), <em>trosc</em> ‘треска’ (ON <em>þorskr</em>), <em>scilling</em> ‘шиллинг’ (ON <em>skillingr</em>), <em>scuird</em> ‘рубаха, туника’ (ON <em>skyrta</em>), относятся прежде всего к рыболовству, мореплаванию, торговле и одежде.</p>
+</div>
+<!-- MCCONE-RU I.A.1: восемь абзацев и заголовки I/A переведены; два личных прохода по MD завершены; 88 выделенных форм сохранены в исходном порядке. Адресно просмотрены картинки PDF для Karim Basin и con:secra ‘consecrated’; оба чтения совпадают с MD. Независимое ревью не выполнялось по поручению пользователя. Далее I.A.2. -->
+<h3 class="stanza-text" id="i-a2">A.2. Источники древнеирландского периода</h3>
+<div class="stanza-text book-paragraph" id="i-a2-p01">
+<p>Более или менее полную грамматику языка можно установить на основании достаточно обильного материала, содержащегося в рукописях, датируемых самим древнеирландским периодом в только что определённых границах. Тем не менее некоторые пробелы неизбежны, поскольку круг рассматриваемых ирландоязычных источников ограничен. По большей части они состоят из так называемых «глосс», то есть заметок — переводов, уточнений или пояснений, в зависимости от случая, — написанных по-ирландски (наряду с латынью и нередко в смешении с ней) на полях или между строк латинских текстов, важных для монастырской учёности того времени. Сохранившиеся собрания древнеирландских глосс названы по различным местам, где находятся содержащие их рукописи. Все эти места расположены на континенте — несомненно, вследствие хорошо засвидетельствованной ирландской миссионерской и учёной деятельности в различных частях Европы с VI по IX век. Лингвистическое значение этих глосс заключается в том, что они представляют собой единственный значительный корпус древнеирландского материала, дошедший до нас в рукописях VIII или IX века, то есть самого древнеирландского периода. Крупнейшие и важнейшие собрания — <strong>Вюрцбургские</strong> глоссы (Wb., около 750 г. н. э.) к латинскому тексту посланий св. Павла, <strong>Миланские</strong> глоссы (Ml., около 800 г. н. э.) к латинскому комментарию на Псалмы и <strong>Санкт-Галленские</strong> глоссы (Sg., около 850 г. н. э.) к латинской грамматике Присциана. К меньшим собраниям относятся Туринские глоссы (Tur.) к Евангелию св. Марка и глоссы из Карлсруэ к Присциану (PCr.). Последние иногда совпадают с глоссами гораздо более обширного Санкт-Галленского собрания, что доказывает существование ещё более раннего собрания древнеирландских глосс к Присциану, которым в той или иной мере пользовались как Санкт-Галленские, так и карлсруэские глоссаторы. Хотя подавляющая часть материала <strong>Армагской книги</strong> начала IX века, ныне хранящейся в Тринити-колледже в Дублине, написана на латыни, входящее в неё собрание разнородных записей, известное как <em>Additamenta</em>, или «Дополнения», содержит несколько коротких древнеирландских текстов. Среди них особенно важен сравнительно краткий рассказ об основании Слетти (см. VI.A.7f) — единственное древнеирландское прозаическое повествование сколько-нибудь значительного объёма, сохранившееся в рукописи самого древнеирландского периода. Помимо литургического текста, составляющего основную часть рукописи, Стоуский миссал содержит небольшой древнеирландский трактат о мессе и три древнеирландских заклинания (см. V.C.4c).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a2-p02">
+<p>Миланская и Санкт-Галленская рукописи содержат также несколько коротких древнеирландских стихотворений на случай, по-видимому сочинённых писцами, чтобы отдохнуть от трудной и временами, вероятно, утомительной работы над глоссами. Два хорошо известных примера приведены ниже, в V.C.4e и VII.B.3e. Несколько древнеирландских стихотворений входят в довольно любопытный сборник коротких текстов, образующий Codex Sancti Pauli VIII или IX века — рукопись из четырёх листов, хранящуюся в монастыре Святого Павла в Каринтии, в Австрии. Самое известное из них — очаровательное стихотворение <em>Me-sse ocus Pangur bán</em> (ниже, V.A.3b), в котором книжник сопоставляет и противопоставляет свои книжные занятия охоте своего кота на мышей. Следует также упомянуть любопытное заклинание, приведённое в VIII.6d, и единственный дошедший до нас образец древнеирландского бардического хвалебного стихотворения.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a2-p03">
+<p>Помимо двух основных глоссаторов, которым принадлежит большинство Вюрцбургских глосс соответственно на первых тридцати двух и на последних двух листах, встречаются ещё около восьмидесяти кратких глосс, обычно состоящих из одного слова, написанных ещё одной рукой, довольно тонким и размашистым почерком, — так называемой <em>Prima Manus</em>, или «Первой рукой». Язык глосс <em>Prima Manus</em> отражает несколько более раннюю стадию, чем язык<span id="i-pdf-005"></span> основной части Вюрцбургского собрания, и может считаться «ранним древнеирландским»; дополнительные следы этого этапа обнаруживаются ещё в двух небольших собраниях глосс. Однако единственный значительный образец этой языковой стадии второй половины VII века, дошедший до нас в рукописи, близкой к ней по времени, — Камбрейская гомилия: довольно короткий текст, состоящий из древнеирландских отрывков, перемежающихся латинскими, и сохранившийся в рукописи VIII века, принадлежащей публичной библиотеке Камбре. Рукопись на 72 листах выполнена континентальным почерком и, помимо этого, содержит текст латинского <em>Collectio Canonum Hibernensis</em>, или Ирландского собрания канонов. По-видимому, она была списана с островного оригинала, в который этот фрагмент был каким-то образом включён. Явное незнакомство писца с ирландским языком привело к немалому числу ошибок, большинство которых нетрудно исправить, но уберегло текст от языковой модернизации, к которой был бы склонен ирландский писец. Ряд языковых признаков (см. VI.B.6a) показывает, что оригинал был создан раньше основной части Вюрцбургских глосс, относящейся приблизительно к середине VIII века, так что его датировка второй половиной VII века представляется правдоподобной.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a2-p04">
+<p>Весь ирландоязычный материал, сохранившийся в рукописях, датировка которых древнеирландским периодом представляется правдоподобной, собрали и перевели John Strachan и Whitley Stokes в своём двухтомном <em>Thesaurus Palaeohibernicus</em>, представляющем собой наиболее удобный свод этого материала.</p>
+</div>
+<!-- MCCONE-RU I.A.2: четыре абзаца переведены; два личных прохода завершены. Сохранены шесть курсивных названий/упоминаний, четыре жирных выделения, пять сигл и семь внутрикнижных отсылок. placesin подтверждено по изображению PDF4; текстовый слой не использовался. Независимое ревью не выполнялось. Далее I.A.3. -->
+<h3 class="stanza-text" id="i-a3">A.3. Древне- и среднеирландские тексты, сохранившиеся в позднейших рукописях</h3>
+<div class="stanza-text book-paragraph" id="i-a3-p01">
+<p>Итак, корпус древнеирландского материала, сохранившегося в рукописях, датируемых периодом от конца VII до начала X века, несколько ограничен по объёму и ещё более — по жанровому составу. За парой блестящих исключений он довольно небогат литературными достоинствами и почти не содержит повествовательных текстов сколько-нибудь значительного объёма. Поэтому существуют веские лингвистические, литературные и исторические основания попытаться дополнить это ядро свидетельствами текстов доказуемого или хотя бы вероятного древнеирландского происхождения, сохранившихся лишь в рукописях XII века и более поздних, обычно в частично модернизированных списках или версиях. Выявить этот пласт не всегда легко, и случаи серьёзных сомнений неизбежны. Далее внимание будет сосредоточено на некоторых основных вопросах и на нескольких текстах такого рода, включённых в последующие подборки для учебного чтения: на их примере можно показать различные критерии, способные указывать на создание текста в древнеирландский период или обосновывать такую датировку.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a3-p02">
+<p>Средневековая Ирландия — скажем, вплоть до XVI века — обладает обширной литературой как на ирландском, так и на латинском языке; представляется очевидным, что тексты на народном языке создавались по меньшей мере с середины VII века. Однако вследствие сочетания случайных обстоятельств с неизбежным износом рукописей, постоянно использовавшихся для чтения и переписывания содержащихся в них текстов, в самой Ирландии непосредственно сохранилось очень мало раннего древнеирландского или древнеирландского материала в рукописях соответствующего времени — с конца VII до начала X века. Как было показано выше, в A.2, большая часть сохранившегося дошла до нас в рукописях, хранящихся на континенте: предположительно, там ими пользовались реже, а к концу той эпохи перестали их переписывать по мере ослабления ирландского церковного присутствия в континентальной Европе. Тем не менее основная масса средневекового ирландоязычного материала содержится в более поздних рукописях, созданных и, по крайней мере первоначально, хранившихся в Ирландии. Особое значение имеют собрания, ныне находящиеся в Тринити-колледже в Дублине, Королевской ирландской академии и Национальной библиотеке Ирландии. Немало ирландских рукописей сравнительно недавно приобрели и зарубежные учреждения, такие как Британская библиотека, Бодлианская библиотека в Оксфорде и Библиотека адвокатов в Эдинбурге, благодаря деятельности знатоков древностей — например, Эдварда Ллуйда, упомянутого в A.1, — из Британии<span id="i-pdf-006"></span> и других мест.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a3-p03">
+<p>Таким образом, существует огромный и разнообразный корпус материала на ирландском языке, сохранившегося в рукописях приблизительно XII–XVI веков и более поздних. К последнему столетию или около того среднеирландского периода относятся три важнейшие рукописи, содержащие значительный объём литературы на народном языке. В вероятном хронологическом порядке это <strong>Lebor na hUidre</strong>, или «Книга Бурой коровы» (<em>LU</em>, основной почерк — около 1100 г.), из собрания RIA, <strong>Rawlinson B 502</strong> Бодлианской библиотеки и объёмистая <strong>Lebor</strong> <strong>Laigen</strong>, или «Лейнстерская книга» (<em>LL</em>), из TCD. Рукописи, относящиеся ко времени после норманнского завоевания, но содержащие значительный объём более раннего материала, гораздо многочисленнее. Среди них — большая составная <strong>Жёлтая книга Лекана</strong> (<em>YBL</em>) из TCD, в основном относящаяся к концу XIV века; составная <strong>Rawlinson B 512</strong> Бодлианской библиотеки, некоторые части которой относятся к концу XV века; а также различные рукописи XVI века, такие как <strong>Egerton 1782</strong>, <strong>Egerton 88</strong> и <strong>Harley 5280</strong> Британской библиотеки.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a3-p04">
+<p>В случае <em>LU</em>, <em>Rawl. B 502</em> и <em>LL</em> можно по крайней мере быть уверенным, что данный текст или языковая форма восходят как минимум к среднеирландскому периоду. Но для остальных рукописей, написанных в ранненовоирландский период или позднее, нет даже такой <em>a priori</em> уверенности. Впрочем, для обеих категорий проблемы выявления и/или восстановления текстов хотя бы вероятного древнеирландского происхождения в основе своей одинаковы. Древне- и среднеирландская прозаическая литература по большей части анонимна; даже там, где автор назван, как нередко бывает в поэзии, бывает трудно устранить сомнение в правильности конкретной атрибуции, тогда как уверенно установить ошибочность некоторых атрибуций удаётся легче. Разумеется, польза от правдоподобно указанного имени автора для датировки зависит от надёжных сведений о том, когда он жил или — что вероятнее — умер; такие сведения часто, но далеко не всегда, имеются в обширных средневековых ирландских анналистических сводах. Если позднейшую интерполяцию можно с достаточным основанием исключить, содержащиеся в тексте упоминания известных исторических лиц, учреждений, политических обстоятельств или событий также могут дать основания для датировки. Чаще всего они устанавливают <em>terminus ante quem non</em> — рубеж, после которого произведение должно было принять свой нынешний вид. Однако действительно полезные указания такого рода встречаются реже, чем можно было бы надеяться, не только в таких неповествовательных жанрах, как юридические тексты, тексты мудрости или гомилии, но и в повествованиях, которые слишком часто рассказывают о событиях, якобы происходивших в далёком прошлом. В таких условиях первостепенное значение обычно приобретают языковые соображения. Здесь очевидная трудность состоит в том, что, переписывая ранние тексты, писцы среднеирландского и ранненовоирландского периодов вполне естественно были склонны заменять старые, вышедшие из употребления формы более поздними, употребительными, или даже создавать «гиперкорректные» формы, противодействуя этой естественной склонности.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a3-p05">
+<p>В целом стихотворения, сохранившиеся в позднейших рукописях, легче отнести по времени создания к определённому языковому этапу, чем прозаические произведения, переданные тем же способом. Дело в том, что такие особенности, как рифма и число слогов (см. II.B.2g, V.A.3b и V.C.4e), нередко дают надёжные критерии для решения, следует ли исправить среднеирландскую форму на её древнеирландский эквивалент, чтобы восстановить соответствие ожидаемой метрической схеме. Так, <em>Félire Óengusso</em>, или «Календарь Ойнг̇уса», — длинное стихотворение, посвящённое праздникам святых на протяжении всего года, с 1 января по 31 декабря; каждому дню отведено одно четверостишие. Стихотворный календарь, составляющий основу произведения, предваряется прологом объёмом более трёхсот строк и завершается ещё более длинным эпилогом, насчитывающим более пятисот строк. Хотя произведение сохранилось лишь в сравнительно поздних рукописях, наличие десяти таких рукописей и строгая метрическая структура позволили его издателю Whitley<span id="i-pdf-007"></span> Stokes (<em>Félire Óengusso Céli Dé: The Martyrology of Oengus the Culdee</em>, Лондон, 1905; переиздано: Дублин, 1984) с некоторой уверенностью восстановить исходный древнеирландский текст. Кроме того, различные сохранившиеся предисловия к поэме и некоторые другие упоминания убедительно приписывают её некоему Ойнг̇усу — сыну Ойнг̇авы и внуку Ойвьле̄на. На с. xxvi введения к своему изданию Stokes следующим образом подытоживает дополнительные сведения, извлекаемые из этих источников: «Он был современником Айҙа Орьдниг̇ьѳе, верховного короля Ирландии с 793 по 817 год, Фоѳуѳа Канона (flor. 804) и Конмака, епископа Армы (ob. 806). Он стал монахом в монастыре Clonenagh на берегах Nore.... Позднее он присоединился к братству Tallaght близ Дублина, во главе которого тогда стоял св. Майлруань, умерший в 787 году и поминаемый Ойнг̇усом 11 августа» (в действительности 7 июля). Таким образом, создание <em>Félire</em> можно достаточно уверенно датировать временем около 800 г. н. э. Сходные соображения побудили Stokes и Strachan включить восстановленные древнеирландские тексты стихотворных гимнов различным ирландским святым, сохранившихся в <em>Liber Hymnorum</em>, во второй том <em>Thesaurus Palaeohibernicus</em>, упомянутого в конце A.2, хотя ни одна из многочисленных соответствующих рукописей не относилась к древнеирландскому периоду (пример размера, основанного на ударении, а не на более обычном счёте слогов, см. в VII.B.3f).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a3-p06">
+<p>Датировка прозаических произведений обычно сопряжена с большими трудностями, особенно если текст сохранился лишь в одной или двух поздних рукописях. Тем не менее Житие святой Бриг̇иди, сохранившееся — без начала из-за утраты одного листа — только в части рукописи Rawlinson B 512 конца XV века (Бодлианская библиотека, Оксфорд), можно уверенно датировать IX веком н. э. Причина проста и убедительна: если сделать поправку на ряд в основном несущественных позднейших орфографических особенностей, приблизительно три четверти текста оказываются написанными на несомненном древнеирландском, а оставшаяся примерно четверть — на латыни. Несколько отрывков из этого произведения приведены в нормативной древнеирландской орфографии в различных разделах для учебного чтения последующих глав. Отдельные расхождения с написаниями рукописной версии удобно проверить, обратившись к изданию Donncha Ó hAodha (<em>Bethu Brigte</em>, Дублин, 1978). Ранние юридические трактаты, известные лишь по позднейшим рукописям — например, упомянутые в IV.C.3b-d, — также обычно хорошо сохраняют исходные древнеирландские формы, хотя позднейшие способы написания могут в большей или меньшей степени их скрывать.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a3-p07">
+<p>Если преимущественно или исключительно прозаический текст сохранился в нескольких позднейших рукописях, убедительные свидетельства его создания в древнеирландский период нередко удаётся выделить из разночтений, должным образом учитывая взаимоотношения разных рукописных версий и то, что одни грамматические особенности надёжнее других как диагностические признаки. Установив веские основания предполагать древнеирландское происхождение, можно затем с достаточной уверенностью восстановить последовательный древнеирландский текст — порой даже нормализуя форму вопреки всем имеющимся рукописным вариантам. Текст короткой древнеирландской саги <em>Compert Con Culainn</em>, повествующей на трёх различных уровнях о зачатии и рождении Кӯ Хулання, поразительно сходных с зачатием и рождением Христа, содержится в важной рукописи <em>Lebor na Huidre</em> (LU), или «Книге Бурой коровы», упомянутой выше. Часть вплоть до <em>birt mac</em> включительно в VII.B.3a (продолжение VII.A.3a и VI.B.4b) написана рукой основного писца M(áel Muire), который, по-видимому, работал над ней около 1100 г. н. э. Далее же позднейший интерполятор, условно обозначаемый «H», добавил окончание, значительно более развёрнутое, чем в нескольких других рукописях, в частности Trinity College Dublin H.4.22, Royal Irish Academy 23 N.10 и British Library Egerton 88. H также приписал к заглавию рассказа в LU заметку, сообщающую, что версия M происходит <em>a Libur Dromma Snechta</em> — «из Книги Друмь Шнехты». Эта, очевидно, важная утраченная рукопись трижды упоминается как источник в LU и ещё<span id="i-pdf-008"></span> неоднократно — в различных других рукописях. В основе своей древнеирландский язык <em>Compert Con Culainn</em> и ряда других саг, предположительно входивших в <em>Lebor</em> или <em>Cín Dromma Snechtai</em>, побудил выдающегося исследователя древнеирландского языка Рудольфа Турнейзена датировать утраченную рукопись VIII веком н. э. При этом он не исключал возможности, что она была написана лишь в X веке, но заимствовала древнеирландский материал, такой как <em>Compert Con Culainn</em>, из неизвестной более ранней рукописи. В любом случае версия <em>Compert Con Culainn</em>, сохранившаяся в H.4.22, 23 N.10, Eg. 88 и в записи M в LU, то есть без заключения, добавленного H, очевидно восходит к древнеирландскому оригиналу и представляет одну из древнейших сохранившихся ирландских саг. Сходные доводы могут быть и уже были убедительно выдвинуты относительно короткого рассказа <em>Echtrae Chonnlai</em>, или «Путешествия Коннлэ» (VII.A.3b и B.3b), преимущественно прозаического, а также широко обсуждаемого <em>Immram Brain</em>, или «Плавания Брана» (VI.A.6c-e), которое несколько длиннее благодаря двум значительным по объёму поэмам, каждая из которых насчитывает двадцать восемь строф. В нередких случаях так называемых текстов <em>prosimetrum</em>, в которых проза чередуется со значительным объёмом стихов, стихотворная часть может дать полезные, проверяемые метром критерии для датировки произведения в целом — если нет ясных указаний, что прозаическая и стихотворная части были созданы на существенно разных этапах.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a3-p08">
+<p>Иногда может быть признано целесообразным нормализовать текст или его часть в соответствии с нормами древнеирландского языка, несмотря на отсутствие уверенности, что он действительно был создан в собственно древнеирландский период, то есть, в основном, до конца IX века. Наиболее очевидная причина такой нормализации — учебная: начинающему читателю хотят предоставить интересный материал, не требующий столкновения с дополнительными трудностями среднеирландского языка. Именно в таком духе Strachan и Bergin подготовили свою подборку <em>Stories from the Táin</em> (см. A.4 ниже). Аналогичным образом в настоящей книге отрывки, например, из <em>Tecosca Cormaic</em>, или «Наставлений Кормака» (II.B.2b и др.), в определённой мере нормализованы исключительно в учебных целях, а не исходя из предположения, что текст создан в IX, а не в X или XI веке. То же относится к нормализованному тексту <em>Aided Cheltchair Maic Uthechair</em>, или «Смерти Келтхара, сына Уѳехара», в XI.2. Поскольку целиком он сохранился лишь в поздней рукописи, ныне находящейся в Эдинбурге, и дополняется версией только первой половины в <em>Лейнстерской книге</em> XII века, обилие среднеирландских форм вполне может объясняться позднейшей редакторской обработкой древнеирландского оригинала переписчиками. Однако доказать это едва ли возможно; поэтому нет очевидного способа исключить X или даже XI век как время создания произведения. В любом случае язык сохранившейся рукописной версии или версий легко доступен в тексте, опубликованном Куно Мейером на с. 24–31 его книги <em>The Death-tales of the Ulster Heroes</em> (Королевская ирландская академия, 1906; 2-е репринтное издание: Дублинский институт перспективных исследований, 1993).</p>
+</div>
+<!-- MCCONE-RU I.A.3: восемь абзацев и цитата Стокса переведены; два личных прохода завершены. Сохранены 31 курсивный элемент, девять жирных групп, 16 различных внутрикнижных отсылок и локаторы страниц6–8. 15 исходных именований проверены CLI, исторические подсказки отделены от современной Коннемары. Bodelian подтверждено изображением PDF5. Независимое ревью не выполнялось. Далее I.A.4. -->
+<h3 class="stanza-text" id="i-a4">A.4. Основные цели этой книги</h3>
+<div class="stanza-text book-paragraph" id="i-a4-p01">
+<p>Настоящая работа призвана прежде всего хотя бы отчасти устранить серьёзное препятствие, с которым сталкиваются изучающие древнеирландский язык: отсутствие подходящей справочной грамматики, сопровождаемой достаточно обширной подборкой текстов для чтения из подлинных источников, расположенных по степени трудности и согласованных с темами, уже пройденными к соответствующему этапу. Труд John Strachan <em>Old-Irish Paradigms and Selections from the Old-Irish Glosses</em> (4-е изд., переработанное Osborn Bergin; Королевская ирландская академия, 1949, с частыми последующими переизданиями) содержит полный и хорошо организованный ряд парадигм, неоценимых как справочный материал (особенно следует отметить чрезвычайно полезное собрание форм связки на с. 71–73), но не даёт их объяснения. Подборки глосс во второй части труда не только разумно расположены по различным <span id="i-pdf-009"></span>временам и наклонениям древнеирландского глагола и завершаются разделами о причастии, глагольной форме долженствования и различных превербах, но и снабжены необходимыми лингвистическими примечаниями и словарём. Основных недостатков три. Во-первых, строгое следование временам и наклонениям глагола как критерию последовательности материала приводит к тому, что сложные грамматические явления, такие как аффиксальные местоимения и относительные конструкции, встречаются на нежелательно раннем этапе. Во-вторых, смысл глосс часто зависит от глоссируемого латинского отрывка; хотя Strachan обычно приводит соответствующую его часть, современные учащиеся нередко не могут воспользоваться этой помощью из-за прискорбного упадка изучения латыни в школе. Наконец, ввиду довольно сухого содержания и неизбежной разрозненности глоссы, вероятно, заинтересуют лишь учащихся с более выраженной склонностью к лингвистике и с меньшей вероятностью увлекут тех, кто ищет вводный материал, более интересный с литературной точки зрения. Эту проблему пытались решить, отобрав ряд весьма занимательных эпизодов и нормализовав их по возможности в соответствии с древнеирландским употреблением, в книге Strachan <em>Stories from the Táin</em> (3-е изд., переработанное Bergin; Королевская ирландская академия, 1944, с последующими переизданиями). Однако с точки зрения грамматики эти тексты неизбежно не были расположены по степени трудности и потому по-настоящему подходили лишь тем, кто уже проработал <em>Old-Irish Paradigms and Glosses</em>, что и признавал Bergin в предисловии к переработанному изданию <em>Stories</em>.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a4-p02">
+<p>Книга Rudolf Thurneysen <em>A Grammar of Old Irish</em> (Дублинский институт перспективных исследований, 1946, с последующими переизданиями) — разумеется, совершенно незаменимая основная справочная грамматика этого языка, но само богатство содержащихся в ней сведений заметно затрудняет её эффективное использование начинающим. Сопутствующая ей <em>Old Irish Reader</em> (Дублинский институт перспективных исследований, 1949, с последующими переизданиями) предлагает ценную подборку материала из рукописей древнеирландского периода — глоссы, несколько коротких стихотворений и пару коротких связных прозаических отрывков — с комментарием и словарём, однако этот материал не расположен по степени трудности. <em>Old-Irish Workbook</em> Gordon Quin (Королевская ирландская академия, 1975) наконец предоставил учащимся курс с постепенным усложнением материала. Однако краткие, но ясные грамматические введения к каждой главе предполагалось дополнять соответствующими разделами парадигм Strachan и грамматики Thurneysen, тогда как упражнения состоят из часто довольно неуклюжих и искусственных предложений, составленных самим автором для перевода с древнеирландского на английский и <em>vice versa</em>, чтобы отработать вводимые грамматические явления.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a4-p03">
+<p>Настоящая работа создавалась прежде всего с целью дать изучающим древнеирландский язык сравнительно небольшую по объёму, но самодостаточную справочную грамматику, перемежаемую настолько часто, насколько это практически возможно, текстами для чтения из подлинных источников, подобранными по степени трудности, и дополненную полным словарём в конце книги. Тексты отобраны так, чтобы представить широкий круг жанров средневековой ирландской литературы, и там, где это сочтено уместным, предваряются краткими введениями с пояснениями общего характера. За очевидным исключением заключительной главы о среднеирландском языке, эти отрывки систематически подвергались преимущественно незначительной нормализации в соответствии с нормативным древнеирландским употреблением, а иногда — более существенным изменениям: например, опускались отрывки с ещё не встречавшимися формами (пропуски обозначены точками) или, реже, такие формы заменялись эквивалентами с уже знакомыми грамматическими особенностями (такие замены обычно отмечаются во введении к соответствующему разделу). Можно надеяться, что тексты для чтения, подобранные по степени трудности из разнообразных средневековых ирландских источников, в основном сохраняемых в оригинальном виде, будут не только заинтересовывать и ободрять читателя, но и с раннего этапа обучения прививать ему чувство древнеирландского словоупотребления и строения предложения.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a4-p04">
+<p><span id="i-pdf-010"></span>Что касается расположения материала, главная цель состояла в том, чтобы изложить основные грамматические особенности древнеирландского языка в последовательности, определяемой прежде всего (i) соображениями сравнительной трудности или важности, (ii) желанием собрать сведения по одной теме вместе для удобства справочного использования и (iii) необходимостью дать читателю средства как можно быстрее расширять круг доступного ему чтения. Эти требования не всегда легко согласовать друг с другом, и некоторые компромиссы были неизбежны, хотя была предпринята попытка смягчить их последствия частыми перекрёстными отсылками. При любом подходе правила орфографии и произношения — почти неизбежный первый шаг; им и посвящена вторая часть этой вводной главы. Так, в разделе B ниже основные особенности системы последовательно излагаются и иллюстрируются, чтобы дать читателю первоначальное общее представление и возможность освоить подробности, регулярно возвращаясь к соответствующему разделу. Вторая глава посвящена существительным, прилагательным и определённому артиклю древнеирландского языка — отчасти потому, что они менее сложны, чем глагольная система, но также потому, что учащимся, не знакомым с другими языками с развитым словоизменением, такими как латынь, вероятно, потребуется здесь немало практики. Парадигмы собраны вместе для удобства справочного использования, а не для заучивания блоками. Обычному учащемуся следует сосредоточиться на понимании системы в целом, заучив не более пары ключевых парадигм (например, существительных классов I и II) и постепенно усваивая остальные подробности в процессе чтения. Для этого важно, определив по словарю класс склонения того или иного слова, всякий раз обращаться к соответствующей парадигме, чтобы точно установить падеж и число существительного или прилагательного. Хотя употребление глагола «быть» в древнеирландском не лишено трудностей, он рассматривается уже на раннем этапе, а именно в третьей главе: отчасти из-за своей чрезвычайно высокой частотности, отчасти из-за центрального места в основных моделях порядка слов, а отчасти потому, что в особенности субстантивный глагол позволяет удобно предварительно познакомиться с основными категориями времени и наклонения всей древнеирландской глагольной системы. Достигнутое благодаря этому расширение возможностей чтения позволяет затем включить некоторые описательные отрывки. Как и прежде, подробные парадигмы предназначены для справок, а не для заучивания, хотя на этом этапе было бы полезно попытаться выучить наизусть парадигмы настоящего времени и претерита изъявительного наклонения как субстантивного глагола, так и связки. Вообще такой избирательный и постепенный подход к освоению словоизменения следует рекомендовать на всём протяжении обучения как общее правило, если только учащийся не обладает особой способностью заучивать наизусть большое число парадигм. Четвёртая глава завершает основную «неглагольную» часть грамматики.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a4-p05">
+<p>Следующие главы сосредоточены главным образом на глагольной системе, начиная с двух важнейших глагольных основ изъявительного наклонения — настоящего времени (гл. V) и активного претерита (гл. VI), — а также с ключевых взаимосвязанных вопросов о простых и сложных глаголах, аффиксальных объектных местоимениях (оба вопроса — в гл. V) и относительных конструкциях (гл. VI). К этому этапу учащийся уже может переводить некоторые повествовательные отрывки, в том числе большую часть прозаического обрамления <em>Immram Brain</em> и первую половину ранней саги <em>Compert Con Culainn</em>. В седьмой главе вводятся пассивное и депонентное спряжения в уже встречавшихся временах и наклонениях — как подготовка к чтению, среди прочего, заключения <em>Compert Con Culainn</em>, тогда как восьмая и девятая главы посвящены главным образом двум оставшимся глагольным основам: соответственно сослагательного наклонения и будущего времени. Десятая глава, посвящённая «аугменту», охватывает единственную ещё не рассмотренную крупную сторону древнеирландской глагольной системы. К этому этапу учащийся должен быть способен читать любой достаточно несложный древнеирландский текст; одиннадцатая глава посвящена дальнейшему чтению и предлагает в качестве дополнительной практики нормализованную древнеирландскую версию саги <em>Aided Cheltchair maic Uithechair</em> — «Смерть Келтхара, сына Уѳехара».</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a4-p06">
+<p><span id="i-pdf-011"></span>Поскольку объём доступного материала для чтения, последовательно выдержанного на древнеирландском языке, несколько ограничен — особенно это касается текстов саг, — учащемуся, желающему получить более или менее неограниченный доступ к источникам, со временем придётся освоить и среднеирландский. Полной грамматики этого этапа развития языка на английском пока нет, хотя достаточно подробное описание среднеирландской глагольной системы содержится в обширной заключительной главе (с. 163–248) книги автора настоящего труда <em>The Early Irish Verb</em> (2-е изд., Мейнут, 1997). Поскольку учащемуся, до сих пор не знакомому со среднеирландским, это описание глагола, вероятно, покажется слишком подробным для лёгкого усвоения, а кроме того, ему в любом случае понадобятся сведения о различных ключевых изменениях в других частях грамматической системы (например, в склонении существительных, прилагательных и определённого артикля), решено было включить в настоящий том в качестве заключительной двенадцатой главы введение в основы среднеирландского языка, а также материал для чтения, завершающийся сравнительно коротким среднеирландским повествовательным текстом — <em>Comthóth Lóegaire</em>, «Обращение Лойг̇аре», из <em>Lebor na hUidre</em>.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-a4-p07">
+<p>Основное назначение этой грамматики и хрестоматии — не служить самоучителем, хотя читатель с лингвистической подготовкой, возможно, сумеет использовать её и таким образом. Напротив, она рассчитана на курсы древнеирландского и/или среднеирландского языка под руководством преподавателей с надлежащей квалификацией — либо как основной учебник, либо как дополнение, например, к <em>Workbook</em> Quin или <em>Paradigms and Glosses</em> Strachan. По крайней мере в некоторых главах объём материала для чтения вполне может превышать то, что практически возможно освоить за отведённое время, но в этом случае преподавателю нетрудно будет выбрать один или несколько отрывков для работы на занятиях.</p>
+</div>
+<!-- MCCONE-RU I.A.4: семь абзацев переведены; два личных прохода завершены. Сохранены 17 курсивных элементов, авторские оговорки, три критерия (i)–(iii), ссылки на главы и локаторы страниц9–11. Три именования проверены CLI и повторно прочитаны офлайн. Независимое ревью не выполнялось. Далее I.B.1 вместе с заголовком разделаB. -->
+<h2 class="stanza-text" id="i-b">B. Орфография и произношение</h2>
+<h3 class="stanza-text" id="i-b1">B.1. Смычные и соответствующие щелевые согласные</h3>
+<div class="stanza-text book-paragraph" id="i-b1-p01">
+<p>В начале слова, если начальный согласный не подвергался изменению, древнеирландские смычные, по-видимому, писались и произносились примерно так же, как, скажем, в современном английском. Примеры даны в разделах (i) и (ii) таблиц ниже; формы между косыми чертами обозначают вероятное приблизительное произношение древнеирландских букв, стоящих непосредственно справа. Внутри слова смычные после гласного (который впоследствии нередко выпадал вследствие синкопы), как правило, ещё задолго до древнеирландского периода подверглись так называемой <strong>лениции</strong>. Этот процесс превращал их в соответствующие щелевые согласные. В древнеирландской орфографии глухие щелевые обычно обозначались с дополнительным <em>h</em> (<em>ph, th, ch</em>; примеры см. в vi ниже), отличаясь этим от соответствующих смычных (<em>p, t, c</em>). Звонкие щелевые, напротив, неизменно писались <em>b, d, g</em> и потому на письме часто не отличались от соответствующих звонких смычных. После гласного (обозначение V) звонкие смычные <span class="phonetic">/b/</span>,<span class="phonetic">/d/</span>,<span class="phonetic">/g/</span> писались <em>p</em>, <em>t</em>, <em>c</em> и, следовательно, были неотличимы от соответствующих глухих смычных, которые всегда писались <em>p, t, c</em>, как в (iii) ниже. Однако от соответствующих звонких щелевых, регулярно обозначавшихся <em>b, d, g</em>, они обычно отличались, как в (iv) ниже. После другого согласного в древнеирландском языке (обозначение C) звонкие смычные <span class="phonetic">/b/</span>,<span class="phonetic">/d/</span>,<span class="phonetic">/g/</span> могли писаться <em>p, t, c</em> — и тогда они были неотличимы от глухих смычных <span class="phonetic">/p/</span>,<span class="phonetic">/t/</span>,<span class="phonetic">/k/</span> — либо <em>b, d, g</em> — и тогда они были неотличимы от звонких щелевых <span class="phonetic">/v/</span>,<span class="phonetic">/ð/</span>,<span class="phonetic">/γ/</span>. Как показывают примеры в (v) ниже, неоднозначность в конкретном случае нередко можно устранить на основании совокупности примеров: после другого согласного устойчивые написания <em>p,t,c</em> указывают на глухой смычный, устойчивые <em>b,d,g</em> — на звонкий щелевой, а колебание между <em>p/b</em>, <em>t/d</em> или <em>c/g</em> в написании одного и того же слова (при этом <em>b, d, g</em> обычно встречаются чаще) указывает на звонкий смычный. Приведённая ниже таблица суммирует эти основные правила.</p>
+</div>
+<div id="i-pdf-012">
+</div>
+<div aria-label="Смычные и соответствующие щелевые: сводная таблица" class="stanza-text book-table" id="i-b1-t01" role="region" tabindex="0">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Неизменённые <em>(Смычные)</em></th>
+<th>Ленированные <em>(Щелевые)</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>(глухие)</em></td>
+<td><span class="phonetic">/p/</span> <strong>p</strong></td>
+<td><span class="phonetic">/f/</span> <strong>ph/f</strong></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="phonetic">/t/</span> <strong>t</strong></td>
+<td><span class="phonetic">/θ/</span> <strong>th</strong></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="phonetic">/k/</span> <strong>c</strong></td>
+<td><span class="phonetic">/χ/</span> <strong>ch</strong></td>
+</tr>
+<tr class="even">
+<td><em>(звонкие)</em></td>
+<td><span class="phonetic">/b/</span> <strong>b-</strong>, (-)V<strong>p</strong>(-), (-)C<strong>p/b</strong>(-)</td>
+<td><span class="phonetic">/v/</span> <strong>b</strong></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="phonetic">/d/</span> <strong>d-</strong>, (-)V<strong>t</strong>(-), (-)C<strong>t/d</strong>(-)</td>
+<td><span class="phonetic">/ð/</span> <strong>d</strong></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="phonetic">/g/</span> <strong>g-</strong>, (-)V<strong>c</strong>(-), (-)C<strong>c/g</strong>(-)</td>
+<td><span class="phonetic">/γ/</span> <strong>g</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p02">
+<p>Как видно, <span class="phonetic">/p/</span>, <span class="phonetic">/t/</span>, <span class="phonetic">/k/</span>, <span class="phonetic">/f/</span>, <span class="phonetic">/θ/</span> (как в Eng. <em><strong>th</strong>in</em>), <span class="phonetic">/χ/</span> (как <em>ch</em> в Mod. Ir. или Germ.; в Eng. соответствия нет), а также <span class="phonetic">/v/</span>, <span class="phonetic">/ð/</span> (как в Eng. <em><strong>th</strong>e</em> или <em><strong>th</strong>is</em>), <span class="phonetic">/γ/</span> (звонкое соответствие <span class="phonetic">/χ/</span>, как <em>gh</em> в Mod. Ir. <em>an-gharbh</em> ‘очень грубый’) всегда обозначались одинаково. Хотя их произношение не вызывает затруднений, <span class="phonetic">/b/</span>, <span class="phonetic">/d/</span>, <span class="phonetic">/g/</span> более проблематичны, поскольку их написание меняется в зависимости от позиции: <em>b, d, g</em> в начале слова, <em>p, t, c</em> внутри или в конце слова после гласного и любой из двух вариантов внутри или в конце слова после согласного.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p03">
+<p>Несколько примеров:</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p04">
+<p>(i) <em>penn</em> ‘перо’<span class="phonetic">/peN/</span> (mod. <em>peann</em>), <em>tech</em> ‘дом’ <span class="phonetic">/teχ/</span> (mod. <em>teach</em>), <em>cenn</em> ‘голова’ <span class="phonetic">/keN/</span> (mod. <em>ceann</em>);</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p05">
+<p>(ii) <em>ben</em> ‘женщина’ <span class="phonetic">/ben/</span> (mod. <em>bean</em>), <em>dorus</em> ‘дверь’ <span class="phonetic">/dorus/</span> (mod. <em>doras</em>), <em>gel</em> ‘яркий’ <span class="phonetic">/gel/</span> (mod. <em>geal</em>);</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p06">
+<p>(iii) <em>sop</em> ‘пучок’ <span class="phonetic">/sop/</span> (mod. <em>sop</em>) vs. <em>ap</em> ‘аббат’ <span class="phonetic">/ab/</span> (mod. <em>ab</em>),<br/>
+<em>eite</em> ‘крыло’ <span class="phonetic">/et´e/</span> (mod. <em>eite</em>) vs. <em>aite</em> ‘приёмный отец’ <span class="phonetic">/ad´e/</span> (mod. <em>oide</em>),<br/>
+<em>mac</em> ‘сын’ <span class="phonetic">/mak/</span> (mod. <em>mac</em>) vs. <em>bec</em> ‘маленький’ <span class="phonetic">/beg/</span> (mod. <em>beag</em>);</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p07">
+<p>(iv) <em>slíab</em> ‘гора’ <span class="phonetic">/sliav/</span> (mod. <em>sliabh</em>), <em>mod</em> ‘способ’ <span class="phonetic">/moð/</span> (mod. <em>modh</em>),<br/>
+<em>fled</em> ‘пир’ <span class="phonetic">/fleð/</span> (mod. <em>fleá</em>), <em>suide</em> ‘сидение’ <span class="phonetic">/suð´e/</span> (mod. <em>suí</em>), <em>sleg</em> ‘копьё’ <span class="phonetic">/sleγ/</span> (mod. <em>sleá</em>);</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p08">
+<p>(v) <em>art</em> ‘камень’ <span class="phonetic">/art/</span> (mod. <em>art</em>) vs. <em>ard</em> или <em>art</em> ‘высокий’ <span class="phonetic">/ard/</span> (mod. <em>ard</em>),<br/>
+<em>serc</em> ‘любовь’ <span class="phonetic">/serk/</span> (mod. <em>searc</em>) vs. <em>serg</em> или <em>serc</em> ‘болезнь, вызывающая истощение’ <span class="phonetic">/serg/</span> (mod. <em>searg</em>);<br/>
+<em>marb</em> ‘мёртвый’ <span class="phonetic">/marv/</span> (mod. <em>marbh</em>) vs. <em>orb(a)e</em> или <em>orp(a)e</em> ‘наследство’ <span class="phonetic">/orbe/</span> (mod. <em>orba</em>),<br/>
+<em>ingen</em> (огамическое INIGENA) ‘дочь’ <span class="phonetic">/in´γ´ən/</span> (mod. <em>inghean</em>, <em>iníon</em>) vs. <em>ingen</em> или (теоретически) <em>incen</em> ‘ноготь’ <span class="phonetic">/in´g´ən/</span> (mod. <em>ionga</em>);</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p09">
+<p>(vi) <em>sephain</em> или <em>sefain</em> ‘играл’ <span class="phonetic">/sefən´/</span>, <em>tofonn</em> ‘охота, лай’ <span class="phonetic">/tofəN/</span> (mod. <em>tafann</em>),<br/>
+<em>cath</em> ‘битва’ <span class="phonetic">/kaθ/</span> (mod. <em>cath</em>), <em>ech</em> ‘конь’ <span class="phonetic">/eχ/</span> (mod. <em>each</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b1-p10">
+<p>Как видно, современные ирландские соответствия могут существенно помочь определить, какой тип звука представлен в том или ином случае, благодаря тому, что написание с <em>h</em> распространилось с глухих на звонкие щелевые (отсюда <em>bh, dh, gh</em>), а <em>p, t, c</em> последовательно употребляются для глухих смычных в противоположность <em>b, d, g</em> для звонких. Следует, однако, отметить, что некоторые звуки (особенно <span class="phonetic">/θ/</span>,<span class="phonetic">/ð/</span>,<span class="phonetic">/γ/</span>) в современном ирландском произносятся уже не так, как в древнеирландском: в современном языке <em>th</em> обозначает <span class="phonetic">/h/</span>, а <em>dh</em> совпало с <em>gh</em>; они иногда произносятся как <span class="phonetic">/γ/</span> или <span class="phonetic">/y/</span>, но часто вовсе не произносятся, как в Mod. Ir. <em>iníon</em>, <em>fleá, suí, sleá</em> выше. Для древнеирландского же следует предполагать, что указанные между косыми чертами звуковые значения действовали последовательно. Смычные нередко записываются удвоенными, особенно после гласного, но этот приём (например, <em>mac</em> или <em>macc</em> <span class="phonetic">/mak/</span>, <em>bec</em> или <em>becc</em> <span class="phonetic">/beg/</span>), по-видимому, не имеет фонетического значения.</p>
+</div>
+<!-- MCCONE-RU I.B.1: десять абзацев, одна таблица с шестью строками данных и шесть групп примеров переведены; два личных прохода завершены. Проверены 105 курсивных элементов, 22 жирных выделения, 30 авторских толкований и все фонетические строки; нотация Маккона не заменялась. Unmodifed и whisp подтверждены изображением PDF12. Независимое ревью не выполнялось. Далее I.B.2. -->
+<h3 class="stanza-text" id="i-b2">B.2. Носовые и плавные согласные</h3>
+<div class="stanza-text book-paragraph" id="i-b2-p01">
+<p>Эти согласные также встречаются в неизменённом и ленированном виде. Неизменённые могут обозначаться одной буквой или <span id="i-pdf-013"></span>(по крайней мере после гласного) удвоенной, тогда как ленированные всегда обозначаются одной буквой. Таким образом, удвоенное написание однозначно указывает на отсутствие лениции, но одиночное написание в каждом конкретном случае неоднозначно. Однако совокупность примеров обычно позволяет определить, с каким вариантом мы имеем дело, по наличию или отсутствию колебаний между одиночным и удвоенным написанием. Что касается произношения, не вполне ясно, как именно реализовывалось различие между неизменёнными <span class="phonetic">/N/</span>, <span class="phonetic">/R/</span>, <span class="phonetic">/L/</span> (таковы их условные обозначения) и ленированными <span class="phonetic">/n/</span>, <span class="phonetic">/r/</span>, <span class="phonetic">/l/</span>, но ленированное <em>m</em> представляло собой, по существу, назализованный звук <span class="phonetic">/v/</span> (в современном ирландском пишется <em>mh</em>).</p>
+</div>
+<div aria-label="Носовые и плавные согласные: сводная таблица" class="stanza-text book-table" id="i-b2-t01" role="region" tabindex="0">
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="phonetic">/m/</span> <strong>m(m)</strong></td>
+<td><span class="phonetic">/ṽ/</span> <strong>m</strong></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/N/</span> <strong>n(n)</strong></td>
+<td><span class="phonetic">/n/</span> <strong>n</strong></td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/R/</span> <strong>r(r)</strong></td>
+<td><span class="phonetic">/r/</span> <strong>r</strong></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/L/</span> <strong>l(l)</strong></td>
+<td><span class="phonetic">/l/</span> <strong>l</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="i-b2-p02">
+<p>Несколько примеров:<br/>
+<em>lomm</em> или <em>lom</em> ‘голый’ <span class="phonetic">/lom/</span> (mod. <em>lom</em>) vs. <em>lám</em> ‘рука’ <span class="phonetic">/la:ṽ/</span> (mod. <em>lámh</em>),<br/>
+<em>benn</em> или <em>ben</em> ‘вершина’ <span class="phonetic">/beN/</span> (mod. <em>beann</em>) vs. <em>ben</em> ‘женщина’ <span class="phonetic">/ben/</span> (mod. <em>bean</em>),<br/>
+<em>corr</em> или <em>cor</em> ‘цапля, журавль’ <span class="phonetic">/koR/</span> (mod. <em>corr</em>) vs. <em>cor</em> ‘бросок’ <span class="phonetic">/kor/</span> (mod. <em>cor</em>),<br/>
+<em>cíal</em> или <em>cíall</em> ‘смысл’ <span class="phonetic">/kiaL/</span> (mod. <em>ciall</em>) vs. <em>scél</em> ‘рассказ’ <span class="phonetic">/ske:l/</span> (mod. <em>scéal</em>).</p>
+</div>
+<!-- MCCONE-RU I.B.2: два абзаца, таблица с четырьмя строками данных и четыре пары примеров переведены; два личных прохода завершены. Проверены 22 курсивных элемента, восемь жирных выделений, восемь авторских толкований и все фонетические строки. Различия N/n, R/r, L/l, m/ṽ и двоеточия сохранены; авторская оговорка о неизвестной точной реализации не снята. Независимое ревью не выполнялось. Далее I.B.3. -->
+<h3 class="stanza-text" id="i-b3">B.3. Сибилянт и <em>f</em></h3>
+<div aria-label="Сибилянт и f: таблица обозначений" class="stanza-text book-table" id="i-b3-t01" role="region" tabindex="0">
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="phonetic">/s/</span></td>
+<td><strong>s(s)</strong></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/f/</span></td>
+<td><strong>f</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="i-b3-p01">
+<p>Примеры: <em>fer</em> ‘мужчина’ <span class="phonetic">/fer/</span> (mod. <em>fear</em>);<br/>
+<em>sacart/d</em> ‘священник’ <span class="phonetic">/sagard/</span> (mod. <em>sagart</em>), <em>cos</em> или <em>coss</em> ‘нога, ступня’ <span class="phonetic">/kos/</span> (mod. <em>cos</em>).</p>
+</div>
+<!-- MCCONE-RU I.B.3: таблица из двух строк и весь абзац примеров переведены; два личных прохода завершены. Проверены восемь курсивных элементов вместе с f в заголовке, два жирных выделения и три авторских толкования. Входит в пакет I.B.3–4. Независимое ревью не выполнялось. -->
+<h3 class="stanza-text" id="i-b4">B.4. Гласные под ударением и в конце слова</h3>
+<div class="stanza-text book-paragraph" id="i-b4-p01">
+<p>За немногими исключениями (важнейшее из них — так называемые «дейтеротонические» формы сложных глаголов; см. V.B.2), <strong><em>в древнеирландском ударение падало на первый слог слова</em></strong>, как и в большинстве разновидностей современного ирландского или шотландского гэльского. В ударном слоге слова различались пять кратких гласных и пять соответствующих долгих — примерно так же, как в современном ирландском или английском. Знак долготы «акут» часто опускается в рукописях, но современные издатели регулярно его проставляют, хотя некоторые прежние издатели употребляли «акут» только там, где долгота действительно была обозначена в рукописи, а в остальных случаях использовали для обозначения долготы <em>ā</em>, <em>ē</em> и т. д. с так называемым «макроном». Таким образом:</p>
+</div>
+<div aria-label="Краткие и долгие гласные: таблица с примерами" class="stanza-text book-table book-table-examples" id="i-b4-t01" role="region" tabindex="0">
+<table>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Краткие</em></th>
+<th><em>Долгие</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="phonetic">/a/</span> <strong>a</strong> (напр., <em>cath</em> ‘битва’ <span class="phonetic">/kaθ/</span>, mod. <em>cath</em>)</td>
+<td><span class="phonetic">/a:/</span> <strong>á</strong> (напр., <em>bás</em> ‘смерть’ <span class="phonetic">/ba:s/</span>, mod. <em>bás</em>)</td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/e/</span> <strong>e</strong> (напр., <em>secht</em> ‘семь’ <span class="phonetic">/seχt/</span>, mod. <em>seacht</em>)</td>
+<td><span class="phonetic">/e:/</span> <strong>é</strong> (напр., <em>fér</em> ‘трава’ <span class="phonetic">/fe:r/</span>, mod. <em>féar</em>)</td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/i/</span> <strong>i</strong> (напр., <em>ith</em> ‘зерно’ <span class="phonetic">/iθ/</span>, mod. <em>ioth</em>)</td>
+<td><span class="phonetic">/i:/</span> <strong>í</strong> (напр., <em>fír</em> ‘истинный, истина’ <span class="phonetic">/fi:r/</span>, mod. <em>fíor</em>)</td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/o/</span> <strong>o</strong> (напр., <em>trom(m)</em> ‘тяжёлый’ <span class="phonetic">/trom/</span>, mod. <em>trom</em>)</td>
+<td><span class="phonetic">/o:/</span> <strong>ó</strong> (напр., <em>slóg</em> ‘войско’ <span class="phonetic">/slo:γ/</span>, mod. <em>slua</em>)</td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/u/</span> <strong>u</strong> (напр., <em>cruth</em> ‘форма’<span class="phonetic">/kruθ/</span>, mod. <em>cruth</em>)</td>
+<td><span class="phonetic">/u:/</span> <strong>ú</strong> (напр., <em>drúth</em> ‘глупец’ <span class="phonetic">/dru:θ/</span>, mod. <em>drúth</em>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="i-b4-p02">
+<p>Те же пять гласных различались и в ударной конечной позиции, где они закономерно были долгими: например, <em>-bá</em> ‘умирает’, <em>mé</em> ‘я, меня’, <em>-bí</em> ‘есть’, <em>gó</em> ‘ложь’, <em>tú</em> ‘ты’ (sg.). Хотя безударные конечные гласные могли быть долгими во втором компоненте сложных слов, таких как <em>droch-mná</em> ‘плохие женщины’, <em>droch-gné</em> ‘плохой вид’ или <em>ard-rí</em> ‘верховный король’, обычно они были краткими и образовывали тот же ряд из пяти качественно различных гласных. При этом намечалась тенденция к сокращению их числа до четырёх вследствие слияния <em>-o</em> с <em>-a</em> в этой позиции: например, <em>cossa</em> ‘ступни, ноги’ <span class="phonetic">/kosa/</span>, <em>sude</em> ‘сидение, сиденье’ <span class="phonetic">/suð´e/</span>, <em>céli</em> ‘товарищи’ <span class="phonetic">/ke:l´i/</span>, <em>súlo</em> <span class="phonetic">/su:lo/</span> или <em>súla</em> <span class="phonetic">/su:la/</span> ‘глаза’, <em>firu</em> ‘мужчин’ (acc. pl.) <span class="phonetic">/firu/</span>. Напротив, <strong>ударные</strong> <span id="i-pdf-014"></span><strong>гласные в абсолютном конце слова автоматически удлинялись</strong>, что приводило к таким чередованиям, как между эмфатическими <em>me-sse</em>, <em>tu-ssa</em> (IV.A.2a) с ударными неконечными <em>e</em>/<em>u</em> и неэмфатическими <em>mé</em> ‘я, меня’ и <em>tú</em> ‘ты’ с теми же гласными в ударной конечной позиции, или между формами 3sg. abs. <em>biid</em> ‘есть’, <em>baid</em> ‘умирает’ с ударными неконечными <em>i</em>/<em>a</em> в зиянии и соответствующими формами 3sg. conj. <em>-bí</em>, <em>-bá</em> с теми же гласными в ударной конечной позиции, без зияния.</p>
+</div>
+<!-- MCCONE-RU I.B.4: два абзаца и таблица из пяти пар кратких/долгих гласных переведены; два личных прохода завершены. Проверены 53 курсивных элемента, 13 жирных выделений, 27 вхождений толкований, все фонетические записи, сокращения, обе отсылки и локатор14. Сохранены оговорки о сложениях и тенденции слияния -o/-a. Входит в пакет I.B.3–4. Независимое ревью не выполнялось. Далее I.B.5. -->
+<h3 class="stanza-text" id="i-b5">B.5. «Широкие», или непалатальные, и «узкие», или палатальные, согласные</h3>
+<div class="stanza-text book-paragraph" id="i-b5-p01">
+<p>Основополагающей чертой древнеирландской звуковой системы было смыслоразличительное, или фонемное, различие между более отодвинутой назад, или непалатальной («широкой»), и более продвинутой вперёд, или палатальной («узкой»), артикуляцией каждого без исключения согласного. Это противопоставление непалатальных (C) и палатальных согласных (C´, как в <span class="phonetic">/in´γ´ən/</span> в B.1, <span class="phonetic">/suð´e/</span> и <span class="phonetic">/ke:l´i/</span> в B.4 выше) в равной мере относится к среднеирландскому и современному ирландскому. В древнеирландском согласный перед ударными <em>a</em>, o и <em>u</em> (краткими или долгими), как правило, был непалатальным, а перед ударными <em>e</em> и <em>i</em> (краткими или долгими) — палатальным. Будучи вполне автоматическим, различие между палатальными и непалатальными начальными согласными не было фонемным и потому не обозначается в таких случаях, как <em>penn</em> (фонемно <span class="phonetic">/peN/</span>, но фонетически <span class="phonetic">[p´eN]</span>), <em>tech</em> <span class="phonetic">/teχ/</span> (или <span class="phonetic">[t´eχ]</span>), <em>cenn</em> <span class="phonetic">/keN/</span> (или <span class="phonetic">[k´eN]</span>), <em>ben</em> <span class="phonetic">/ben/</span> (или <span class="phonetic">[b´en]</span>), <em>gel</em> <span class="phonetic">/gel/</span> (или <span class="phonetic">[g´el]</span>). После ударного гласного различие между палатальным и непалатальным качеством было фонемным. Если следующий согласный был непалатальным, никаких изменений в написании не происходило: например, <em>cath</em> <span class="phonetic">/kaθ/</span>, <em>bás</em> <span class="phonetic">/ba:s/</span>, <em>secht</em> <span class="phonetic">/seχt/</span>, <em>fér</em> <span class="phonetic">/fe:r/</span>, <em>ith</em> <span class="phonetic">/iθ/</span>, <em>fír</em> <span class="phonetic">/fi:r/</span>, <em>trom(m)</em> <span class="phonetic">/trom/</span>, <em>slóg</em> <span class="phonetic">/slo:γ/</span>, <em>cruth</em> <span class="phonetic">/kruθ/</span>, <em>drúth</em> <span class="phonetic">/dru:θ/</span> в B.4 выше. Если же следующий согласный был палатальным, обычно, но отнюдь не всегда вставлялся глайд <em>i</em> между ударным <em>a</em>, <em>o</em>, <em>u</em> или (менее регулярно) <em>e</em> и палатальным согласным, особенно если согласный стоял в конце слова: например, <em>maith</em> ‘хороший’ <span class="phonetic">/maθ´/</span> (mod. <em>maith</em>), <em>áil</em> ‘желание’ <span class="phonetic">/a:l´/</span>, <em>berid</em> или <em>beirid</em> ‘несёт’ <span class="phonetic">/ber´əð´/</span> (mod. <em>beireann</em>), <em>céle</em> или <em>céile</em> ‘товарищ’ <span class="phonetic">/ke:l´e/</span>, <em>ithid</em> ‘ест’ <span class="phonetic">/iθ´əð´/</span> (mod. <em>itheann</em>), <em>fír</em> ‘истины’ <span class="phonetic">/fi:r´/</span> (mod. <em>fír</em>), <em>-oirg</em> ‘убивает’ <span class="phonetic">/or´g´/</span>, <em>slóig</em> ‘войска’ <span class="phonetic">/slo:γ´/</span> (mod. <em>slua</em>), <em>sude</em> или <em>suide</em> ‘сидение, сиденье’ <span class="phonetic">/suð´e/</span> (mod. <em>suí</em>), <em>súil</em> ‘глаз’ <span class="phonetic">/su:l´/</span> (mod. <em>súil</em>) и <em>súli</em> или <em>súili</em> ‘глаза’ <span class="phonetic">/su:l´i/</span> (mod. <em>súile</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b5-p02">
+<p>Следует отметить, что в древнеирландском, за исключением дифтонгов (о них см. B.7 ниже), из двух следующих друг за другом гласных букв в ударном слоге только первая должна произноситься обычным образом; вторая (на практике <em>i</em>) представляет собой лишь глайд, указывающий на следующий палатальный согласный. Однако в случае безударного конечного гласного глайд неизбежно вставлялся между ним и предшествующим согласным. Конечные <em>-a</em>, <em>-o</em> и <em>-u</em> писались непосредственно после непалатального согласного (например, <em>cossa</em>, <em>súlo</em> и <em>firu</em> в B.4), но после палатального согласного обычно вставлялся глайд, так что получались <em>-ea</em>, <em>-eo</em> и <em>-iu</em> (как в <em>-léicea</em> ‘может оставить’ <span class="phonetic">/le:g´a/</span>, <em>léictheo</em> ‘оставления’ <span class="phonetic">/le:g´θ´o/</span>, <em>guidiu</em> ‘я молюсь’ <span class="phonetic">/guð´u/</span>). Напротив, <em>-e</em> и <em>-i</em> писались непосредственно после палатального согласного (например, <em>su(i)de</em>, <em>cé(i)le</em> и <em>sú(i)li</em> выше), но после непалатального перед ними факультативно вставлялся глайд <em>a</em>, давая <em>luge</em> или <em>lugae</em> ‘клятва’ <span class="phonetic">/luγe/</span>, <em>lugi</em> или <em>lugai</em> ‘клятвы’ <span class="phonetic">/luγi/</span>. Как показывает сопоставление <em>su(i)de</em> с <em>lug(a)e</em>, отсутствие записи соответствующего глайда перед согласным или после него могло приводить к неоднозначности относительно качества согласного.</p>
+</div>
+<!-- MCCONE-RU I.B.5: оба абзаца со всеми примерами переведены; два личных прохода завершены. Проверены 72 курсивных элемента, 16 толкований, пять фонетических записей в квадратных скобках и все фонемные записи. Не смешаны фонемность, позиционность и факультативность глайда. Скобка после guidiu проверена по PDF14; в русском перечень оформлен парой скобок. Входит в пакет I.B.5–6. Независимое ревью не выполнялось. -->
+<h3 class="stanza-text" id="i-b6">B.6. Безударные гласные внутри слова</h3>
+<div class="stanza-text book-paragraph" id="i-b6-p01">
+<p>Первоначально долгие гласные сокращались в безударных слогах (например, <em>téit</em> ‘идёт’, но <em>con:é(i)-tet</em> ‘входит вместе с, сопровождает’), однако некоторые вторичные долгие гласные сохранялись (например, <em>cenél</em> ‘род’). За исключением абсолютного конца слова (см. B.4 выше), все краткие безударные гласные (включая сократившиеся долгие), кроме <span class="phonetic">/u/</span> (например, <em>lé(i)ciud</em> ‘оставление’ <span class="phonetic">/le:g´uð/</span>, <em>tomus</em> ‘измерение’ <span class="phonetic">/toṽus/</span>), слились в «неясную» гласную фонему среднего ряда и среднего подъёма <span class="phonetic">/ə/</span>, или «шва» (произносится как <em>e</em> в Eng. <em>moth<u>e</u>r</em> и т. п.). Она затем автоматически приобретала окраску под влиянием окружающих согласных и писалась <span id="i-pdf-015"></span><strong><em>a</em></strong> между двумя непалатальными (C<em>a</em>C; например, <em>marbad</em> ‘убийство’ <span class="phonetic">/marvəd/</span>), <strong><em>e</em></strong> между палатальным и непалатальным (C´<em>e</em>C; например, <em>aicned</em> ‘природа’ <span class="phonetic">/ag´n´əð/</span>), <strong><em>i</em></strong> между двумя палатальными (C´<em>i</em> C´; например, <em>be(i)rid</em> ‘несёт’ <span class="phonetic">/ber´əð´/</span>) и <strong><em>(a)i</em></strong> между непалатальным и палатальным (C<em>(a)i</em>C´; например, <em>tabir</em> или <em>tabair</em> ‘дай!’ <span class="phonetic">/tavər´/</span>).</p>
+</div>
+<!-- MCCONE-RU I.B.6: весь абзац, четыре позиционные схемы и все примеры переведены; два личных прохода завершены. Проверены 20 курсивных элементов, четыре жирных выделения, девять толкований и подчёркнутое e в mother. Сохранены /ə/, знак´, ṽ, исходные схемы и локатор15; исключения /u/ и абсолютного конца не утрачены. Входит в пакет I.B.5–6. Независимое ревью не выполнялось. Далее I.B.7. -->
+<h3 class="stanza-text" id="i-b7">B.7. Дифтонги</h3>
+<div class="stanza-text book-paragraph" id="i-b7-p01">
+<p>В этом случае два гласных соединяются в звук, плавно переходящий от одного к другому. В древнеирландском существовали следующие <em>i</em>-дифтонги: <span class="phonetic">/ai/</span>, писавшийся <em>aí</em> или <em>áe</em>, <span class="phonetic">/oi/</span>, писавшийся <em>oí</em> или <em>óe</em>, и <span class="phonetic">/ui/</span>, писавшийся <em>uí</em> (все &gt; mod. <em>ao(i)</em>), как в <em>coím</em> или <em>cóem</em> ‘красивый’ (mod. <em>caomh</em>), <em>moídem</em> ‘хвастовство’ (mod. <em>maíomh</em>), <em>druí</em> ‘друид’ (mod. <em>draoi</em>). Первые два из них уже начинали сливаться в древнеирландском, как в <em>maídem</em> наряду с более обычным <em>moídem</em> в Wb. Знак долготы часто опускается в рукописях, а когда он проставлен, то может совершенно произвольно стоять над первым или вторым элементом дифтонга. Современные издатели предпочитают последовательность и ставят знак долготы над первым элементом (например, <em>cóem</em> или <em>cáem</em>), кроме тех случаев, когда это вызвало бы смешение с долгим гласным плюс <em>i</em> (например, <em>coím</em> или <em>caím</em> в отличие от <em>ói</em> или <em>ái</em>, обозначающих долгие <span class="phonetic">/o:/</span> или <span class="phonetic">/a:/</span> плюс палатальный глайд). Краткие и долгие <em>a</em>, <em>e</em>, <em>i</em> могли образовывать дифтонг со следующим <em>u</em> (например, dat. sg. <em>neurt</em> ‘сила’, <em>fiur</em> ‘мужчина’, <em>cenéul</em> ‘род’ или 1sg. <em>-bíu</em> ‘я обычно бываю’), но в древнеирландском <em>au</em> большей частью перешло в <em>u</em> (например, acc. pl. <em>baullu</em> или <em>bullu</em> ‘конечности, члены’), а <em>áu</em> — большей частью в <em>ó</em> (1sg. <em>a:táu</em> или <em>a:tó</em> ‘я есть’). Ещё двумя дифтонгами были <span class="phonetic">/ia/</span> <em>ía</em> (например, <em>cíall</em> ‘смысл’ <span class="phonetic">/kiaL/</span>, mod. <em>ciall</em>) и <span class="phonetic">/ua/</span> <em>úa</em> (например, <em>slúag</em> ‘войско’ <span class="phonetic">/sluaγ/</span>, mod. <em>slua</em>, чередующееся со <em>slóg</em> <span class="phonetic">/slo:γ/</span>).</p>
+</div>
+<!-- MCCONE-RU I.B.7: весь абзац переведён; два личных прохода завершены. Проверены 46 курсивных элементов, 11 толкований, все дифтонги, знаки долготы, направления переходов и грамматические сокращения. Оговорки о начале слияния и преимущественных переходах сохранены. Входит в пакет I.B.7–8. Независимое ревью не выполнялось. -->
+<h3 class="stanza-text" id="i-b8">B.8. Начальные мутации</h3>
+<div class="stanza-text book-paragraph" id="i-b8-p01">
+<p>Выше, в B.1, отмечалось, что согласные могли подвергаться лениции после гласного внутри слова и что внутренний гласный, вызывавший это изменение, затем довольно часто выпадал вследствие синкопы, так что в древнеирландском ленированный согласный мог стоять после другого согласного. Эта <strong>лениция</strong> могла происходить и между двумя тесно связанными словами, такими как артикль и существительное или существительное и прилагательное; вызывавший её конечный гласный при этом был склонен выпадать вследствие так называемой апокопы ещё задолго до древнеирландского периода (ср. OIr. <em>ingen</em> ‘дочь’, подвергшееся апокопе и синкопе, с огамическим INIGENA в B.1(v) выше). В результате в древнеирландском ленированный начальный согласный мог стоять после слова, оканчивавшегося на согласный, как в <em>ingen chóem</em> ‘красивая дочь’ <span class="phonetic">/inγən χoiṽ/</span> (mod. <em>iníon chaomh</em>), где <em>ch-</em> вместо <em>c-</em> обусловлено ленирующим действием <em>-a</em>, которым некогда оканчивалось <em>ingen</em>.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p02">
+<p>Поскольку уже не было очевидно, что это изменение вызвано утраченным конечным гласным, такие чередования, как между <em>ingen chóem</em>, где следующее прилагательное ленировано, и <em>fer cóem</em> ‘красивый мужчина’ <span class="phonetic">/fer koiṽ/</span> (mod. <em>fear caomh</em>), где оно не ленировано, стали восприниматься как зависящие от грамматических факторов, таких как род существительного. Таким образом, в древнеирландском существовала система грамматически обусловленных <strong>начальных мутаций</strong>, которая до сих пор хорошо сохраняется в современном ирландском. Следовательно, даже в начальной позиции <span class="phonetic">/p/</span>, <span class="phonetic">/t/</span>, <span class="phonetic">/k/</span> и <span class="phonetic">/b/</span>, <span class="phonetic">/d/</span>, <span class="phonetic">/g/</span> могли подвергаться лениции под действием определённых предшествующих элементов, переходя в <span class="phonetic">/f/</span>, <span class="phonetic">/θ/</span>, <span class="phonetic">/χ/</span> и <span class="phonetic">/v/</span>, <span class="phonetic">/ð/</span>, <span class="phonetic">/γ/</span>, с теми же орфографическими правилами, что и в B.1 выше: ленированные <em>p-</em>, <em>t-</em>, <em>c-</em> писались <em>ph-</em>, <em>th-</em>, <em>ch-</em>, но ленированные <em>b-</em>, <em>d-</em>, <em>g-</em> на письме не отличались от неленированных начальных согласных (до появления в современном ирландском написаний <em>bh-</em>, <em>dh-</em>, <em>gh-</em>). Аналогично начальные <em>m-</em>, <em>n-</em>, <em>r-</em>, <em>l-</em> всегда писались одиночно при лениции, но иногда удваивались при её отсутствии, как в B.2 выше. В начальной позиции <span class="phonetic">/s/</span> в результате лениции переходило в <span class="phonetic">/h/</span>, а <span class="phonetic">/f/</span> полностью исчезало, но, кроме спорадического пропуска ленированного <em>f-</em> на письме, эти изменения никак не обозначались до IX века, когда над ленированными <em>s</em> и <em>f</em> стали факультативно ставить точку, получая <em>ṡ</em> и <em>ḟ</em>. При определённых обстоятельствах слова оканчивались на носовой согласный, который воздействовал на тесно связанное с ними следующее слово ещё до утраты конечного слога. Результатом была ещё одна мутация, известная как «эклипсис», или <strong>назализация</strong>, <span id="i-pdf-016"></span>которая изменяла начальные <span class="phonetic">/p/</span>, <span class="phonetic">/t/</span>, <span class="phonetic">/k/</span> в <span class="phonetic">/b/</span>, <span class="phonetic">/d/</span>, <span class="phonetic">/g/</span> (по-прежнему писавшиеся <em>p-</em>, <em>t-</em>, <em>c-</em>, как и внутренние <span class="phonetic">/b/</span>, <span class="phonetic">/d/</span>, <span class="phonetic">/g/</span> после гласного в B.1), <span class="phonetic">/f/</span> — в <span class="phonetic">/v/</span> (по-прежнему писавшееся <em>f-</em>) и добавляла носовой согласный перед начальными <span class="phonetic">/b/</span>, <span class="phonetic">/d/</span>, <span class="phonetic">/g/</span> или гласным (отсюда <em>mb-</em>, <em>nd-</em>, <em>ng-</em>, <em>n</em>V-), хотя исходные <span class="phonetic">/mb/</span>, <span class="phonetic">/nd/</span> и <span class="phonetic">/ŋg/</span>, вероятно, в течение древнеирландского периода в результате ассимиляции стали произноситься как <span class="phonetic">/m/</span>, <span class="phonetic">/N/</span> и <span class="phonetic">/ŋ/</span>. Некоторые элементы, не вызывавшие ни лениции, ни назализации, могли <strong>добавлять <span class="phonetic">/h/</span> перед следующим гласным</strong>, но наличие или отсутствие <em>h-</em> на письме не является надёжным указанием, поскольку в древнеирландском это была «немая» буква, как в поздней латыни (и до сих пор во французских словах вроде <em>honeur</em> ‘честь’): например, OIr. <em>is ed</em> или <em>is hed</em> ‘это есть’ <span class="phonetic">/is eð/</span> (mod. <em>is ea</em>) в противоположность <em>ní hed</em> или <em>ní ed</em> ‘это не есть’ <span class="phonetic">/ni: heð/</span> (mod. <em>ní hea</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p03">
+<p>Эти мутации представлены в таблице ниже (<em>e</em> обозначает любой V = гласный):</p>
+</div>
+<div aria-label="Начальные мутации: сводная таблица" class="stanza-text book-table" id="i-b8-t01" role="region" tabindex="0">
+<table>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Неизменённые</em></th>
+<th><em>Ленированные</em></th>
+<th><em>Назализованные</em></th>
+<th><em>С приставленным h-</em> (только V-)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="phonetic">/p/</span> p-</td>
+<td><span class="phonetic">/f/</span> ph-</td>
+<td><span class="phonetic">/b/</span> p-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/t/</span> t-</td>
+<td><span class="phonetic">/θ/</span> th-</td>
+<td><span class="phonetic">/d/</span> t-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/k/</span> c-</td>
+<td><span class="phonetic">/χ/</span> ch-</td>
+<td><span class="phonetic">/g/</span> c-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/b/</span> b-</td>
+<td><span class="phonetic">/v/</span> b-</td>
+<td><span class="phonetic">/mb/</span> &gt; <span class="phonetic">/m/</span> mb-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/d/</span> d-</td>
+<td><span class="phonetic">/ð/</span> d-</td>
+<td><span class="phonetic">/nd/</span> &gt; <span class="phonetic">/N/</span> nd-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/g/</span> g-</td>
+<td><span class="phonetic">/γ/</span> g-</td>
+<td><span class="phonetic">/ŋg/</span> &gt; <span class="phonetic">/ŋ/</span> ng-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/M/</span> m(m)-</td>
+<td><span class="phonetic">/ṽ/</span> m-</td>
+<td><span class="phonetic">/M/</span> m(m)-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/N/</span> n(n)-</td>
+<td><span class="phonetic">/n/</span> n-</td>
+<td><span class="phonetic">/N/</span> n(n)-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/R/</span> r(r)-</td>
+<td><span class="phonetic">/r/</span> r-</td>
+<td><span class="phonetic">/R/</span> r(r)-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/L/</span> l(l)-</td>
+<td><span class="phonetic">/l/</span> l-</td>
+<td><span class="phonetic">/L/</span> l(l)-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/f/</span> f-</td>
+<td><span class="phonetic">/-/</span> f-, ḟ-</td>
+<td><span class="phonetic">/v/</span> f-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="phonetic">/s/</span> s(s)-</td>
+<td><span class="phonetic">/h/</span> s-, ṡ-</td>
+<td><span class="phonetic">/s/</span> s-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="phonetic">/e/</span> (h)e-</td>
+<td><span class="phonetic">/e/</span> (h)e-</td>
+<td><span class="phonetic">/ne/</span> ne-</td>
+<td><span class="phonetic">/he/</span> (h)e-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p04">
+<p>Приведённая таблица ясно показывает, что древнеирландская орфография отражала начальные мутации лишь в ограниченной мере. Лениция <em>p, t, c</em> обозначалась явно, а назализация — нет. Для <em>b, d, g</em> наблюдалось обратное: их назализация регулярно обозначалась, тогда как лениция — нет. Удвоенные написания <em>m, n, r, l</em> однозначно указывали на отсутствие лениции, но одиночные были неоднозначны. Первоначально никакая мутация <em>f</em> или <em>s</em> не выражалась на письме, однако позднее появилось факультативное употребление точки как явного показателя лениции. Из-за непоследовательного употребления <em>h-</em> в древнеирландском (в отличие от современного ирландского) явно обозначалась лишь назализация начального гласного. Как отмечалось выше в B.1, современный ирландский часто помогает разрешить неоднозначности ранней орфографии. В примерах ниже используются притяжательные формы третьего лица. Сопоставление с родственными языками показывает, что m. <em>a</em> ‘его’ (вызывающее леницию) некогда имело конечный гласный, что f. <em>a</em> ‘её’ (не вызывающее мутации, кроме добавления <em>h-</em> перед гласным) некогда оканчивалось на <em>-h</em> &lt; <em>-s</em>, а <em>a</em> ‘их’ (вызывающее назализацию) — на <em>-n</em> &lt; <em>-m</em>. Те же мутации сохраняются после этих элементов в современном ирландском.</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p05">
+<p><strong><em>penn</em></strong> ‘перо’ <span class="phonetic">/peN/</span> (mod. <em>peann</em>): <em>a phenn</em> ‘его перо’ <span class="phonetic">/a feN/</span> (mod. <em>a pheann</em>), <em>a penn</em> ‘её перо’ <span class="phonetic">/a peN/</span> (mod. <em>a peann</em>), <em>a penn</em> ‘их перо’ <span class="phonetic">/a beN/</span> (mod. <em>a bpeann</em>).<br/>
+<strong><em>tech</em></strong> ‘дом’ <span class="phonetic">/teχ/</span> (mod. <em>teach</em>): <em>a thech</em> ‘его дом’ <span class="phonetic">/a θeχ/</span> (mod. <em>a theach</em>), <em>a tech</em> ‘её дом’ <span class="phonetic">/a teχ/</span> (mod. <em>a teach</em>), <em>a tech</em> ‘их дом’ <span class="phonetic">/a deχ/</span> (mod. <em>a dteach</em>).<br/>
+<strong><em>cenn</em></strong> ‘голова’ <span class="phonetic">/keN/</span> (mod. <em>ceann</em>): <em>a chenn</em> ‘его голова’ <span class="phonetic">/a χeN/</span> (mod. <em>a cheann</em>), <em>a cenn</em> ‘её голова’ <span id="i-pdf-017"></span><span class="phonetic">/a keN/</span> (mod. <em>a ceann</em>), <em>a cenn</em> ‘их голова’ <span class="phonetic">/a geN/</span> (mod. <em>a gceann</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p06">
+<p><strong><em>bó</em></strong> ‘корова’ (mod. <em>bean</em>): <em>a bó</em> ‘его корова’ <span class="phonetic">/a vo:/</span> (mod. <em>a bhó</em>), <em>a bó</em> ‘её корова’ <span class="phonetic">/a bo:/</span> (Mod. <em>a bó</em>), <em>a mbó</em> ‘их корова’ <span class="phonetic">/a m(b)o:/</span> (mod. <em>a mbó</em>).<br/>
+<strong><em>deug</em></strong> ‘напиток’ (mod. <em>deoch</em>): <em>a deug</em> ‘его напиток’ <span class="phonetic">/a ðeuγ/</span> (mod. <em>a dheoch</em>), <em>a deug</em> ‘её напиток’ <span class="phonetic">/a deuγ/</span> (mod. <em>a deoch</em>), <em>a ndeug</em> ‘их напиток’ <span class="phonetic">/a ndeuγ/</span> &gt; <span class="phonetic">/a Neuγ/</span> (mod. <em>a ndeoch</em>).<br/>
+<strong><em>galar</em></strong> ‘болезнь’ (mod. <em>galar</em>): <em>a galar</em> ‘его болезнь’ <span class="phonetic">/a γalər/</span> (mod. <em>a ghalar</em>), <em>a galar</em> ‘её болезнь’ <span class="phonetic">/a galər/</span> (mod. <em>a galar</em>), <em>a ngalar</em> ‘их болезнь’ <span class="phonetic">/a ŋgalər/</span> &gt; <span class="phonetic">/a ŋalər/</span> (mod. <em>a ngalar</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p07">
+<p><strong><em>mac</em></strong> ‘сын’ <span class="phonetic">/mak/</span> (mod. <em>mac</em>): <em>a mac</em> ‘его сын’ <span class="phonetic">/a ṽak/</span> (mod. <em>a mhac</em>), <em>a m(m)ac</em> ‘её сын’ <span class="phonetic">/a mak/</span> (mod. <em>a mac</em>), <em>a m(m)ac</em> ‘их сын’ <span class="phonetic">/a mak/</span> (mod. <em>a mac</em>).<br/>
+<strong><em>nert</em></strong> ‘сила’ <span class="phonetic">/Nert/</span> (mod. <em>neart</em>): <em>a nert</em> ‘его сила’ <span class="phonetic">/a nert/</span> (mod. <em>a neart</em>), <em>a n(n)ert</em> ‘её сила’ <span class="phonetic">/a Nert/</span> (mod. <em>a neart</em>), <em>a n(n)ert</em> ‘их сила’ <span class="phonetic">/a Nert/</span> (mod. <em>a neart</em>).<br/>
+<strong><em>rí</em></strong> ‘король’ <span class="phonetic">/Ri:/</span> (mod. <em>rí</em>): <em>a rí</em> ‘его король’ <span class="phonetic">/a ri:/</span> (mod. <em>a rí</em>), <em>a r(r)í</em> ‘её король’ <span class="phonetic">/a Ri:/</span> (mod. <em>a rí</em>), <em>a r(r)í</em> ‘их король’ <span class="phonetic">/a Ri:/</span> (mod. <em>a rí</em>).<br/>
+<strong><em>lám</em></strong> ‘рука’ <span class="phonetic">/La:ṽ/</span> (mod. <em>lámh</em>): <em>a lám</em> ‘его рука’ <span class="phonetic">/a la:ṽ/</span> (mod. <em>a lámh</em>), <em>a l(l)ám</em> ‘её рука’ <span class="phonetic">/a La:ṽ/</span> (mod. <em>a lámh</em>), <em>a l(l)ám</em> ‘их рука’ <span class="phonetic">/a La:ṽ/</span> (mod. <em>a lámh</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p08">
+<p><strong><em>fer</em></strong> ‘мужчина’ <span class="phonetic">/fer/</span> (mod. <em>fear</em>): <em>a fer</em> (позднее также <em>a ḟer</em>) ‘его мужчина’ <span class="phonetic">/a er/</span> (mod. <em>a fhear</em>), <em>a fer</em> ‘её мужчина’ <span class="phonetic">/a fer/</span> (mod. <em>a fear</em>), <em>a fer</em> ‘их мужчина’ <span class="phonetic">/a ver/</span> (mod. <em>a bhfear</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p09">
+<p><strong><em>síl</em></strong> ‘семя’ <span class="phonetic">/si:l/</span> (mod. <em>síol</em>): <em>a síl</em> (позднее также <em>a ṡíl</em>) ‘его семя’ <span class="phonetic">/a hi:l/</span> (mod. <em>a shíol</em>), <em>a síl</em> ‘её семя’ <span class="phonetic">/a si:l/</span> (mod. <em>a síol</em>), <em>a síl</em> ‘их семя’ <span class="phonetic">/a si:l/</span> (mod. <em>a síol</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p10">
+<p><strong><em>enech</em></strong> ‘лицо, честь’ <span class="phonetic">/en´əχ/</span> (mod. <em>eineach</em>): <em>a enech</em> или <em>a henech</em> ‘его честь’ <span class="phonetic">/a en´əχ/</span> (mod. <em>a eineach</em>), <em>a henech</em> или <em>a enech</em> ‘её честь’ <span class="phonetic">/a hen´əχ/</span> (mod. <em>a heineach</em>), <em>a n-enech</em> ‘их честь’ <span class="phonetic">/a nen´əχ/</span> (mod. <em>a n-eineach</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="i-b8-p11">
+<p>Следует отметить, что, поскольку <em>p-</em> встречалось только в заимствованиях (обычно из латыни; например, <em>penn</em> выше из Lat. <em>penna</em>), не существовало ранее сложившейся модели мутации, к которой его можно было бы непосредственно приспособить. Поэтому в древнеирландском оно чаще оставалось неленированным, чем подвергалось лениции; отсюда частое <em>a penn</em> ‘его перо’ <span class="phonetic">/a peN/</span> и т. п. Предположительно, оно столь же устойчиво сопротивлялось назализации (<em>a penn</em> ‘их перо’ <span class="phonetic">/a peN/</span> и т. п.), несмотря на неоднозначность древнеирландской орфографии в этом отношении. Лишь постепенно распространение по аналогии моделей <em>t</em> <span class="phonetic">/t/</span>, len. <em>th</em> <span class="phonetic">/θ/</span>, nas. <em>t</em> <span class="phonetic">/d/</span> или <em>c</em> <span class="phonetic">/k/</span>, len. <em>ch</em> <span class="phonetic">/χ/</span>, nas. <em>c</em> <span class="phonetic">/g/</span> привело к появлению соответствующего губного ряда <em>p</em> <span class="phonetic">/p/</span>, len. <em>ph</em> <span class="phonetic">/f/</span>, nas. <em>p</em> <span class="phonetic">/b/</span>.</p>
+</div>
+<!-- MCCONE-RU I.B.8: весь подраздел до конца главыI переведён; два личных прохода завершены. Проверены 11 абзацев, 56 ячеек таблицы, все13 рядов примеров, 188 курсивных элементов, 17 жирных выделений и 63 толкования. Локаторы16–17, дотирования, M/N/R/L, ŋ и все оговорки сохранены. Печатные странности подтверждены изображениями PDF15–17. ГлаваI закончена по принятому MD. Независимое ревью не выполнялось. Далее II.A.1; титул/оглавление отдельно не завершены. -->
+<h1 class="stanza-text" id="chapter-ii">Глава II. Существительное, прилагательное и артикль</h1>
+<h2 class="stanza-text" id="ii-a">A. Существительное</h2>
+<h3 class="stanza-text" id="ii-a1">A.1. Основные категории</h3>
+<div class="stanza-text book-paragraph" id="ii-a1-p01">
+<p><span id="ii-pdf-018"></span>(a) Подобно современному ирландскому, французскому или немецкому (но в отличие от современного английского), древнеирландский язык приписывал своим существительным грамматический РОД. В то время как в современном ирландском и французском существительные противопоставлены по двум родам — мужскому и женскому, — для существительных древнеирландского, как и немецкого и латинского, действует трёхродовое противопоставление: <strong>мужской, женский</strong> и <strong>средний</strong> (в потомках латыни, таких как французский, оно сократилось до двух родов; ср. развитие от древнеирландского к современному ирландскому). Хотя это грамматическое различие в известной мере соотносится с естественным полом (например, OIr. <em>ben</em> ‘женщина’ и <em>fer</em> ‘мужчина’ грамматически относятся соответственно к женскому и мужскому роду), очень часто такого соответствия нет: например, <em>flaith</em> (f.) ‘владыка’, <em>cloch</em> (f.) ‘камень’, но <em>lie</em> (m.) ‘камень’; <em>bríathar</em> (f.) ‘слово’, но <em>focull</em> (n.) ‘слово’. Как в современном ирландском, французском, немецком и подобных языках, род существительного в древнеирландском мог иметь различные грамматические последствия; с ними мы будем встречаться ниже в разных разделах.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p02">
+<p>У древнеирландских существительных имеется привычное различие <strong>единственного</strong> и <strong>множественного</strong> ЧИСЛА (например, <em>ben</em> ‘женщина’, <em>mná</em> ‘женщины’), но есть также особая форма <strong>двойственного</strong> числа, употребляемая исключительно после числительного ‘два’ (например, <em>di mnaí</em> ‘две женщины’).</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p03">
+<p>Кроме того, они претерпевают различные изменения формы по ПАДЕЖАМ в зависимости от своей грамматической функции в предложении. Некоторые языки (например, современные французский и английский) почти не различают падежи формально, предпочитая для обозначения соответствующих грамматических функций другие средства, такие как порядок слов и предлоги: например, ‘the man<sup><span class="phonetic">[SUBJECT]</span></sup> killed <sup><span class="phonetic">[VERB]</span></sup> the dog<sup><span class="phonetic">[OBJECT]</span></sup> with<sup><span class="phonetic">[PREPOSITION]</span></sup> the stone’ («мужчина убил собаку камнем») в противоположность ‘the dog<sup><span class="phonetic">[SUBJECT]</span></sup> killed <sup><span class="phonetic">[VERB]</span></sup> the man<sup><span class="phonetic">[OBJECT]</span></sup> with<sup><span class="phonetic">[PREPOSITION]</span></sup> (its) teeth’ («собака убила мужчину (своими) зубами») или ‘the stone<sup><span class="phonetic">[SUBJECT]</span></sup> killed <sup><span class="phonetic">[VERB]</span></sup> the dog<sup><span class="phonetic">[OBJECT]</span></sup>’ («камень убил собаку»). Другие языки в подобных случаях в большей мере опираются на изменения формы самих существительных. Так, в следующих латинских эквивалентах этих трёх предложений средством обозначения основных грамматических отношений служили бы именно формальные падежные изменения: <em>homo</em><sup><span class="phonetic">[SUBJ]</span></sup> <em>canem</em><sup><span class="phonetic">[OBJ]</span></sup> <em>lapide</em><sup><span class="phonetic">[INSTRUMENT]</span></sup> <em>occisit</em><sup><span class="phonetic">[VERB]</span></sup> в противоположность <em>canis</em><sup><span class="phonetic">[SUBJ]</span></sup> <em>hominem</em><sup><span class="phonetic">[OBJ]</span></sup> <em>dentibus</em><sup><span class="phonetic">[INSTRUMENT]</span></sup> <em>occisit</em><sup><span class="phonetic">[VERB]</span></sup> или <em>lapis</em><sup><span class="phonetic">[SUBJ]</span></sup> <em>canem</em><sup><span class="phonetic">[OBJ]</span></sup> <em>occisit</em><sup><span class="phonetic">[VERB]</span></sup>. В современном английском изменение порядка слов обычно меняет основные грамматические отношения между ними, как в ‘the man killed the dog’ («мужчина убил собаку») и ‘the dog killed the man’ («собака убила мужчину»), тогда как в латыни такие перестановки могут служить разным видам смыслового выделения, не затрагивая основной грамматической структуры и, следовательно, значения предложения. Так, <em>canem lapide occisit homo</em> или <em>lapide homo</em> <em>canem occisit</em> по-прежнему означают ‘мужчина убил собаку камнем’ (но с выделением соответственно ‘собаки’ и ‘камня’), а <em>hominem canis occisit dentibus</em> или <em>dentibus hominem occisit canis</em> по-прежнему означают ‘собака убила мужчину (своими) зубами’ (но с выделением соответственно ‘мужчины’ и ‘зубов’).</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p04">
+<p>Древнеирландский занимает примерно промежуточное положение: с одной стороны, он имеет довольно жёсткие модели порядка слов и широко использует предлоги, как, скажем, современный английский, а с другой — формально различает пять отдельных грамматических падежей, подобно латыни, в которой их шесть. Если для современного английского типичен порядок подлежащее—глагол—дополнение (SVO), как в приведённых выше примерах, то <strong><em>базовый</em></strong><span id="ii-pdf-019"></span> <strong><em>порядок этих компонентов в древнеирландском (среднеирландском или современном ирландском) предложении —</em></strong> <strong><em>глагол—подлежащее—дополнение</em></strong> (VSO); за ними следуют другие элементы, такие как предложные группы и обстоятельственные выражения. Например: <em>béoigidir</em><sup><span class="phonetic">[V]</span></sup> <em>in spirut</em><sup><span class="phonetic">[S]</span></sup> <em>in corp</em><sup><span class="phonetic">[O]</span></sup> <em>in fecht so</em><sup><span class="phonetic">[adverb]</span></sup> ‘дух<sup><span class="phonetic">[S]</span></sup> оживляет<sup><span class="phonetic">[V]</span></sup> тело<sup><span class="phonetic">[O]</span></sup> (в) это время<sup><span class="phonetic">[adv]</span></sup>’ (из Вюрцбургских глосс, уже рассмотренных в A.2). <strong><em>Пять древнеирландских падежей и их основные употребления</em></strong> можно кратко описать следующим образом.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p05">
+<p>(b) <strong>Именительный падеж</strong> обозначает ПОДЛЕЖАЩЕЕ предложения (обычно то, о чём прежде всего идёт речь, и очень часто — исполнителя или исполнителей глагольного действия), а также именную часть сказуемого при глаголе ‘быть’, известном как связка. Так: <em>téit in fer</em> ‘мужчина (nom. sing. subj.) идёт’, <em>tíagait ind ḟir</em> ‘мужчины (nom. plur. subj.) идут’ и <em>is sacart in fer</em> ‘мужчина (nom. sg. subj.) — священник (nom. sg. pred.)’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p06">
+<p>(c) <strong>Звательный падеж</strong> обозначает адресата обращения — кого-либо или, реже, что-либо; <strong>перед ним регулярно стоит</strong> <strong>частица</strong> <strong><em>a</em></strong> <strong>(вызывающая леницию)</strong>. За исключением существительных мужского рода групп I и IVa ниже (например, <em>a fir</em> ‘о мужчина’), voc. sg. совпадает с nom. sg. (например, <em>a ben</em> ‘о женщина’). Во всех классах существительных voc. pl. совпадает с acc. pl. (например, <em>a firu</em> ‘о мужчины’).</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p07">
+<p>(d) <strong>Винительный падеж</strong> обозначает ПРЯМОЕ ДОПОЛНЕНИЕ (обычно того или тех, кто испытывает на себе действие) при переходном глаголе действительного залога. Так: <em>caraid in fer in mnaí</em> ‘мужчина (nom. sg. subj.) любит женщину (acc. sg. obj.)’, <em>carait ind ḟir inna mná</em> ‘мужчины (nom. pl. subj.) любят женщин (acc. pl. obj.)’ и <em>carait inna mná inna firu</em> ‘женщины (nom. pl. subj.) любят мужчин (acc. pl. obj.)’. Винительный падеж употребляется также с некоторыми предлогами, такими как <em>la</em> ‘с; кем-либо, чем-либо’ или <em>imm</em> ‘вокруг, около’. Следует отметить, что при переходе глагола из действительного залога в страдательный дополнение в винительном падеже становится подлежащим в именительном: например, <em>carthair in ben la fer</em> ‘женщина (nom. sg. subj.) любима мужчиной (acc. sg. после prep. <em>la</em>)’ или <em>cartair inna mná la-sna firu</em> ‘женщины (nom. pl. subj.) любимы мужчинами’ (acc. pl. после prep. <em>la</em>). Винительный падеж также часто употребляется в выражениях времени, таких как приведённое выше <em>in</em> <em>fecht so</em> ‘(в) это время’ или <em>fecht n-and</em> ‘однажды’ (букв. ‘(в) некое время там’).</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p08">
+<p>(e) <strong>Родительный падеж</strong> обычно указывает на зависимость одного существительного от другого и в этом качестве в древнеирландском <strong>почти</strong> <strong>всегда следует за другим существительным</strong>. Он часто обозначает принадлежность и почти всегда может быть передан по-английски посредством ‘of’ или ‘-s’: например, <em>tech ind ḟir</em> ‘the man’s house’ («дом мужчины»), <em>benn sléibe</em> ‘a mountain’s peak’ или ‘a peak of a mountain’ («вершина горы»), <em>tige fer</em> ‘men’s houses’ («дома мужчин»), <em>benna inna sléibe</em> ‘the mountain(s’) peaks’ или ‘the peaks of the mountains’ («вершины гор»). Так называемый «объектный» родительный наиболее отчётливо проявляется в древнеирландском после отглагольного существительного (см. III.A.2c): например, <em>oc precept soiscéli</em> ‘проповедуя Евангелие’ (букв. ‘при проповедовании Евангелия’; nom. sg. <em>soiscéle</em>, класс IVa в A.2 ниже). Иногда он употребляется самостоятельно в выражениях времени, таких как <em>cecha blíadnae</em> ‘каждый год’, или в качестве именной части сказуемого при связке в оборотах вроде <em>ammi Dé</em> ‘мы — Божьи’ или <em>ní torbi</em> ‘это не приносит пользы, это бесполезно’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p09">
+<p>(f) За исключением немногих реликтовых самостоятельных употреблений — например, в качестве альтернативы винительному в выражениях времени, таких как <em>ind ḟecht so</em> ‘(в) это время’ или <em>fecht and</em> ‘однажды’ (см. также II.B.3 о дательном сравнения и IV.C.1b об употреблении с личными числительными), — <strong>дательный падеж</strong> в древнеирландской прозе используется только с предлогами, которые не управляют винительным (а иногда и с некоторыми предлогами, допускающими как acc., так и dat.). Так: <em>ó/do ḟiur</em> ‘от мужчины/к мужчине (dat. sg.)’ (<em>ó/do</em> + dat.) или <em>i tig</em> ‘в доме (dat. sg.)’ vs. <em>i tech</em> ‘в дом (acc. sg.)’ (<em>i</em> + dat. или acc.). <strong>Окончание dat. pl. у всех существительных —</strong> <strong><em>-(a)ib</em></strong>, как в <em>ó/do ḟeraib</em> ‘от мужчин/к мужчинам’ или <em>i tigib</em> ‘в домах’ vs. <em>i tige</em> ‘в дома’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a1-p10">
+<p><span id="ii-pdf-020"></span>Таким образом, видно, что <strong><em>одни древнеирландские предлоги управляют винительным, другие — дательным</em></strong>, <strong><em>а третьи — винительным или дательным падежом</em></strong>.</p>
+</div>
+<h3 class="stanza-text" id="ii-a2">A.2. Основные типы склонения существительных</h3>
+<div class="stanza-text book-paragraph" id="ii-a2-p01">
+<p>Подобно другим древним индоевропейским языкам, таким как латинский, древнеирландский имеет несколько различных классов склонения существительных. Эта особенность сохраняется и в современном ирландском; номера I–V ниже обозначают типы, лежащие в основе соответствующих склонений I–V в традиционных грамматиках современного ирландского. При необходимости они дополнительно подразделяются с помощью букв a, b или c. Для V более полезной представлялась классификация по мнемоническим обозначениям типа соответствующего согласного (lenden. = ленированный зубной, unlenden. = неленированный зубной, gutt. = гуттуральный, nas. = носовой). Категория VI — остаточная и не соответствует непосредственно какому-либо склонению современного ирландского. Разумеется, остаётся ряд отдельных существительных с нерегулярным склонением (например, <em>ben</em> f., gen. sg. <em>mná</em> ‘женщина’; <em>día</em> m., gen. sg. <em>dé</em> ‘бог’; <em>bó</em> f., gen. sg. <em>bó</em> ‘корова’; <em>siur</em> f., gen. sg. <em>sethar</em> ‘сестра’), которые не укладываются должным образом ни в один из шести приведённых ниже типов. Обозначения «основы на <em>o</em>» и т. п. в скобках после римской цифры относятся к исторической классификации, используемой в таких общепринятых описаниях, как <em>Old-Irish Paradigms and Selections from Old-Irish Glosses</em> Strachan и <em>Grammar of Old Irish</em> Thurneysen, чтобы при желании было удобно обращаться к этим трудам.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p02">
+<p>Знания форм nom. sg. (основной, или «словарной», формы, в которой приводится слово) и gen. sg. существительного обычно достаточно, чтобы отнести его к нужному склонению. Для различения II и VIb необходимо также знать род (или другую падежную форму, например acc. sg.). Даже при отсутствии сведений о роде смешение IVc и VIb невозможно, поскольку существительные первого класса всегда двусложны, тогда как основа существительных второго в основном односложна и оканчивается на <em>-m(m)</em>. Приведённый ниже список предназначен для быстрого определения склонения существительного по сведениям, содержащимся в словарях таких необходимых начальных пособий, как <em>Stories from the Táin</em> Strachan и уже упомянутые <em>Old-Irish</em> <em>Paradigms... and Glosses</em>.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p03">
+<p><strong>I</strong> (основы на <em>o</em>) nom. <strong>-C</strong>, gen. <strong>-C´</strong>, m./n.: например, <em>mac</em>, <em>maic</em> (m.) ‘сын’; <em>scél</em>, <em>scéuil</em> (n.) ‘рассказ’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p04">
+<p><strong>II</strong> (основы на <em>ā</em>) nom. <strong>-C</strong>, gen. <strong>-C´e</strong> (редко -Ce), f.: например, <em>túath</em>, <em>túaithe</em> (f.) ‘небольшое королевство’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p05">
+<p><strong>IIIa</strong> (основы на <em>i</em>) nom. <strong>-C´</strong>, gen. <strong>-Co/a</strong>, m.<span class="phonetic">/f./</span>n.: например, <em>búachaill, búachallo/a</em> (m.) ‘пастух коров’; <em>súil</em>, <em>súlo/a</em> (f.) ‘глаз’; <em>búaid</em>, <em>búado/a</em> (n.) ‘победа’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p06">
+<p><strong>IIIb</strong> (основы на <em>u</em>) nom. <strong>-<em>(u)</em>C</strong>, gen. <strong>-Co/a</strong>, m./n.: например, <em>cath</em>, <em>catho/a</em> (m.) ‘битва’, <em>rind</em>, <em>rendo</em> (n.) ‘звезда’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p07">
+<p><strong>IVa</strong> (основы на <em>io</em>) nom. <strong>-e</strong>, gen. <strong>-i</strong>, m./n.: например, <em>dalt(a)e, dalt(a)i</em> (m.) ‘приёмный ребёнок’, <em>cride</em>, <em>cridi</em> (n.) ‘сердце’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p08">
+<p><strong>IVb</strong> (основы на <em>ia</em>) nom. <strong>-e</strong>, gen. <strong>-e</strong>, f.: например, <em>maithe</em>, <em>maithe</em> (f.) ‘доброта’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p09">
+<p><strong>IVc</strong> (основы на <em>ī</em>) nom. <strong>-C´</strong>, gen. <strong>-e</strong>, f.: например, <em>blíadain</em>, <em>blíadn(a)e</em> (f.) ‘год’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p10">
+<p><strong>V</strong> (основы на согласный) nom. <strong>-</strong>, gen. <strong>-C</strong>, m./f.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p11">
+<p><strong>V lenden.</strong> (основы на <em>t</em>) nom. <strong>-V</strong> (oft. <em>-u</em>), gen. <strong>-Vd</strong>, m./f.: например, <em>arae, arad</em> (m.) ‘возничий’; <em>teng(a)e</em>, <em>tengad</em> (f.) ‘язык’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p12">
+<p><strong>V unlenden.</strong> (основы на <em>nt</em>): nom. <strong>-V</strong> (oft. <em>-e</em>), gen. <strong>-Vt</strong>, m./f.: например, <em>fiche,fichet</em> (m.) ‘двадцатка’; <em>ainmne, ainmnet</em> (f.) ‘терпение’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p13">
+<p><strong>V gutt.</strong> (гуттуральные основы): nom. <strong>-</strong>, gen. <strong>-(V)ch<span class="phonetic">/g/</span>c</strong>, m./f.: например, <em>rí</em>, <em>ríg</em> (m.) ‘король’;<span id="ii-pdf-021"></span> <em>cathair</em>, <em>cathrach</em> (f.) ‘монастырское поселение, город’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p14">
+<p><strong>V nas.</strong> (основы на <em>n</em>) nom. <strong>-</strong> или <strong>-u</strong> (редко <strong>-e</strong>), gen. <strong>-(V)n</strong> или <strong>-(V)n(n)</strong>, m./f.: например, <em>talam, talman</em> (m.) ‘земля’, <em>cú, con</em> (m.) ‘пёс’; <em>menm(a)e, menman(n)</em> (m.) ‘ум’, <em>toimtiu</em>, <em>toimten</em> (f.) ‘мнение’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p15">
+<p><strong>VIa</strong> (neut. основы на <em>n-</em>) nom. <strong><em>-m´</em></strong>, gen. <strong><em>-m´e</em></strong> или <strong><em>-me</em></strong>, n.: например, <em>céim(m), céim(m)e</em> (n.) ‘шаг’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p16">
+<p><strong>VIb</strong> (основы на <em>s</em>) nom. <strong>-C</strong>, gen. <strong>-C´e</strong>, n.: <em>nem</em>, <em>nime</em> (n.) ‘небо’.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a2-p17">
+<p><strong>VIc</strong> (основы на <em>r</em>) nom. <strong><em>-r´</em></strong>, gen. <strong><em>-r</em></strong>, m./f.: например, <em>athair, athar</em> (m.) ‘отец’.</p>
+</div>
+<h3 class="stanza-text" id="ii-a3">A.3. Полные парадигмы склонения</h3>
+<div class="stanza-text book-paragraph" id="ii-a3-p01">
+<p>Ниже мы попытаемся сгруппировать эти склонения так, чтобы выделить некоторые сходства и тем самым облегчить запоминание. В <strong>классе I</strong> (m.) палатальный конечный согласный в voc., gen. sg. и nom. pl. в основном противопоставлен непалатальному в остальных формах. В dat. sg. перед ним обычно вставляется <em>-u-</em>, а в acc. и dat. pl. за ним следует окончание. В <strong>классе IVa</strong> (m.) соответствующий ряд чередований затрагивает конечный гласный: <em>-i</em> соответствует палатальному -C´, <em>-e</em> — непалатальному -C, а <em>-(i)u</em> — <em>-u</em>C в I; при этом окончания acc. pl. <em>-u</em> и dat. pl. <em>-(a)ib</em> встречаются в обоих классах. Среди трёх других классов, состоящих исключительно из существительных fem., аналогичное соответствие между -C´ и <em>-i</em> (acc. и dat. sg.), -C и <em>-e</em> (nom. sg. и gen. pl.) связывает <strong>II</strong> и <strong>IVb</strong>; окончание gen. sg. <em>-e</em> у них общее. <strong>IVc</strong> имеет точно такое же чередование конечных гласных, как <strong>IVb</strong>, отличаясь от последнего лишь nom. sg. на -C´ вместо <em>-e</em>. Иногда у существительных класса <strong>IVc</strong> встречается «краткая» форма acc. и dat. sg. (например, <em>blíadain</em>), совпадающая с nom. sg. Все три образования fem. имеют одну и ту же форму для nom.<span class="phonetic">/voc./</span>acc. pl., но в <strong>IVb/c</strong> она оканчивается на <em>-i</em>, а в <strong>II</strong> — на <em>-a</em>. О существительных среднего рода в I и IVa см. 4a ниже. Обозначения гласных в скобках лишь указывают на качество следующего или предшествующего согласного и иногда опускаются на письме (см. I.B.5).</p>
+</div>
+<div aria-label="Склонение существительных классов I, IVa, II, IVb и IVc" class="stanza-text book-table" id="ii-a3-t01" role="region" tabindex="0">
+<table>
+<colgroup>
+<col style="width: 7%"/>
+<col style="width: 12%"/>
+<col style="width: 13%"/>
+<col style="width: 21%"/>
+<col style="width: 15%"/>
+<col style="width: 13%"/>
+<col style="width: 16%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th><strong>I</strong></th>
+<th><strong>IVa</strong></th>
+<th><strong>II</strong></th>
+<th><strong>IVb</strong></th>
+<th><strong>IVc</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>‘мужчина’ (m.)</td>
+<td>‘товарищ’ (m.)</td>
+<td>‘королевство’</td>
+<td>‘молитва’</td>
+<td>‘год’</td>
+</tr>
+<tr class="even">
+<td>sing.</td>
+<td>nom./voc.</td>
+<td><em>fer/fir</em></td>
+<td><em>cé(i)le/cé(i)li</em></td>
+<td><em>túath</em></td>
+<td><em>gu(i)de</em></td>
+<td><em>blíad(a)in</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>acc.</td>
+<td><em>fer</em></td>
+<td><em>cé(i)le</em></td>
+<td><em>túaith</em></td>
+<td><em>gu(i)di</em></td>
+<td><em>blíadn(a)i</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>gen.</td>
+<td><em>fir</em></td>
+<td><em>cé(i)li</em></td>
+<td><em>túaithe</em></td>
+<td><em>gu(i)de</em></td>
+<td><em>blíadn(a)e</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>dat.</td>
+<td><em>fiur</em></td>
+<td><em>cé(i)liu</em></td>
+<td><em>túaith</em></td>
+<td><em>gu(i)di</em></td>
+<td><em>blíadn(a)i</em></td>
+</tr>
+<tr class="even">
+<td>plur.</td>
+<td>nom.</td>
+<td><em>fir</em></td>
+<td><em>cé(i)li</em></td>
+<td><em>túatha</em></td>
+<td><em>gu(i)di</em></td>
+<td><em>blíadn(a)i</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>voc./acc.</td>
+<td><em>firu</em></td>
+<td><em>cé(i)liu</em></td>
+<td><em>túatha</em></td>
+<td><em>gu(i)di</em></td>
+<td><em>blíadn(a)i</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>gen.</td>
+<td><em>fer</em></td>
+<td><em>cé(i)le</em></td>
+<td><em>túath</em></td>
+<td><em>gu(i)de</em></td>
+<td><em>blíadn(a)e</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>dat.</td>
+<td><em>feraib</em></td>
+<td><em>cé(i)lib</em></td>
+<td><em>túath(a)ib</em></td>
+<td><em>gu(i)dib</em></td>
+<td><em>blíadn(a)ib</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a3-p02">
+<p><strong>Классы IIIa</strong> и <strong>b</strong> оба противопоставляют gen. на <em>-o</em> (позднее <em>-a</em>) форме без окончания в остальных падежах единственного числа; различие состоит в том, что в <strong>IIIa</strong> это палатальный -C´, а в <strong>IIIb</strong> — непалатальный -C (обычно с предшествующим <em>u</em>). Множественное число <strong>IIIa</strong> (m./f.) совпадает с множественным числом <strong>IVb/c</strong>, тогда как <strong>IIIb</strong> (m.) не только имеет особое окончание nom. pl. <em>-e</em> наряду с <em>-i</em> типа «IIIa» и более редким <em>-a</em> (о существительных среднего рода см. 4a ниже), но и характеризуется acc. pl. на <em>-u</em>, как в I.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a3-p03">
+<p>В <strong>классах VIa</strong> и <strong>b</strong>, состоящих исключительно из существительных среднего рода, gen. sg. оканчивается на <em>-e</em>, а nom./acc. sg. — на согласный: палатальный -C´ в первом и непалатальный -C во втором. В обоих классах dat. sg. имеет -C´, однако <strong>VIa</strong> располагает также особым «долгим» dat на <em>-(a)im(m)</em>. В <strong>VIa</strong> <em>-n(n)(-)</em> появляется во всех формах множественного числа, тогда как <strong>VIb</strong> имеет -C´<em>e</em> в nom./acc. и gen. pl. и повсеместное окончание dat. pl. <em>-ib</em>. Формы acc., gen. и dat. sg. <strong>VIc</strong> следуют схеме <strong>V</strong>, приведённой ниже; отличие состоит в том, что конечный согласный основы появляется также в nom. sg. Формы nom., acc. и dat. pl. тоже можно сопоставить с <strong>V</strong><span id="ii-pdf-022"></span>, но gen. pl. на <em>-e</em> скорее напоминает соответствующую форму <strong>IIIa/b</strong>.</p>
+</div>
+<div aria-label="Склонение существительных классов IIIa, IIIb, VIa, VIb и VIc" class="stanza-text book-table" id="ii-a3-t02" role="region" tabindex="0">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 6%"/>
+<col style="width: 10%"/>
+<col style="width: 11%"/>
+<col style="width: 16%"/>
+<col style="width: 22%"/>
+<col style="width: 9%"/>
+<col style="width: 20%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th><strong>IIIa</strong></th>
+<th><strong>IIIb</strong></th>
+<th><strong>VIa</strong></th>
+<th><strong>VIb</strong></th>
+<th><strong>VIc</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>‘глаз’ (f.)</td>
+<td>‘форма’ (m.)</td>
+<td>‘имя’</td>
+<td>‘равнина’</td>
+<td>‘отец’ (m.)</td>
+</tr>
+<tr class="even">
+<td>sing.</td>
+<td>nom./voc.</td>
+<td><em>súil</em></td>
+<td><em>cruth</em></td>
+<td><em>ainm</em></td>
+<td><em>mag</em></td>
+<td><em>ath(a)ir</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>acc.</td>
+<td><em>súil</em></td>
+<td><em>cruth</em></td>
+<td><em>ainm</em></td>
+<td><em>mag</em></td>
+<td><em>ath(a)ir</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>gen.</td>
+<td><em>súlo/a</em></td>
+<td><em>crotho/a</em></td>
+<td><em>anm(a)e</em></td>
+<td><em>maige</em></td>
+<td><em>ath(a)r</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>dat.</td>
+<td><em>súil</em></td>
+<td><em>cruth</em></td>
+<td><em>ainm</em> или <em>anm(a)im(m)</em></td>
+<td><em>maig</em></td>
+<td><em>ath(a)ir</em></td>
+</tr>
+<tr class="even">
+<td>plur.</td>
+<td>nom.</td>
+<td><em>súili</em></td>
+<td><em>crotha<span class="phonetic">/(a)e/</span>i</em></td>
+<td><em>anman(n)</em></td>
+<td><em>maige</em></td>
+<td><em>aithir</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>voc./acc.</td>
+<td><em>súili</em></td>
+<td><em>cruthu</em></td>
+<td><em>anman(n)</em></td>
+<td><em>maige</em></td>
+<td><em>athra/aithrea</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>gen.</td>
+<td><em>súile</em></td>
+<td><em>croth(a)e</em></td>
+<td><em>anman(n)</em></td>
+<td><em>maige</em></td>
+<td><em>athr(a)e/aithre</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>dat.</td>
+<td><em>súilib</em></td>
+<td><em>crothaib</em></td>
+<td><em>anman(n)aib</em></td>
+<td><em>maigib</em></td>
+<td><em>athr(a)ib/aithrib</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a3-p04">
+<p>Характерная особенность m./f. <strong>основ на согласный</strong> состоит в том, что определённый согласный основы появляется во всей парадигме, кроме nom. sg. и иногда dat. sg. (об одном из немногих существительных среднего рода в V unlenden. см. A.4a ниже). Хотя у nom. sg. имеется несколько вариантов окончания (в частности, -C, -C´, <em>-e</em> или <em>-u</em> в зависимости от типа), все они объединены отсутствием характерного согласного основы (<em>th/d</em>, <em>t</em>, <em>n</em> и <em>ch<span class="phonetic">/g/</span>c</em> соответственно), который виден в остальной парадигме. Этот согласный закономерно непалатален в gen. sg. и pl., но палатален в acc. sg., «долгом» dat. sg. и nom. pl. В acc. pl. к согласному основы прибавляется <em>-a</em>, а в dat. pl. — обычное <em>-(a)ib</em>. Ряд подклассов имеет также «краткий» dat. sg. без характерного согласного основы. Как видно из приведённых выше парадигм, эта форма часто совпадает с nom. sg., но иногда отличается от него (например, <em>toimte</em> выше или nom. sg. <em>tene</em> ‘огонь’, gen. sg. <em>tened</em>, dat. sg. «долгий» <em>tenid</em> и «краткий» <em>tein</em>). В древнеирландский период наблюдалась тенденция к довольно быстрому вытеснению «кратких» дательных «долгими», совпадающими с acc. sing. Иногда обратный процесс приводит к появлению «краткого» винительного единственного числа, такого как <em>oíntu</em> и <em>cathair</em>.</p>
+</div>
+<div aria-label="Склонение существительных с основой на согласный, класс V" class="stanza-text book-table" id="ii-a3-t03" role="region" tabindex="0">
+<table>
+<colgroup>
+<col style="width: 12%"/>
+<col style="width: 11%"/>
+<col style="width: 14%"/>
+<col style="width: 12%"/>
+<col style="width: 16%"/>
+<col style="width: 16%"/>
+<col style="width: 17%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>V lenden.</strong></th>
+<th></th>
+<th><strong>V unlenden.</strong></th>
+<th><strong>V gutt.</strong></th>
+<th><strong>Vnas.</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>‘поэт’,</td>
+<td>‘единство’ (m.)</td>
+<td>‘друг’ (m.)</td>
+<td>‘город’ (f.)</td>
+<td>‘судья’ (m.)</td>
+<td>‘мнение’ (f.)</td>
+</tr>
+<tr class="even">
+<td>sg. nom./voc.</td>
+<td><em>fili</em></td>
+<td><em>oíntu</em></td>
+<td><em>car(a)e</em></td>
+<td><em>cath(a)ir</em></td>
+<td><em>brithem</em></td>
+<td><em>toimtiu</em></td>
+</tr>
+<tr class="odd">
+<td>acc.</td>
+<td><em>filid</em></td>
+<td><em>oínt(a)id</em></td>
+<td><em>car(a)it</em></td>
+<td><em>cathraig</em></td>
+<td><em>brithemain</em></td>
+<td><em>toimtin</em></td>
+</tr>
+<tr class="even">
+<td>gen.</td>
+<td><em>filed</em></td>
+<td><em>oíntad</em></td>
+<td><em>carat</em></td>
+<td><em>cathrach</em></td>
+<td><em>britheman</em></td>
+<td><em>toimten</em></td>
+</tr>
+<tr class="odd">
+<td>dat.</td>
+<td><em>filid</em></td>
+<td><em>oínt(a)id</em> или <em>oíntu</em></td>
+<td><em>car(a)it</em></td>
+<td><em>cathraig</em> или <em>cath(a)ir</em></td>
+<td><em>brithem(a)in</em></td>
+<td><em>toimtin</em> или <em>toimte, toimtiu</em></td>
+</tr>
+<tr class="even">
+<td>pl. nom.</td>
+<td><em>filid</em></td>
+<td></td>
+<td><em>car(a)it</em></td>
+<td><em>cathraig</em></td>
+<td><em>brithem(a)in</em></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>voc./acc.</td>
+<td><em>fileda</em></td>
+<td></td>
+<td><em>cairtea</em></td>
+<td><em>cathracha</em></td>
+<td><em>brithemna</em></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>gen.</td>
+<td><em>filed</em></td>
+<td></td>
+<td><em>carat</em></td>
+<td><em>cathrach</em></td>
+<td><em>britheman</em></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>dat.</td>
+<td><em>filedaib</em></td>
+<td></td>
+<td><em>cairtib</em></td>
+<td><em>cathrach(a)ib</em></td>
+<td><em>brithemn(a)ib</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="stanza-text" id="ii-a4">A.4. Дополнительные замечания о склонении существительных</h3>
+<div class="stanza-text book-paragraph" id="ii-a4-p01">
+<p>(a) В пределах одного склонения формы <strong><em>среднего рода</em></strong> всегда совпадают с соответствующими формами мужского рода в gen. и dat. sg. и pl. Однако существительные среднего рода всегда имеют <strong><em>единую форму для</em></strong> <strong><em>nom.<span class="phonetic">/voc./</span>acc.</em></strong> (ср. VIa nva. sg. <em>ainm</em> и pl. <em>anmann</em>, VIb nva. sg. <em>mag</em> и pl. <em>maige</em> выше), и она обычно отличается от соответствующих форм masc. по крайней мере в некоторых из этих падежей. Следующие парадигмы дополнительно иллюстрируют эту особенность, а также совпадение nva. sg./pl. в некоторых классах и возможность избежать его с помощью «долгого» множественного числа, например <em>scéla</em> наряду со <em>scél</em>.</p>
+</div>
+<div aria-label="Склонение существительных среднего рода" class="stanza-text book-table" id="ii-a4-t01" role="region" tabindex="0">
+<p><span id="ii-pdf-023"></span></p>
+<table>
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 17%"/>
+<col style="width: 17%"/>
+<col style="width: 16%"/>
+<col style="width: 18%"/>
+<col style="width: 22%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>I</strong> ‘рассказ’</th>
+<th><strong>IVa</strong> ‘сердце’</th>
+<th><strong>IIIa</strong> ‘море’</th>
+<th><strong>IIIb</strong> ‘звезда’</th>
+<th><strong>V unlenden.</strong> ‘зуб’</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sg. nva.</td>
+<td><em>scél</em></td>
+<td><em>cride</em></td>
+<td><em>muir</em></td>
+<td><em>rind</em></td>
+<td><em>dét</em></td>
+</tr>
+<tr class="even">
+<td>gen.</td>
+<td><em>scéuil</em></td>
+<td><em>cridi</em></td>
+<td><em>moro/a</em></td>
+<td><em>rendo/a</em></td>
+<td><em>dét</em></td>
+</tr>
+<tr class="odd">
+<td>dat.</td>
+<td><em>scéul</em></td>
+<td><em>cridiu</em></td>
+<td><em>muir</em></td>
+<td><em>rind</em></td>
+<td><em>déit</em></td>
+</tr>
+<tr class="even">
+<td>pl. nva.</td>
+<td><em>scél(a)</em></td>
+<td><em>cride</em></td>
+<td><em>mu(i)re</em></td>
+<td><em>rind/renda</em></td>
+<td><em>dét(a)</em></td>
+</tr>
+<tr class="odd">
+<td>gen.</td>
+<td><em>scél</em></td>
+<td><em>cride</em></td>
+<td><em>mu(i)re</em></td>
+<td><em>rend(a)e</em></td>
+<td><em>dét</em></td>
+</tr>
+<tr class="even">
+<td>dat.</td>
+<td><em>scél(a)ib</em></td>
+<td><em>cridib</em></td>
+<td><em>mu(i)rib</em></td>
+<td><em>rend(a)ib</em></td>
+<td><em>dét(a)ib</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a4-p02">
+<p>(b) Можно было заметить, что изменения внутри парадигмы, особенно переход от непалатального согласного к палатальному и наоборот, часто сопровождаются определёнными <strong><em>изменениями</em></strong> <strong><em>корневого гласного</em></strong> (например, I <em>fer</em> vs. <em>fir</em>, <em>fiur</em>, <em>firu</em> или IIIb <em>cruth(u)</em> vs. <em>crotho/a</em> и т. д. выше). Наиболее обычны чередования между <strong><em>e</em></strong> <strong>и</strong> <strong><em>i</em></strong> (например, IIIa <em>mil</em> ‘мёд’, gen. <em>melo</em>), <strong><em>o</em></strong> <strong>и</strong> <strong><em>u</em></strong> (например, I <em>olc</em> ‘зло’, gen. <em>uilc</em>), <strong><em>é</em></strong> <strong>и</strong> <strong><em>éu/o</em></strong> (например, I <em>én</em> ‘птица’, gen. <em>éuin</em> или <em>éoin</em>), <strong><em>ía</em></strong> <strong>и</strong> <strong><em>é(i)</em></strong> (например, I <em>gíall</em> ‘заложник’, gen. <em>géill</em>; II <em>cíall</em> ‘смысл’, acc./dat. <em>céill</em>, gen. <em>céille</em>). Есть также менее чётко определённое колебание между <strong><em>ó</em></strong> <strong>и</strong> <strong><em>úa</em></strong> (например, I <em>slóg</em> или <em>slúag</em> ‘войско’, gen. sg. <em>slóig</em> или <em>slúaig</em>). <strong>Важно</strong> <strong>учитывать эти возможности, пытаясь найти в словнике или словаре форму, содержащую один из этих</strong> <strong>ударных гласных.</strong></p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a4-p03">
+<p>(c) Когда заударный слог (то есть слог непосредственно после ударного, обычно начального; см. I.B.4) не был конечным, его гласный обычно утрачивался вследствие <strong>синкопы</strong> (ниже обозначена <sup>†</sup>); тем самым трёх- и четырёхсложные слова сокращались соответственно до двух и трёх слогов. Поэтому внутри парадигмы прибавление слога (например, dat. pl. <em>-(a)ib</em>) к двусложной форме обычно приводило к синкопе среднего слога, тогда как исходно односложное слово оставалось незатронутым: добавленный слог не создавал внутреннего безударного слога (например, <em>fer</em>, dat. pl. <em>feraib</em> и т. д.). Среди приведённых выше примеров с синкопой — IVc (закономерно подвергающийся синкопе, поскольку nom. sg. в этом классе всегда двусложен) <em>blíadain</em> vs. acc. <em>blíad</em><sup><em>†</em></sup><em>nai</em> и т. д.; V unlenden. <em>carae</em> vs. acc. и dat. pl. <em>cair</em><sup><em>†</em></sup><em>tea, cair</em><sup><em>†</em></sup><em>tib</em>; V gutt. <em>cathair</em> vs. acc./dat. sg. <em>cath</em><sup><em>†</em></sup><em>raig</em> и т. д. Формы acc. pl. <em>athra</em> или <em>aithrea</em> и т. д. в VIc также удобно рассматривать как синкопированные по отношению к nom. sg. <em>athair</em> и т. д., хотя в данном случае это не является верным историческим объяснением; то же относится к II <em>bríathar</em> ‘слово’ и acc./dat.sg. <em>bréithir</em> (ср. <em>cíall, céill</em> в b выше) vs. gen. sg. <em>bréithre</em>, nva. pl. <em>bríathra</em>. Другие примеры подлинной синкопы: I m. <em>claideb</em> ‘меч’ vs. acc. и dat. pl. <em>claid</em><sup><em>†</em></sup><em>biu, claid</em><sup><em>†</em></sup><em>bib</em> (случай I m. <em>lebor</em> ‘книга’ и dat. sg. <em>libur</em> vs. acc. pl. <em>libru</em> и dat. pl. <em>lebraib</em> сходен со случаем <em>athair</em>); II <em>buiden</em> ‘отряд’ vs. gen. sg. <em>buid</em><sup><em>†</em></sup><em>ne</em> и т. д.; IIIa f. <em>saigid</em> ‘поиск’ vs. gen. sg. <em>saig</em><sup><em>†</em></sup><em>theo/a</em> и т. д.; IIIb n. <em>dorus</em> ‘дверь’ vs. gen. sg. <em>doir</em><sup><em>†</em></sup><em>seo/a</em> и т. д.; V lenden. m. <em>tengae</em> ‘язык’ vs. acc. и dat. pl. <em>teng</em><sup><em>†</em></sup><em>tha</em> и <em>teng</em><sup><em>†</em></sup><em>thaib</em> соответственно.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a4-p04">
+<p>(d) Формы <strong>двойственного числа</strong> не включены в приведённые выше парадигмы, поскольку они сравнительно редки и легко распознаются благодаря тому, что перед ними всегда стоит числительное ‘два’ (nom./acc. <em>da</em> и <em>di</em> (f.), gen. <em>da</em>, dat. <em>dib</em>). За точными формами следует обращаться к <em>Grammar</em> Thurneysen или <em>Paradigms</em> Strachan (отметим, что dat. dual всегда имеет <em>-(a)ib</em>, вызывающее назализацию, в отличие от в остальном совпадающего с ним dat. pl., который не вызывает мутации); ряд примеров дан ниже, в III.A.5b.</p>
+</div>
+<h3 class="stanza-text" id="ii-a5">A.5. Практика чтения</h3>
+<div class="stanza-text book-paragraph" id="ii-a5-p01">
+<p>(a) Гномический, или поучительный, текст под названием <em>Bríathra Flainn Fína</em>, или «Слова Flann Fína»,<span id="ii-pdf-024"></span> в основном состоит из нескольких рядов кратких афоризмов, начинающихся с одного и того же слова. В одном из них каждое высказывание состоит из 3sg. pres. <em>ad:cota</em> ‘приобретает’, за которым следуют подлежащее и дополнение; в другом предложения той же структуры начинаются с 3sg. pres. <em>dligid</em> ‘заслуживает’. Ниже даны некоторые отрывки из этих двух рядов, подвергнутые необходимой нормализации. Обратите внимание на широкое использование аллитерации. Сочетание <em>cht</em> в древнеирландском сопротивляется палатализации; отсюда, например, отсутствие иначе ожидаемого палатального конечного согласного в acc./dat. sg. существительных класса II на <em>-acht</em>.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-a5-p02" lang="sga">
+<p><em>Ad:cota sochell saidbrius, .., ad:cota cíall caínchruth, ....., ad:cota serc bríathra, ..., ad:cota</em> <em>dochell cesacht, ..., ad:cota santach séotu, ..., ad:cota cuirm cornu, ..., ad:cota gáes airmitin,</em> <em>ad:cota áes allud, ad:cota báes báegul, ad:cota briugu bronnad, ad:cota bríg barainn, ad:cota</em> <em>barae bibdaid, ad:cota biltengae bráth, ....., ad:cota ferann féinnid, ad:cota léigend libru......</em> <em>Dligid ecnae airmitin, .., dligid fír fortacht, dligid gó a cairigud, dligid cláen cuindrech, dligid</em> <em>aite a sochraidi,... dligid rath a imdegail, dligid fíadnaise fugell, dligid díummus dermat, dligid</em> <em>maith mórad, .., dligid dall dítin,.., dligid oac eladain, ..., dligid máthair mingairi, dligid athair</em> <em>a ógréir.....</em></p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-a5-r02" lang="ru">
+<p>Щедрость приносит богатство, .., здравый смысл приносит прекрасный облик, ....., любовь приносит слова, ..., скупость приносит нужду, ..., алчный приобретает сокровища, ..., пиво приносит рога для питья, ..., мудрость приносит почтение, возраст приносит славу, глупость приносит опасность, гостеприимец получает пожалование, сила вызывает гнев, гнев наживает врага, красноречие добивается судебного решения, ....., земля привлекает воина, учение приобретает книги...... Знание заслуживает почтения, .., истина заслуживает поддержки, ложь заслуживает порицания, неправда заслуживает исправления, воспитатель заслуживает причитающейся ему дружбы,... имущество заслуживает защиты, свидетельство заслуживает судебного решения, гордыня заслуживает забвения, добро заслуживает возвеличения, .., слепой заслуживает защиты,.., юноша заслуживает обучения искусству, ..., мать заслуживает нежной заботы, отец заслуживает полного исполнения своей воли.....</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a5-p03">
+<p>(b) Многие высказывания древнеирландской поучительной литературы имеют правовой оттенок, который становится очевиден при сопоставлении с различными сохранившимися средневековыми ирландскими юридическими текстами. В одном из них — трактате о светских общественных подразделениях и статусе под названием <em>Críth Gablach</em>, «Разветвлённая покупка», — занятия короля распределены по дням всей недели, причём удовольствия сочетаются с делами.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-a5-p04" lang="sga">
+<p><em>Domnach do oul chormae...; lúan do brithemnacht, do chocertad túath; máirt oc fidchill; cétaín</em> <em>do déicsiu mílchon oc tofunn; tardaín do lánamnas; aín díden do rethaib ech; satharn do</em> <em>brethaib.</em></p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-a5-r04" lang="ru">
+<p>Воскресенье — для питья пива...; понедельник — для суда, для разрешения дел племён; вторник — за настольной игрой fidchell; среда — для наблюдения за борзыми на охоте; четверг — для супружеского общения; пятница — для конских скачек; суббота — для судебных решений.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-a5-p05">
+<p>(c) <em>Aipgitir Chrábuid</em>, или «Азбука благочестия», VII или VIII века — также гномический текст, на этот раз прямо посвящённый добродетелям, способствующим доброй христианской жизни и спасению, и порокам, препятствующим им. Он начинается со следующего перечня составных частей святости.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-a5-p06" lang="sga">
+<p><em>Ires co ngním, accobar co fedli, féthamle co lléri, castót co n-umlai, aíne co n-indmus, bochtae</em> <em>co n-eslabrai, taue co comlabrai, fodail co cosmali, foditiu cen indíri, apstanit co fochraíbi, ét</em> <em>cen acarbi, cennsae co fírinni, tairisiu cen eslis, omun cen derchoíniud, bochtae cen díummus,</em> <em>foísitiu cen erchomded, forcetal co comalnad, dréim cen tairindiud, ísel fri ard, slemon fri garb,</em> <em>gním cen fodord, semplae co trebairi, omaldóit cen condarcilli, crésine cen sechtai.</em></p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-a5-r06" lang="ru">
+<p>Вера с делом, желание с постоянством, спокойствие с усердием, целомудрие со смирением, пост с ревностью, бедность со щедростью, молчание с беседой, раздаяние с соблюдением равенства, терпение без неправды, воздержание с неотступностью, ревность без ожесточения, кротость с истиной, доверие без беспечности, страх без отчаяния, бедность без гордыни, исповедь без самооправдания, наставление с исполнением, восхождение без нисхождения, смирение перед высокомерием, мягкость перед грубостью, дело без ропота, простота с благоразумием, смирение без потворства, благочестие без притворства.</p>
+</div>
+<h2 class="stanza-text" id="ii-b">B. Прилагательные</h2>
+<h3 class="stanza-text" id="ii-b1">B.1. Основные сведения</h3>
+<div class="stanza-text book-paragraph" id="ii-b1-p01">
+<p>И в предикативном, и в атрибутивном употреблении древнеирландские прилагательные согласуются со своими существительными в <strong><em>роде</em></strong>, <strong><em>числе</em></strong> и <strong><em>падеже</em></strong>. Соответственно, они изменяются по всем этим категориям, но не имеют особой формы двойственного числа и при согласовании с существительным в двойственном числе используют множественное (примеры ниже, в III.A.5b). Они делятся на три основные группы. Одно склонение можно назвать <strong>I/II</strong> (традиционно — основы на <em>o-/ā</em>), поскольку в masc. или neut. оно в основном изменяется как существительное класса I, а в fem. — как существительное класса II. Другое мы будем называть <strong>IIIa</strong> (традиционно — основы на <em>i</em>) ввиду его сходства с существительными IIIa, а третье обозначим <strong>IV</strong> (традиционно — основы на <em>yo-/yā</em>), поскольку в masc. или neut. оно изменяется как существительные IVa, а в fem. — как IVb. Имеется немного прилагательных IIIb (традиционно — основы на <em>u</em>) и лишь самые незначительные остатки класса V, в частности unlenden. <em>tee</em> ‘горячий’ с nom. pl. <em>teit</em>. Три существенные для нас группы можно<span id="ii-pdf-025"></span> достаточно просто различить на основании одной лишь «словарной» формы nom. sg. (всех родов): <strong><em>в nom. sg. I/II имеет конечный непалатальный согласный (-C), IIIa — конечный</em></strong> <strong><em>палатальный согласный (-C´), а IV — конечное -e.</em></strong></p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b1-p02">
+<p>Словоизменение <strong>прилагательного класса IIIa</strong>, например <em>maith</em> ‘хороший’, особенно просто: основная форма (<em>maith</em>) употребляется во всех падежах единственного числа, кроме gen. sg. fem., который имеет <em>-e</em> (<em>maithe</em>), как существительные женского рода класса II; множественное число во всех родах совпадает с множественным числом существительных IIIa m./f., а именно: nom.<span class="phonetic">/voc./</span>acc. <em>maithi</em>, gen. <em>maithe</em> или <em>maith</em>, dat. <em>maithib</em>. <strong>Класс IIIb</strong> в единственном числе совпадает с I/II, за исключением того, что <em>-u-</em> имеется не только в dat. sg., но и в nom./acc. (например, m./n. <em>dub</em> во всех трёх падежах против gen. <em>duib</em>; f. nom. <em>dub</em>, acc./dat. <em>duib</em>, gen. <em>dub(a)e</em>); во множественном числе он следует IIIa, но с непалатальным конечным согласным корня (nom./acc. <em>dub(a)i</em>, gen. <em>dub</em>, dat. <em>dub(a)ib</em>).</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b1-p03">
+<p><strong>Классы I/II и IV</strong> соотносятся сходным образом с тем, как это описано для соответствующих существительных в A.3 выше; однако следует отметить, что в I/II окончание fem. nom.<span class="phonetic">/voc./</span>acc. <em>-a</em> распространилось на neut., а в voc./acc. отчасти и на masc. Следующие парадигмы иллюстрируют систему на примере <em>bec(c)</em> ‘маленький’ и <em>buide</em> ‘жёлтый’.</p>
+</div>
+<div aria-label="Склонение прилагательных I/II и IV по трём родам" class="stanza-text book-table" id="ii-b1-t01" role="region" tabindex="0">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%"/>
+<col style="width: 17%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Masc.</strong></th>
+<th></th>
+<th><strong>Neut.</strong></th>
+<th></th>
+<th><strong>Fem.</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>I/II</strong></td>
+<td><strong>IV</strong></td>
+<td><strong>I/II</strong></td>
+<td><strong>IV</strong></td>
+<td><strong>I/II</strong></td>
+<td><strong>IV</strong></td>
+</tr>
+<tr class="even">
+<td>sg. nom./voc.</td>
+<td><em>bec/bic</em></td>
+<td><em>bu(i)de</em></td>
+<td><em>bec</em></td>
+<td><em>bu(i)de</em></td>
+<td><em>bec</em></td>
+<td><em>bu(i)de</em></td>
+</tr>
+<tr class="odd">
+<td>acc.</td>
+<td><em>bec</em></td>
+<td><em>bu(i)de</em></td>
+<td><em>bec</em></td>
+<td><em>bu(i)de</em></td>
+<td><em>bic</em></td>
+<td><em>bu(i)di</em></td>
+</tr>
+<tr class="even">
+<td>gen.</td>
+<td><em>bic</em></td>
+<td><em>bu(i)di</em></td>
+<td><em>bic</em></td>
+<td><em>bu(i)di</em></td>
+<td><em>bice</em></td>
+<td><em>bu(i)de</em></td>
+</tr>
+<tr class="odd">
+<td>dat.</td>
+<td><em>biuc</em></td>
+<td><em>bu(i)diu</em></td>
+<td><em>biuc</em></td>
+<td><em>bu(i)diu</em></td>
+<td><em>bic</em></td>
+<td><em>bu(i)di</em></td>
+</tr>
+<tr class="even">
+<td>pl. nom.</td>
+<td><em>bic</em></td>
+<td><em>bu(i)di</em></td>
+<td><em>beca</em></td>
+<td><em>bu(i)di</em></td>
+<td><em>beca</em></td>
+<td><em>bu(i)di</em></td>
+</tr>
+<tr class="odd">
+<td>voc./acc.</td>
+<td><em>bicu</em> или <em>beca</em></td>
+<td><em>bu(i)di</em></td>
+<td><em>beca</em></td>
+<td><em>bu(i)di</em></td>
+<td><em>beca</em></td>
+<td><em>bu(i)di</em></td>
+</tr>
+<tr class="even">
+<td>gen.</td>
+<td><em>bec</em></td>
+<td><em>bu(i)de</em></td>
+<td><em>bec</em></td>
+<td><em>bu(i)de</em></td>
+<td><em>bec</em></td>
+<td><em>bu(i)de</em></td>
+</tr>
+<tr class="odd">
+<td>dat.</td>
+<td><em>bec(a)ib</em></td>
+<td><em>bu(i)dib</em></td>
+<td><em>bec(a)ib</em></td>
+<td><em>bu(i)dib</em></td>
+<td><em>bec(a)ib</em></td>
+<td><em>bu(i)dib</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b1-p04">
+<p>Следует отметить, что двусложные прилагательные I/II имеют <em>-i</em> во всех формах nom.<span class="phonetic">/voc./</span>acc. pl., подобно двум другим классам: например, nom. sg. <em>ísel</em> ‘низкий’ и <em>úasal</em> ‘высокий’ с pl. <em>ísli</em> и <em>úaisli</em>.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b1-p05">
+<p>Прилагательные могут <strong><em>субстантивироваться</em></strong>, то есть употребляться как существительные; в таком случае их склонение больше приближается к склонению других существительных того же класса (например, acc. pl. masc. класса II на <em>-u</em> или «краткие» nom./acc. pl. neut. без окончания). Так, I/II adj. <em>fír</em> ‘истинный’, но также I neut. существительное <em>fír</em> ‘нечто истинное, истина’; I/II adj. <em>olc</em> ‘злой’, но также I neut. существительное <em>olc</em> ‘(нечто) злое’ с nom./voc. pl. <em>inna olc</em> ‘злые вещи’; I/II adj. <em>trén</em>, но также I masc. существительное <em>trén</em> ‘сильный мужчина’ с acc. pl. <em>inna tríunu</em> ‘сильных мужчин’.</p>
+</div>
+<h3 class="stanza-text" id="ii-b2">B.2. Практика чтения</h3>
+<div class="stanza-text book-paragraph" id="ii-b2-p01">
+<p>(a) Подобно существительному в родительном падеже (см. A.1e выше), <strong><em>атрибутивное прилагательное закономерно следует за своим</em></strong> <strong><em>существительным в древнеирландском (среднеирландском и современном ирландском)</em></strong>: например, <em>fer maith</em> ‘хороший мужчина’, <em>in ben maith</em> ‘хорошая женщина’. В этом отношении ирландский сходен, скажем, с французским, но отличается от английского, где такие прилагательные обычно ставятся перед существительным.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b2-p02">
+<p>(b) Гномические, или поучительные, тексты, особенно сочинения с советами королям или князьям, составляют важный жанр ранней ирландской литературы. Один из них — <em>Tecosca Cormaic</em>, «Наставления Cormac», где Cormac mac Airt, ранний король Тары и, по преданию, внук Conn Ста<span id="ii-pdf-026"></span> Битв, изображён дающим советы по широкому кругу вопросов в ответ на расспросы своего сына и преемника Cairbre Lifechair. Изречения в произведениях этого типа обычно выражены сжато и стилизованным языком; они часто соединяются в довольно длинные ряды с намеренным параллелизмом отдельных высказываний. Некоторые из них — безглагольные перечни; в других глагол (обычно форма глагола ‘быть’) подразумевается и опускается. Эти стилистические приёмы удобны для наших целей, поскольку позволяют разбирать существительные и прилагательные без дополнительного осложнения, связанного с глаголами. Ниже дан отрывок, подвергнутый лишь тем небольшим изменениям в соответствии с древнеирландскими нормами, которые были сочтены необходимыми. Cairbre начинает с вопроса отцу: <em>a huí Chuinn, a Chormaic, cid as</em> <em>dech</em> (что лучше всего) <em>do ríg?</em> — «О внук Conn, о Cormac, что лучше всего для короля?» Ответ Cormac начинается следующим перечнем рекомендаций, содержащих существительные и, иногда, прилагательные, объединённые по два или по три. Между ними нередко есть аллитерация.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-b2-p03" lang="sga">
+<p><em>Fostae cen ḟeirg, ainmne cen debuid, soacaldam cen mórdataid, deithiden senchasa</em>, <em>frithḟolad</em> <em>fír, géill i nglassaib, slógad fri deithbiri, fír cen ḟuillem, trócaire co ndlúthugud rechta, síd do</em> <em>thúathaib, rátha écsamlai, bretha fíra, troscud for cocríchaib, mórad nemed, airmitiu filed, adrad</em> <em>Dé móir, torad inna ḟlaith, déicsiu cach thrúaig, almsana ili, mess for crannaib, íasc i n-inberaib,</em> <em>talam toirthech.</em></p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-b2-r03" lang="ru">
+<p>Твёрдость без гнева, терпение без распри, приветливость без гордыни, забота о предании, справедливое воздаяние, заложники в оковах, военный поход по справедливой причине, истина без прибавлений, милосердие с укреплением закона, мир племенам, различные поручительства, справедливые судебные решения, пост на пограничных землях, возвеличение привилегированных лиц, почитание поэтов, поклонение великому Богу, плодотворность правления, внимание к каждому несчастному, многочисленные подаяния, плоды на деревьях, рыба в устьях рек, плодородная земля.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b2-p04">
+<p>(c) Следующий вопрос Cairbre — <em>a huí Chuinn, a Chormaic, cid as dech do less túaithe?</em>, «О внук Conn, о Cormac, что лучше всего для блага племени?» — вызывает следующий ответ, ниже слегка сокращённый.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-b2-p05" lang="sga">
+<p><em>Terchomrac dagdoíne, dála menci, menmae athchomairc, fochmarc di gáethaib, airdíbad cech</em> <em>uilc, comalnad cech maithesa, airecht ríaglach, sechem senchasa, senad rechtaide, rechtge la</em> <em>flaith, toísig ḟíriáin..., trócaire co ndagbésaib, dlúthugud coibnesa, comúaim coimgne, comalnad</em> <em>rechtge, recht senchairdde, cotach cen timdibe, fíanna cen díummus, inire fri náimtea, innraccus</em> <em>fri bráithrea, rátha fíala, aithi slána, bretha fíra, fíadain innraicci, astud cundrada cen díupairt,</em> <em>fuillem díupartae....., foglaimm cach dána, éolas cech bélrai, druine mrechtraid, tacrae co</em> <em>fásaigib, brithemnas co roscadaib, tabart almsan, trócaire fri bochtu, gella fri bretha, nadmann</em> <em>innraici, étsecht fri sruithi, buidre fri dáescarslúag, lessugud críche ar cach n-olc.</em></p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-b2-r05" lang="ru">
+<p>Собрание добрых людей, частые сходы, склонность к расспросам, обращение за советом к мудрым, искоренение всякого зла, осуществление всякого добра, упорядоченное собрание, следование преданию, законный синод, установление закона правителем, праведные вожди..., милосердие с добрыми нравами, укрепление родства, сведение синхронизмов, исполнение законных установлений, право давних мирных договоров, соглашение без урезания, воинские дружины без гордыни, мужество против врагов, честность по отношению к братьям, благородные поручительства, полные возмещения, справедливые решения, достойные свидетели, соблюдение договора без ущерба, проценты на сумму ущерба....., изучение каждого искусства, знание каждого языка, искусность в украшении, судебная речь с прецедентами, суд с правовыми изречениями, подаяние милостыни, милосердие к бедным, залоги для исполнения решений, достойные поручители, внимание к старейшинам, глухота к невежественной толпе, оберегание страны от всякого зла.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b2-p06">
+<p>(d) Примеры «путей глупости», которые приводит Cormac, начинаются со следующих двуударных сочетаний (следует помнить, что древнеирландские предлоги были безударными). Они соединены аллитерацией, образуя цепь; ниже аллитерация отмечена чередованием полужирного курсива и подчёркивания. Обратите внимание: начальные мутации при аллитерации обычно не учитываются, а звонкий смычный, например <em>g</em> или <em>d</em>, иногда может аллитерировать с соответствующим глухим <em>c</em> или <em>t</em>.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-b2-p07" lang="sga">
+<p><em>Luge íar m</em><strong><em>b</em></strong><em>reith,</em> <strong><em>b</em></strong><em>retha</em> <em><u>d</u>íana,</em> <em><u>d</u>íuscud</em> <strong><em>f</em></strong><em>eirge,</em> <strong><em>f</em></strong><em>olabrae</em> <em><u>g</u>oach,</em> <em><u>c</u>airigud</em> <strong><em>f</em></strong><em>ír,</em> <strong><em>f</em></strong><em>retech n<u>d</u>airthige,</em> <em><u>t</u>intúd</em> <strong><em>b</em></strong><em>reth,</em> <strong><em>b</em></strong><em>rón oc</em> <em><u>f</u>leid,</em> <em><u>f</u>laithem</em> <strong><em>g</em></strong><em>oach,</em> <strong><em>g</em></strong><em>áire im</em> <em><u>ṡ</u>en,</em> <em><u>s</u>enchas do</em> <strong><em>c</em></strong><em>hleith,</em> <strong><em>c</em></strong><em>luiche for aill.....</em></p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-b2-r07" lang="ru">
+<p>Клятва после судебного решения, поспешные решения, разжигание гнева, лживый шёпот, порицание правды, отречение от церкви, отмена решений, скорбь на пиру, лживый правитель, смех над стариком, сокрытие предания, игра на утёсе.....</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b2-p08">
+<p>(e) Подобно глагольному сказуемому, <strong><em>именная часть сказуемого, выраженная существительным или прилагательным</em></strong> (обычно, но не всегда предваряемая формой глагола ‘быть’), <strong><em>ставится перед подлежащим</em></strong>: например, <em>(is) sacart in fer</em> ‘мужчина — священник’, букв. ‘(есть) священник мужчина’, или <em>(is) maith in fer</em> ‘мужчина хорош’, букв. ‘(есть) хорош мужчина’. На вопрос, как он различает род Адама, Cormac отвечает, что различает их всех — мужчин, женщин, сыновей и дочерей. Ниже приведены некоторые из высказываний, которыми он развивает эту мысль.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-b2-p09" lang="sga">
+<p><em>Gáeth cech fossaid, fírián cech fíal..., serb cach borb, báeth cach trén....., domlas cech gó, milis</em><span id="ii-pdf-027"></span> <em>cech fír,... dálacha drochmná.</em></p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-b2-r09" lang="ru">
+<p>Мудр каждый стойкий, праведен каждый щедрый..., горек каждый грубиян, глуп каждый силач....., желчь — всякая ложь, сладка всякая истина,... дурные женщины любят свидания.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b2-p10">
+<p>(f) Следующий ряд наставлений также приписывается королю в <em>Tecosca Cormaic</em>.</p>
+</div>
+<div class="stanza-text book-paragraph irish-reading" id="ii-b2-p11" lang="sga">
+<p><em>Gáeth cách co reic a orbai, báeth</em> <em>cách co lóg tíre, carae cách co fíachu, rechtaid cách co lelbu,</em> <em>súanach cách co clemnas, ferach cách co crésine, sochlae cách co aír, briugu cách co eitech,</em> <em>fénnid cách co trebad, amus cách co árus, sochuinn cách co mesci, codnach</em> <em>cách co feirg,</em> <em>sognaid cách co fuichecht, sobraig cách co altram, rúnid cách co augrae, aurraid cách co fócrae,</em> <em>fáilid cách co donae, dánae cách co hetech, traigthech cách co cairptech, cáid cach céol co cruit</em>.</p>
+</div>
+<div class="stanza-text book-paragraph reading-translation" id="ii-b2-r11" lang="ru">
+<p>Каждый мудр до продажи своего наследства, каждый глуп до покупки земли, каждый — друг до долгов, каждый — законник, пока дело не касается детей, каждый сонлив до вступления в брачное родство, каждый свиреп до благочестия, каждый славен до сатиры, каждый — гостеприимец до отказа, каждый — воин до обзаведения хозяйством, каждый — наёмник до обзаведения домом, каждый рассудителен до опьянения, каждый разумен до гнева, каждый благопристоен до прелюбодеяния, каждый спокоен до воспитания детей, каждый — хранитель тайн до ссоры, каждый — полноправный человек до объявления вне закона, каждый радостен до несчастья, каждый смел до отказа, каждый — пеший воин, пока не станет воином на колеснице, благородна всякая музыка, пока не зазвучит арфа.</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b2-p12">
+<p>(g) <em>Félire Óengusso</em> (см. I.A.3) написан силлабическим размером <em>rinnard</em>, основанным на четверостишиях из четырёх строк, каждая из которых содержит шесть слогов и заканчивается двусложным словом. Последние слова второй и четвёртой строк рифмуются друг с другом (то есть их гласные полностью совпадают, а согласные принадлежат к одному классу и имеют одинаковое качество; см. V.C.4e); последнее слово третьей строки обычно образует с ними консонанс — более свободный вид рифмы, при котором гласные совпадают по долготе, но не по качеству (например, <em>súabais</em> с <em>dímais</em> и <em>ndígrais</em> в строфе на 2 февраля). Более редкая альтернатива — полная так называемая <em>aicill</em>-рифма с неконечным словом четвёртой строки (например, <em>ainglech</em> с <em>laindrech</em> в строфе на 16 марта). Последнее слово первой строки может факультативно связываться с последним словом второй посредством консонанса (например, <em>Demun</em> с <em>domun</em> в строфе на 16 марта); аллитерация, здесь отмеченная подчёркиванием, также служит украшением. Ниже даны два четверостишия из самого календаря — соответственно на 2 февраля и 16 марта. Об основных принципах рифмы, консонанса и аллитерации можно прочесть в V.C.4e.</p>
+</div>
+<div aria-label="Два четверостишия из Félire Óengusso: 2 февраля и16 марта" class="stanza-text book-table" id="ii-b2-t01" role="region" tabindex="0">
+<table>
+<colgroup>
+<col style="width: 52%"/>
+<col style="width: 47%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>2 февраля:</th>
+<th>16 марта:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Airitiu <u>M</u>aicc <u>M</u>aire</em></td>
+<td><em>Inmain acht la Demun</em></td>
+</tr>
+<tr class="even">
+<td><em>hi Tempul <u>d</u>erb <u>d</u>ímais;</em></td>
+<td><em>Eugenia for domun;</em></td>
+</tr>
+<tr class="odd">
+<td><em>slúag <u>m</u>ár <u>m</u>artar súabais</em></td>
+<td><em>Abbán, doss <u>ó</u>ir <u>a</u>inglech,</em></td>
+</tr>
+<tr class="even">
+<td><em>la Findig n<u>D</u>uirn n<u>d</u>ígrais.</em></td>
+<td><em>Finán <u>l</u>aindrech <u>l</u>obur.</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 class="stanza-text" id="ii-b2-poem-feb">Русский перевод — 2 февраля</h4>
+<div class="stanza-text book-paragraph reading-translation" id="ii-b2-r13" lang="ru">
+<p>Принятие Сына Марии<br/> в крепком, громадном Храме;<br/> великий сонм благих мучеников<br/> с неодолимым Findig nDuirn.</p>
+</div>
+<h4 class="stanza-text" id="ii-b2-poem-mar">Русский перевод — 16 марта</h4>
+<div class="stanza-text book-paragraph reading-translation" id="ii-b2-r14" lang="ru">
+<p>Мила — но не Дьяволу —<br/> Евгения в мире;<br/> Abbán, ангельское древо золота,<br/> Finán, сияющий, немощный.</p>
+</div>
+<h3 class="stanza-text" id="ii-b3">B.3. Степени сравнения</h3>
+<div class="stanza-text book-paragraph" id="ii-b3-p01">
+<p>Все рассмотренные до сих пор формы прилагательных относятся к так называемой <strong><em>положительной</em></strong> степени (ср. Eng. ‘big’ — «большой»), которая обозначает соответствующий признак более или менее нейтрально, как, например, английское ‘good’ — «хороший». Однако возможно и дальнейшее различение степеней — как в английской сравнительной ‘better’ («лучше») и превосходной ‘the best’ («лучший»). Древнеирландские прилагательные тоже имеют особые формы <strong><em>сравнительной</em></strong> (ср. Eng. ‘bigger <span class="phonetic">[than]</span>’ — «больше [чем]») и <strong><em>превосходной</em></strong> (ср. Eng. ‘<span class="phonetic">[the]</span> biggest <span class="phonetic">[of]</span>’ — «самый большой [из]») степеней, а также особую уравнительную степень — <strong><em>экватив</em></strong> (ср. Eng. ‘as big <span class="phonetic">[as]</span>’ — «такой же большой [как]»).</p>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b3-p02">
+<p>Как правило, суффикс <strong>сравнительной степени</strong> <strong><em>-(i)u</em></strong>, суффикс <strong>экватива</strong> <strong><em>-ithir</em></strong> (или <em>-idir</em>, вследствие тенденции к озвончению зубных между безударными гласными) и суффикс <strong>превосходной степени</strong> <strong><em>-em/-am</em></strong> (после pal. и non-pal. согласного соответственно, согласно I.B.6) присоединялись к основе положительной степени. При этом они обычно палатализовали конечный согласный прилагательного I/II — процесс, часто сопровождаемый одним из изменений гласного, описанных выше в A.4b, — и заменяли конечное <em>-e</em> класса IV. Само собой разумеется, прибавление такого суффикса обычно вызывало синкопу второго слога двусложных основ, таких как <em>úasal</em> и <em>álaind</em> ниже. Ряд прилагательных образовывал нерегулярные сравнительные формы (иногда с <em>-a</em> вместо <em>-(i)u</em>), эквативы (иногда на <em>-ir</em>, но часто не засвидетельствованные) и превосходные формы от основы, в той или иной мере либо полностью отличающейся от основы положительной степени (ср. Eng. <em>good</em> ‘хороший’, но <em>better</em> ‘лучше’, <em>best</em> ‘лучший’). Важнейшие из них приведены в конце следующего списка.</p>
+</div>
+<div aria-label="Положительная, сравнительная, превосходная степени и экватив" class="stanza-text book-table" id="ii-b3-t01" role="region" tabindex="0">
+<p><span id="ii-pdf-028"></span></p>
+<table>
+<colgroup>
+<col style="width: 27%"/>
+<col style="width: 27%"/>
+<col style="width: 26%"/>
+<col style="width: 18%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Положительная:</strong></th>
+<th><strong>Сравнительная:</strong></th>
+<th><strong>Превосходная:</strong></th>
+<th><strong>Экватив:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>I/II <em>cóem</em> ‘красивый’</td>
+<td><em>coímiu</em> ‘красивее’</td>
+<td><em>coímem</em> ‘самый красивый’</td>
+<td><em>coímithir</em> ‘такой же красивый’</td>
+</tr>
+<tr class="even">
+<td>I/II <em>gel</em> ‘яркий’</td>
+<td><em>giliu</em> ‘ярче’</td>
+<td><em>gilem</em> ‘самый яркий’</td>
+<td><em>gilithir</em> ‘такой же яркий’</td>
+</tr>
+<tr class="odd">
+<td>I/II <em>dub</em> ‘чёрный’</td>
+<td><em>duibiu</em> ‘чернее’</td>
+<td><em>duibem</em> ‘самый чёрный’</td>
+<td><em>duibithir</em> ‘такой же чёрный’</td>
+</tr>
+<tr class="even">
+<td>I/II <em>dían</em> ‘быстрый’</td>
+<td><em>déiniu</em> ‘быстрее’</td>
+<td><em>déinem</em> ‘самый быстрый’</td>
+<td><em>déinithir</em> ‘такой же быстрый’</td>
+</tr>
+<tr class="odd">
+<td>I/II <em>ard</em> ‘высокий’</td>
+<td><em>ardu</em> ‘выше’</td>
+<td><em>ardam</em> ‘самый высокий’</td>
+<td><em>ardithir</em> ‘такой же высокий’</td>
+</tr>
+<tr class="even">
+<td>I/II <em>úasal</em> ‘высокий’</td>
+<td><em>úaisliu</em> ‘выше’</td>
+<td><em>úaislem</em> ‘самый высокий’</td>
+<td><em>úaislithir</em> ‘такой же высокий’</td>
+</tr>
+<tr class="odd">
+<td>III <em>álaind</em> ‘красивый’</td>
+<td><em>áildiu</em> ‘красивее’</td>
+<td><em>áildem</em> ‘самый красивый’</td>
+<td><em>áildithir</em> ‘такой же красивый’</td>
+</tr>
+<tr class="even">
+<td>IV <em>buide</em> ‘жёлтый’</td>
+<td><em>buidiu</em> ‘жёлтый’</td>
+<td><em>buidem</em> ‘самый жёлтый’</td>
+<td><em>buidithir</em> ‘такой же жёлтый’</td>
+</tr>
+<tr class="odd">
+<td>I/II <em>már/mór</em></td>
+<td><em>mó/mou</em> ‘больше’</td>
+<td><em>moam</em> ‘самый большой’</td>
+<td><em>moir</em> ‘такой же большой’ (irreg.)</td>
+</tr>
+<tr class="even">
+<td>I/II <em>bec</em> ‘маленький’</td>
+<td><em>lugu/laigiu</em> ‘меньше’</td>
+<td><em>lugam</em> ‘самый маленький’</td>
+<td><em>?</em> (irreg.)</td>
+</tr>
+<tr class="odd">
+<td>III <em>maith</em> ‘хороший’</td>
+<td><em>ferr</em> ‘лучше’</td>
+<td><em>dech</em> ‘лучший’</td>
+<td><em>?</em> (irreg.)</td>
+</tr>
+<tr class="even">
+<td>I/II <em>olc</em> ‘плохой’</td>
+<td><em>messa</em> ‘хуже’</td>
+<td><em>messam</em> ‘худший’</td>
+<td><em>?</em> (irreg.)</td>
+</tr>
+<tr class="odd">
+<td>I/II <em>oac</em> ‘молодой’</td>
+<td><em>oa</em> ‘моложе’</td>
+<td><em>oam</em> ‘самый молодой’</td>
+<td><em>?</em> (irreg.)</td>
+</tr>
+<tr class="even">
+<td>I/II <em>sír</em> ‘долгий’</td>
+<td><em>sia</em> ‘дольше’</td>
+<td><em>siam</em> ‘самый долгий’</td>
+<td><em>?</em> (irreg.)</td>
+</tr>
+<tr class="odd">
+<td>I/II <em>trén</em> ‘сильный’ (irreg.)</td>
+<td><em>tressa</em> ‘сильнее’</td>
+<td><em>tressam</em> ‘самый сильный’</td>
+<td><em>tresithir</em> ‘такой же сильный’</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="stanza-text book-paragraph" id="ii-b3-p03">
+<p>Древнеирландские сравнительная, превосходная степени и экватив всегда употребляются предикативно со связкой (примеры ниже, в III.A.5b/c и III.B.3a), которая иногда может опускаться (как в B.4a/b ниже). Поэтому эти формы неизменно стоят в именительном падеже. Поскольку они также не изменяются по родам и числам, каждая имеет единственную неизменяемую форму. <strong><em>Сравнительная степень</em></strong> и <strong><em>экватив</em></strong> используются для выражения соответственно неравенства (‘больше, чем’ и т. п.) и равенства (‘такой же большой, как’); при этом <u>эталон</u> <u>сравнения</u> — то есть предмет или лицо, с которым сравнивают, — ставится в дательном падеже в первом случае и в винительном во втором. Например: <em>is ferr dán</em> <em><u>orbu</u></em> ‘ремесло (<em>is</em>) лучше <u>наследства</u>’, <em>it úaisliu filid</em> <em><u>bardaib</u></em> ‘поэты (<em>it</em>) выше <u>бардов’</u> (comp.) или <em>is moir</em> <em><u>slébe</u></em> <em>fírinne Dé</em> ‘Божья истина (<em>is</em>) столь же велика, <u>как горы’</u> (equ.). Следует отметить, что оба типа демонстрируют обычный древнеирландский порядок слов: связка — именная часть сказуемого — подлежащее, но различаются положением эталона сравнения. В сравнительной конструкции он помещается после подлежащего (так, <em>orbu</em> ‘наследства’, <em>bardaib</em> ‘бардов’), а в эквативной — перед ним (так, <em>slébe</em> ‘как горы’). Превосходная степень может употребляться самостоятельно либо с предлогом <em>di</em> (+ dat.) ‘из числа, из’: например, <em>in ben as áildem (di mnáib in domain)</em> ‘самая красивая женщина (из женщин мира)’ (букв. ‘женщина, которая является самой красивой из женщин мира’; об <em>as</em>, относительной форме 3sg. pres. связки со значением ‘который/которая есть’, см. III.B.2b).</p>
+</div>
+</main>
+<footer class="book-footer"><a href="#contents">К оглавлению</a>
+<p>Перевод пополняется. Отсутствующие разделы ещё не включены.</p></footer>
+<script id="scroll-navigation">
+/* Internal anchor navigation: reveal notes, scroll and briefly mark one reading block. */
+(() => {
+  let active = null;
+  let timer = 0;
+  let frame = 0;
+  let generation = 0;
+  let citationSequence = 0;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function citationId(link) {
+    if (!link.id) {
+      let id;
+      do { id = `bibref-${++citationSequence}`; } while (document.getElementById(id));
+      link.id = id;
+    }
+    return link.id;
+  }
+
+  function rememberBibliographyOrigin(link, hash) {
+    let id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+    const entry = document.getElementById(id);
+    if (!entry || !entry.matches('#bibliography li[id]') || entry.contains(link)) return;
+    let back = entry.querySelector('a.bibliography-back');
+    if (!back) {
+      back = document.createElement('a');
+      back.className = 'bibliography-back';
+      back.textContent = '↩';
+      back.title = 'вернуться назад';
+      back.setAttribute('aria-label', back.title);
+      entry.append(document.createTextNode('\u00a0'), back);
+    }
+    back.setAttribute('href', '#' + encodeURIComponent(citationId(link)));
+  }
+
+  function clearGlow() {
+    window.clearTimeout(timer);
+    if (active) active.classList.remove('anchor-glow');
+    active = null;
+  }
+
+  function navigate(hash) {
+    clearGlow();
+    window.cancelAnimationFrame(frame);
+    const current = ++generation;
+    let id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent.matches('details')) parent.open = true;
+    }
+    const block = target.matches('article[id^="stanza-"]')
+      ? target.querySelector('.stanza-text')
+      : target.closest('.stanza-text, .annotation-item, #bibliography li');
+
+    frame = window.requestAnimationFrame(() => {
+      if (current !== generation) return;
+      target.scrollIntoView({block: 'start', behavior: 'auto'});
+      const focusTarget = target.closest('summary') ||
+        (target.matches('.annotation-ref') ? target.querySelector('a[href]') : null) || target;
+      if (!focusTarget.matches('a[href],button,summary,input,select,textarea,[tabindex]')) {
+        focusTarget.setAttribute('tabindex', '-1');
+      }
+      focusTarget.focus({preventScroll: true});
+      if (!block) return;
+      // Flush removal before restarting the animation on the same destination.
+      void block.offsetWidth;
+      active = block;
+      block.classList.add('anchor-glow');
+      // CSS draws the 1.8 s rise, 1 s hold and 2.1 s fade; reduced motion shows a static 1 s mark.
+      timer = window.setTimeout(clearGlow, reducedMotion.matches ? 1000 : 4900);
+    });
+  }
+
+  document.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey ||
+        event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href]');
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+    const url = new URL(link.href, window.location.href);
+    const here = window.location;
+    if (url.origin !== here.origin || url.pathname !== here.pathname ||
+        url.search !== here.search || !url.hash) return;
+    event.preventDefault();
+    rememberBibliographyOrigin(link, url.hash);
+    if (here.hash === url.hash) {
+      navigate(url.hash);
+    } else {
+      clearGlow();
+      window.cancelAnimationFrame(frame);
+      generation++;
+      here.hash = url.hash;
+    }
+  });
+
+  window.addEventListener('hashchange', () => navigate(window.location.hash));
+  // Stable on reload too: return hashes resolve before the initial navigation runs.
+  document.querySelectorAll('a[href^="#bib-"]').forEach(citationId);
+  if (window.location.hash) navigate(window.location.hash);
+})();
+</script></body></html>

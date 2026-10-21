@@ -482,7 +482,46 @@ button {
   text-align: left;
 }
 
+/* Thematic shelves: the existing book typography, inside native disclosures. */
+.books.catalog-categories { border-top: 0; }
+.catalog-category { border-bottom: 1px solid var(--catalog-rule); }
+.catalog-category:first-child { border-top: 1px solid var(--catalog-rule); }
+.catalog-category summary {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.6rem 0;
+  cursor: pointer;
+  list-style: none;
+  transition: color .2s ease;
+}
+.catalog-category summary::-webkit-details-marker { display: none; }
+.category-number {
+  color: var(--glow);
+  font-size: .9rem;
+  font-variant-numeric: tabular-nums;
+}
+.category-title { flex: 1; font-size: clamp(1.5rem, 1.15rem + 1vw, 2rem); line-height: 1.3; }
+.category-count { color: var(--catalog-muted); font-size: 1rem; white-space: nowrap; }
+.catalog-category summary::after {
+  content: '';
+  width: .55rem;
+  height: .55rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-.15rem) rotate(-45deg);
+  transition: transform .32s ease;
+  margin-inline: .35rem;
+}
+.catalog-category details[open] > summary { color: var(--glow); }
+.catalog-category details[open] > summary::after { transform: translateY(-.3rem) rotate(45deg); }
+.catalog-category summary:hover { color: var(--glow); }
+.catalog-category summary:focus-visible { outline: 2px solid var(--glow); outline-offset: 5px; }
+.category-content > .books { border-top: 1px solid var(--catalog-rule); }
+.category-content .book:last-child { border-bottom: 0; }
+
 @media (max-width: 760px) {
+  .catalog-category summary { gap: .65rem; }
   .book {
     grid-template-columns: 1fr;
   }
@@ -499,6 +538,8 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .catalog-category summary,
+  .catalog-category summary::after { transition: none; }
   .door,
   .panel,
   .panel[data-state="fading"],

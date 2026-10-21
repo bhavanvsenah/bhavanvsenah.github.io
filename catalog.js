@@ -8,7 +8,14 @@
 // "href", when given, is the page of the text, <name>/<text>.html; its title
 // becomes a button with the route <name>/<text>, which app.js opens in the
 // reader.
+// A thematic catalogue can instead contain { categories: [
+//   { id: "grammar", title: "Грамматики и учебники", books: [...] }
+// ] }. sortAuthor is an optional surname-first sorting key, not display text.
 {
+  const collator = new Intl.Collator('ru', { sensitivity: 'base', numeric: true });
+  const alphabetical = (books) => [...books].sort((a, b) =>
+    collator.compare(a.sortAuthor || a.author || a.title, b.sortAuthor || b.author || b.title) ||
+    collator.compare(a.title, b.title));
   // Russian typesetting: a one- or two-letter word stays on the line with the next one.
   const tie = (text) => String(text).replace(/(^|[\s(«])([А-Яа-яЁё]{1,2}) /g, '$1$2\u00a0');
 
@@ -63,14 +70,14 @@
     return group;
   };
 
-  const render = (list, books, section) => {
+  const renderBooks = (list, books, section) => {
     if (!Array.isArray(books)) throw new Error('ожидался список книг');
     if (!books.length) {
       note(list, 'Здесь пока нет переводов.');
       return;
     }
     list.replaceChildren(
-      ...books.map((book) => {
+      ...alphabetical(books).map((book) => {
         const item = document.createElement('li');
         item.className = 'book';
         const body = document.createElement('div');
@@ -92,6 +99,79 @@
         return item;
       }),
     );
+  };
+
+  // Native details keeps keyboard behaviour and find-in-page. Web Animations
+  // adds both directions of motion without relying on interpolate-size support.
+  const animateDisclosure = (details, content) => {
+    const summary = details.querySelector('summary');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    let animation = null;
+    let expanded = details.open;
+    const finish = () => {
+      animation?.cancel();
+      animation = null;
+      details.open = expanded;
+      content.inert = !expanded;
+      content.style.removeProperty('overflow');
+    };
+    summary.addEventListener('click', (event) => {
+      if (reduced.matches || !content.animate) return; // native instant fallback
+      event.preventDefault();
+      const from = details.open ? content.getBoundingClientRect().height : 0;
+      const opacity = details.open ? getComputedStyle(content).opacity : 0;
+      expanded = !expanded;
+      animation?.cancel();
+      details.open = true; // keep content present until closing has finished
+      content.inert = !expanded;
+      content.style.overflow = 'hidden';
+      const to = expanded ? content.scrollHeight : 0;
+      animation = content.animate([
+        { height: `${from}px`, opacity },
+        { height: `${to}px`, opacity: expanded ? 1 : 0 },
+      ], { duration: 320, easing: 'cubic-bezier(.2,.75,.25,1)' });
+      animation.onfinish = finish;
+    });
+    details.addEventListener('toggle', () => {
+      if (!animation) {
+        expanded = details.open;
+        content.inert = !expanded;
+      }
+    });
+    reduced.addEventListener('change', () => { if (animation) finish(); });
+  };
+
+  const render = (list, data, section) => {
+    if (Array.isArray(data)) return renderBooks(list, data, section);
+    if (!data || !Array.isArray(data.categories)) throw new Error('ожидались рубрики каталога');
+    const ids = new Set();
+    const categories = data.categories.map((category, index) => {
+      if (!category || !/^[a-z][a-z0-9-]*$/.test(category.id) || ids.has(category.id) ||
+          typeof category.title !== 'string' || !category.title.trim() || !Array.isArray(category.books)) {
+        throw new Error('некорректная рубрика каталога');
+      }
+      ids.add(category.id);
+      const item = line('li', 'catalog-category', '');
+      const details = document.createElement('details');
+      details.id = `${section}-${category.id}`;
+      const summary = document.createElement('summary');
+      const number = line('span', 'category-number', String(index + 1).padStart(2, '0'));
+      number.setAttribute('aria-hidden', 'true');
+      summary.append(number, line('span', 'category-title', category.title),
+        line('span', 'category-count', `${category.books.length} изд.`));
+      const content = line('div', 'category-content', '');
+      const books = line('ul', 'books', '');
+      books.setAttribute('role', 'list');
+      renderBooks(books, category.books, section);
+      content.append(books);
+      details.append(summary, content);
+      animateDisclosure(details, content);
+      item.append(details);
+      return item;
+    });
+    if (!categories.length) return note(list, 'Здесь пока нет переводов.');
+    list.classList.add('catalog-categories');
+    list.replaceChildren(...categories);
   };
 
   for (const catalog of document.querySelectorAll('.catalog')) {
