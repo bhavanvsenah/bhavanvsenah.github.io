@@ -1,14 +1,14 @@
 {
   "work": "Kim McCone, A First Old Irish Grammar and Reader (2005)",
   "status": "Альфа-версия — перевод не завершён.",
-  "published_date": "2026-10-21",
-  "source_revision": "eb86c9b1c257c895b1de24ee8e7f2c9cac5ce756",
-  "source_sha256": "d57c9894ab07747bf605959025fc810c3b17deccdc0dc1aca20544b948fb3ecc",
-  "published_sha256": "fc33e0dd7f0f7182be7a99f68f97ed3740914935467ea2269ae3b28998c6dae8",
+  "published_date": "2026-10-22",
+  "source_revision": "c74a9f18c2ad4b4604ce8e1a801282c1bb143ca0",
+  "source_sha256": "d2d042ea126318931f1c046dff9fae2157da87e421a29467fe2f0a4e924bf135",
+  "published_sha256": "84bf5c81e59b787037655ab5a8450e65b76963c6aa39ed04f2f32a054ceca062",
   "markdown": {
     "01-preliminaries.md": "92daa81c342c8e6d6296e98c42246637ab668108923f8b52b43396cbc280d600",
     "02-noun-adjective-article.md": "9db52959466c84bce64e4cda5d1c54020f99a40c057ca8b41091253ace7fbf42",
-    "03-to-be-word-order.md": "a7184e87a572eca2d0dd15a24a9aee45e9c638de93bd010b8a8612a1b9c255e9"
+    "03-to-be-word-order.md": "0df69e0fa59db9360762526bac18f214ca54f44101f018d24ee04e93dbe063d8"
   },
   "units": [
     "i-a1",
@@ -38,6 +38,10 @@
     "iii-a1",
     "iii-a2",
     "iii-a3",
-    "iii-a4"
+    "iii-a4",
+    "iii-a5",
+    "iii-b1",
+    "iii-b2",
+    "iii-b3"
   ]
 }
