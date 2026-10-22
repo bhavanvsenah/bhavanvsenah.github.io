@@ -12,6 +12,8 @@
 !/.gitignore
 !/.nojekyll
 !/index.html
+!/robots.txt
+!/sitemap.xml
 !/favicon.ico
 !/favicon.svg
 !/apple-touch-icon.png
