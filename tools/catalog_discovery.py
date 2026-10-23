@@ -11,6 +11,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parent.parent
 PAGE = ROOT / 'index.html'
 SECTIONS = ('celts', 'dharma')
+SITE_URL = 'https://bhavanvsenah.github.io/'
 
 
 def markers(section):
@@ -65,7 +66,7 @@ def render_books(books, section):
         href = path(book.get('href'), 'html', section)
         title = text(book['title'])
         if href:
-            title = f'<a href="{href}">{title}</a>'
+            title = f'<a href="{SITE_URL}{href}">{title}</a>'
         body = ''.join(f'<p class="{field}">{text(book[field])}</p>'
                        for field in ('author',) if book.get(field))
         body += f'<h3 class="title">{title}</h3>'
@@ -78,7 +79,7 @@ def render_books(books, section):
                 action = 'Читать' if key == 'html' else 'Скачать'
                 aria = html.escape(f'{action} «{book["title"]}» в {label}', quote=True)
                 download = '' if key == 'html' else f' download="{url.split("/")[-1]}"'
-                options.append(f'<a class="format" href="{url}"{download} aria-label="{aria}">{label}</a>')
+                options.append(f'<a class="format" href="{SITE_URL}{url}"{download} aria-label="{aria}">{label}</a>')
             else:
                 options.append(f'<span class="format unavailable" title="{label} пока недоступен">'
                                f'{label}<span class="visually-hidden"> (пока недоступен)</span></span>')

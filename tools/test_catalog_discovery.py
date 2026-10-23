@@ -7,9 +7,9 @@ import unittest
 from unittest.mock import patch
 
 import catalog_discovery as discovery
-from check_catalog_reader import catalog_links
+from check_catalog_reader import PlainPage, catalog_links
 
-BASE = 'https://example.test/'
+BASE = discovery.SITE_URL
 
 
 class CatalogDiscoveryTests(unittest.TestCase):
@@ -22,6 +22,10 @@ class CatalogDiscoveryTests(unittest.TestCase):
             expected.update(BASE + b['href'] for c in groups for b in c['books'] if b.get('href'))
             output += discovery.render(section)
         self.assertEqual(set(catalog_links(output, BASE)), expected)
+        page = PlainPage()
+        page.feed(output)
+        self.assertTrue(page.links)
+        self.assertTrue(all(href.startswith(BASE) for href, _ in page.links))
         self.assertIn('Книга захватов Ирландии', output)  # Still an announcement.
         self.assertNotIn('<button', output)
         self.assertNotIn('<script', output)
