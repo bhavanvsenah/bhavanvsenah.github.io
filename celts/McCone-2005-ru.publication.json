@@ -1,15 +1,16 @@
 {
   "work": "Kim McCone, A First Old Irish Grammar and Reader (2005)",
   "status": "Альфа-версия — перевод не завершён.",
-  "published_date": "2026-10-22",
-  "source_revision": "257b7676ea6a940aa29efb615d0473f11726fc90",
-  "source_sha256": "eaaadcc4fc054e0e3a5f86fe1637f0f51ae3947f14d70cd4e8326e261805c4a3",
-  "published_sha256": "c4f96802dc0174ae0753cdb98f8575dcaab64b104fa58248895c953687db1180",
+  "published_date": "2026-10-23",
+  "source_revision": "060aefee97ea7ecd541311a43999d92a875c32d3",
+  "source_sha256": "b8658071c2bc3f5dd35320b76da54d3d8cd156b783dc9596927774a1e1078520",
+  "published_sha256": "ecb6051719053189df7aaf3be674a585d3127ba8fc6e03dfb6083057b9bb2be2",
   "markdown": {
     "01-preliminaries.md": "92daa81c342c8e6d6296e98c42246637ab668108923f8b52b43396cbc280d600",
     "02-noun-adjective-article.md": "9db52959466c84bce64e4cda5d1c54020f99a40c057ca8b41091253ace7fbf42",
     "03-to-be-word-order.md": "0df69e0fa59db9360762526bac18f214ca54f44101f018d24ee04e93dbe063d8",
-    "04-pronouns-prepositions-numerals.md": "eb1260b0121fca0d6301d432fe833362c1a5ab516f2feb917b58a3e55e11611e"
+    "04-pronouns-prepositions-numerals.md": "b3a859905e2766153fe2616207d3451d2b6fca2f8c8b9aee550d2ae74fe91788",
+    "05-present-stem-object-pronouns.md": "ba3c3f38399bb42dafa7d8264ec0d0509aa1449d12947d3391ed7db33fe70fe4"
   },
   "units": [
     "i-a1",
@@ -54,6 +55,19 @@
     "iv-b1",
     "iv-b2",
     "iv-b3",
-    "iv-b4"
+    "iv-b4",
+    "iv-c1",
+    "iv-c2",
+    "iv-c3",
+    "v-a1",
+    "v-a2",
+    "v-a3",
+    "v-b1",
+    "v-b2",
+    "v-b3",
+    "v-c1",
+    "v-c2",
+    "v-c3",
+    "v-c4"
   ]
 }
