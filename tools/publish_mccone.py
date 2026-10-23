@@ -8,6 +8,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from catalog_discovery import sync as sync_catalog_discovery
+
 ROOT = Path(__file__).resolve().parent.parent
 BOOK = 'Маккон-2005_Грамматика-и-хрестоматия'
 OUTPUT = ROOT / 'celts/McCone-2005-ru.html'
@@ -78,12 +80,14 @@ def main():
     if args.check:
         if not OUTPUT.exists() or OUTPUT.read_bytes() != data or not RECEIPT.exists() or RECEIPT.read_bytes() != receipt_bytes or index != updated_index:
             raise SystemExit('Публикация отсутствует или не совпадает с выбранной версией')
+        sync_catalog_discovery(check=True)
         print(f'Публикация актуальна: {len(units)} подразделов; SHA256 {receipt["published_sha256"]}')
     else:
         OUTPUT.parent.mkdir(parents=True, exist_ok=True)
         OUTPUT.write_bytes(data)
         RECEIPT.write_bytes(receipt_bytes)
         index_path.write_text(updated_index)
+        sync_catalog_discovery()
         print(f'{OUTPUT}: {len(units)} подразделов; {STATUS}')
 
 

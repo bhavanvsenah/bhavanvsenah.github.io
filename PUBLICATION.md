@@ -38,6 +38,14 @@
    аккаунт GitHub `bhavanvsenah`. Перед публикацией проверить `gh api user --jq .login`.
 4. После сборки GitHub Pages проверить публичный каталог и файл книги.
 
+При изменении `celts.json` или `dharma.json` выполнить
+`python3 -B tools/catalog_discovery.py`, затем
+`python3 -B tools/catalog_discovery.py --check`. Скрипт меняет только
+служебный блок `index.html`: JSON-LD и ссылки внутри `noscript`; обычная
+вёрстка и анимация каталогов остаются прежними. Он включён в импорт Маккона.
+GitHub Actions проверяет совпадение при push/PR, но без защиты ветки
+не блокирует прямой push. Анонсы без `href` в служебный перечень не входят.
+
 Артефакты: `celts/McCone-2005-ru.html` — автономный свиток;
 `celts/McCone-2005-ru.publication.json` — коммит/хеши исходников, дата,
 список опубликованных подразделов и хеш опубликованного HTML.
