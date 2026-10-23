@@ -70,9 +70,8 @@ body {
   outline: none;
 }
 
-/* The doors, the leaf and the titles of texts are buttons: they switch views
-   within this page, and a browser shows no address over a button as it does
-   over a link. Their own frame, background and tap flash are dropped; the
+/* The doors and the leaf switch views within this page. Their own frame,
+   background and tap flash are dropped; the
    focus ring shows for the keyboard only (:focus-visible). */
 button {
   appearance: none;
@@ -392,15 +391,18 @@ button {
 
 /* A title with a text behind it is underlined like a link and lights up in
    the section's glow colour. */
-.book h3 button {
+.book h3 a {
+  display: inline-block;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
   text-align: left;
   text-decoration: underline 1px color-mix(in oklab, currentColor 35%, transparent);
   text-underline-offset: 0.18em;
   transition: color 0.2s ease-out;
 }
 
-.book h3 button:hover,
-.book h3 button:focus-visible {
+.book h3 a:hover,
+.book h3 a:focus-visible {
   color: var(--glow);
   text-decoration-color: currentColor;
 }
@@ -461,7 +463,7 @@ button {
   color: var(--glow);
 }
 
-.book h3 button:focus-visible,
+.book h3 a:focus-visible,
 .formats a:focus-visible,
 .formats button:focus-visible {
   outline: 2px solid var(--glow);
@@ -546,7 +548,7 @@ button {
   .reader[data-state="down"],
   .leaf,
   .stage[data-section] .leaf,
-  .book h3 button,
+  .book h3 a,
   .formats a,
   .formats button,
   :root:not(.proximity) .door img {

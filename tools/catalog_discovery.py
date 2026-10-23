@@ -1,101 +1,136 @@
 #!/usr/bin/env python3
-"""Keep the non-rendered discovery block on the home page in sync with catalogs."""
+"""Build the real home-page catalogs from JSON, with crawlable HTML links."""
 
 import argparse
 import html
 import json
 from pathlib import Path
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGE = ROOT / 'index.html'
-BASE = 'https://bhavanvsenah.github.io/'
-START = '<!-- BEGIN GENERATED CATALOG DISCOVERY -->'
-END = '<!-- END GENERATED CATALOG DISCOVERY -->'
-PATH = re.compile(r'^(celts|dharma)/[A-Za-z0-9_-]+\.html$')
+SECTIONS = ('celts', 'dharma')
 
 
-def published_books():
-    found = []
-    seen = set()
-    for section in ('celts', 'dharma'):
-        data = json.loads((ROOT / f'{section}.json').read_text(encoding='utf-8'))
-        groups = data['categories'] if isinstance(data, dict) else [
-            {'title': 'Дхарма', 'books': data}
-        ]
-        for group in groups:
-            for book in group['books']:
-                path = book.get('href')
-                if not path:
-                    continue  # An announcement is not a published text.
-                if not isinstance(path, str) or not PATH.fullmatch(path) or not path.startswith(section + '/'):
-                    raise ValueError(f'Некорректный адрес опубликованного текста: {path!r}')
-                if path in seen or not (ROOT / path).is_file():
-                    raise ValueError(f'Повторный или отсутствующий текст: {path}')
-                if not isinstance(book.get('title'), str) or not book['title'].strip():
-                    raise ValueError(f'Нет названия текста: {path}')
-                seen.add(path)
-                found.append((group['title'], book))
-    return found
+def markers(section):
+    return (f'<!-- BEGIN GENERATED CATALOG {section} -->',
+            f'<!-- END GENERATED CATALOG {section} -->')
 
 
-def render():
-    books = published_books()
-    entries = [
-        {
-            '@type': 'ListItem',
-            'position': number,
-            'item': {
-                '@type': 'CreativeWork',
-                'name': book['title'],
-                'url': BASE + book['href'],
-                **({'author': book['author']} if book.get('author') else {}),
-            },
-        }
-        for number, (_, book) in enumerate(books, 1)
-    ]
-    data = {
-        '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        'name': 'Опубликованные тексты',
-        'url': BASE,
-        'mainEntity': {'@type': 'ItemList', 'itemListElement': entries},
-    }
-    # A title containing </script> must never terminate the script element.
-    encoded = json.dumps(data, ensure_ascii=False, indent=2).replace('<', '\\u003c')
-    lines = [
-        START,
-        '    <script type="application/ld+json" id="published-catalog-data">',
-        encoded,
-        '    </script>',
-        '    <noscript>',
-        '      <nav aria-label="Опубликованные тексты">',
-        '        <h2>Опубликованные тексты</h2>',
-        '        <ul>',
-    ]
-    for _, book in books:
-        title = html.escape(book['title'], quote=True)
-        author = html.escape(book.get('author', ''), quote=True)
-        label = f'{author} — {title}' if author else title
-        lines.append(f'          <li><a href="/{book["href"]}">{label}</a></li>')
-    lines += ['        </ul>', '      </nav>', '    </noscript>', END]
-    return '\n'.join(lines)
+def text(value):
+    """Keep the existing non-breaking-space typography, then HTML-escape."""
+    tied = re.sub(r'(^|[\s(«])([А-Яа-яЁё]{1,2}) ',
+                  lambda m: m[1] + m[2] + '\u00a0', str(value))
+    return html.escape(tied, quote=True)
+
+
+def alphabetical(books):
+    if len(books) < 2:
+        return books
+    # Match the old browser's Russian/numeric ordering exactly.
+    code = """
+const fs = require('node:fs');
+const books = JSON.parse(fs.readFileSync(0, 'utf8'));
+const c = new Intl.Collator('ru', {sensitivity:'base', numeric:true});
+books.sort((a,b) => c.compare(a.sortAuthor || a.author || a.title,
+                             b.sortAuthor || b.author || b.title) ||
+                    c.compare(a.title,b.title));
+process.stdout.write(JSON.stringify(books));
+"""
+    result = subprocess.check_output(['node', '-e', code], input=json.dumps(books).encode())
+    return json.loads(result)
+
+
+def path(value, extension, section):
+    if value is None or value == '':
+        return ''
+    if not isinstance(value, str) or not re.fullmatch(
+            rf'{section}/[A-Za-z0-9_-]+\.{extension}', value):
+        raise ValueError(f'Некорректный адрес {extension}: {value!r}')
+    if not (ROOT / value).is_file():
+        raise ValueError(f'Нет опубликованного файла: {value}')
+    return value
+
+
+def render_books(books, section):
+    if not isinstance(books, list):
+        raise ValueError('Ожидался список книг')
+    if not books:
+        return '<li class="catalog-note">Здесь пока нет переводов.</li>'
+    items = []
+    for book in alphabetical(books):
+        if not isinstance(book.get('title'), str) or not book['title'].strip():
+            raise ValueError('Нет названия книги')
+        href = path(book.get('href'), 'html', section)
+        title = text(book['title'])
+        if href:
+            title = f'<a href="{href}">{title}</a>'
+        body = ''.join(f'<p class="{field}">{text(book[field])}</p>'
+                       for field in ('author',) if book.get(field))
+        body += f'<h3 class="title">{title}</h3>'
+        body += ''.join(f'<p class="{field}">{text(book[field])}</p>'
+                        for field in ('from', 'status') if book.get(field))
+        options = []
+        for key, label in (('html', 'HTML'), ('pdf', 'PDF'), ('fb2', 'FB2')):
+            url = href if key == 'html' else path(book.get('formats', {}).get(key), key, section)
+            if url:
+                action = 'Читать' if key == 'html' else 'Скачать'
+                aria = html.escape(f'{action} «{book["title"]}» в {label}', quote=True)
+                download = '' if key == 'html' else f' download="{url.split("/")[-1]}"'
+                options.append(f'<a class="format" href="{url}"{download} aria-label="{aria}">{label}</a>')
+            else:
+                options.append(f'<span class="format unavailable" title="{label} пока недоступен">'
+                               f'{label}<span class="visually-hidden"> (пока недоступен)</span></span>')
+        formats = '<div class="book-formats"><p class="formats-label">Форматы</p>'
+        formats += '<div class="formats">' + ''.join(options) + '</div></div>'
+        items.append(f'<li class="book"><div class="book-text">{body}</div>{formats}</li>')
+    return '\n'.join(items)
+
+
+def render(section):
+    data = json.loads((ROOT / f'{section}.json').read_text(encoding='utf-8'))
+    start, end = markers(section)
+    if isinstance(data, list):
+        listing = '<ul class="books" role="list">\n' + render_books(data, section) + '\n</ul>'
+    else:
+        ids = set()
+        categories = []
+        for number, category in enumerate(data['categories'], 1):
+            cid = category['id']
+            if not re.fullmatch(r'[a-z][a-z0-9-]*', cid) or cid in ids:
+                raise ValueError(f'Некорректная или повторная рубрика: {cid}')
+            ids.add(cid)
+            summary = (f'<summary><span class="category-number" aria-hidden="true">{number:02d}</span>'
+                       f'<span class="category-title">{text(category["title"])}</span>'
+                       f'<span class="category-count">{text(str(len(category["books"])) + " изд.")}</span></summary>')
+            content = '<div class="category-content"><ul class="books" role="list">'
+            content += render_books(category['books'], section) + '</ul></div>'
+            categories.append(f'<li class="catalog-category"><details id="{section}-{cid}">'
+                              f'{summary}{content}</details></li>')
+        listing = '<ul class="books catalog-categories" role="list">\n'
+        listing += '\n'.join(categories) if categories else '<li class="catalog-note">Здесь пока нет переводов.</li>'
+        listing += '\n</ul>'
+    return start + '\n' + listing + '\n' + end
 
 
 def sync(check=False):
     page = PAGE.read_text(encoding='utf-8')
-    if page.count(START) != 1 or page.count(END) != 1:
-        raise ValueError('На главной странице должен быть один служебный блок каталога')
-    before, remainder = page.split(START, 1)
-    _, after = remainder.split(END, 1)
-    updated = before + render() + after
+    updated = page
+    for section in SECTIONS:
+        start, end = markers(section)
+        if updated.count(start) != 1 or updated.count(end) != 1:
+            raise ValueError(f'Должен быть один блок каталога {section}')
+        before, remainder = updated.split(start, 1)
+        _, after = remainder.split(end, 1)
+        updated = before + render(section) + after
     if updated != page:
         if check:
-            raise ValueError('Служебный каталог устарел; запустите tools/catalog_discovery.py')
+            raise ValueError('Каталоги устарели; запустите tools/catalog_discovery.py')
         PAGE.write_text(updated, encoding='utf-8')
-        print('index.html: служебный каталог обновлён')
+        print('index.html: HTML-каталоги обновлены')
     else:
-        print('index.html: служебный каталог актуален')
+        print('index.html: HTML-каталоги актуальны')
 
 
 if __name__ == '__main__':

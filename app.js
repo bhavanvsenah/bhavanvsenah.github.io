@@ -281,10 +281,18 @@
     });
   });
 
-  // The doors, the leaf and the titles in a catalogue are buttons, not links,
-  // so the browser shows no address over them; each names its route in
-  // data-route. The leaf and a title open a text in the reader.
+  // Catalog titles/formats have crawlable hrefs. Enhance a plain click with
+  // the existing reader; modified clicks keep normal browser navigation.
   stage.addEventListener('click', (event) => {
+    const link = event.target.closest('.catalog a[href]');
+    if (link) {
+      const next = plain(event) && routeOf(link.href);
+      if (next) {
+        event.preventDefault();
+        go(next);
+      }
+      return;
+    }
     const button = event.target.closest('button[data-route]');
     if (!button) return;
     const next = parse(button.dataset.route);
