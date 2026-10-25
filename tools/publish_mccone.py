@@ -21,6 +21,11 @@ def git(repo, *args):
     return subprocess.check_output(['git', '-C', str(repo), *args])
 
 
+def publication_units(document):
+    # Chapters I–VII use h3 for units, VIII onwards use numbered h2 units.
+    return re.findall(r'<h[23][^>]*id="([ivx]+-[a-z]?\d+)"', document)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-repo', type=Path, default=ROOT.parent / 'LGE')
@@ -53,7 +58,7 @@ def main():
     if published.split('<main id="translation">', 1)[1] != original.split('<main id="translation">', 1)[1]:
         raise SystemExit('При импорте изменился текст книги')
     data = published.encode('utf-8')
-    units = re.findall(r'<h3[^>]*id="([^"]+)"', original)
+    units = publication_units(original)
     receipt = {
         'work': 'Kim McCone, A First Old Irish Grammar and Reader (2005)',
         'status': STATUS, 'published_date': args.date,

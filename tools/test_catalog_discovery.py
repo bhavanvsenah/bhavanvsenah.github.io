@@ -8,11 +8,19 @@ from unittest.mock import patch
 
 import catalog_discovery as discovery
 from check_catalog_reader import PlainPage, catalog_links
+from publish_mccone import publication_units
 
 BASE = discovery.SITE_URL
 
 
 class CatalogDiscoveryTests(unittest.TestCase):
+    def test_mccone_receipt_includes_units_at_both_heading_levels(self):
+        source = ('<h1 id="chapter-viii">VIII</h1><h2 id="i-a">A</h2>'
+                  '<h3 class="stanza-text" id="i-a1">A.1</h3>'
+                  '<h2 class="stanza-text" id="viii-1">1</h2>'
+                  '<h2 id="x-3">3</h2><h4 id="x-3-example">Example</h4>')
+        self.assertEqual(publication_units(source), ['i-a1', 'viii-1', 'x-3'])
+
     def test_plain_html_has_every_published_link_and_no_draft_link(self):
         expected = set()
         output = ''
