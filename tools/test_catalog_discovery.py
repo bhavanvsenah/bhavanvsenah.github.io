@@ -21,6 +21,12 @@ class CatalogDiscoveryTests(unittest.TestCase):
                   '<h2 id="x-3">3</h2><h4 id="x-3-example">Example</h4>')
         self.assertEqual(publication_units(source), ['i-a1', 'viii-1', 'x-3'])
 
+    def test_mccone_standalone_letter_section_is_a_unit_not_a_group(self):
+        source = ('<h2 id="xii-a">A. Введение</h2>'
+                  '<h2 id="xii-b">B. Изменения</h2><h3 id="xii-b1">B.1</h3>'
+                  '<h2 id="xii-c">C</h2><h3 id="xii-c1">C.1</h3>')
+        self.assertEqual(publication_units(source), ['xii-a', 'xii-b1', 'xii-c1'])
+
     def test_plain_html_has_every_published_link_and_no_draft_link(self):
         expected = set()
         output = ''

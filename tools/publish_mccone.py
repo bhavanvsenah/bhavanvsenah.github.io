@@ -22,8 +22,13 @@ def git(repo, *args):
 
 
 def publication_units(document):
-    # Chapters I–VII use h3 for units, VIII onwards use numbered h2 units.
-    return re.findall(r'<h[23][^>]*id="([ivx]+-[a-z]?\d+)"', document)
+    # Include numbered units and standalone letter sections such as XII.A,
+    # but not grouping headings (I.A, XII.B) with numbered children.
+    headings = re.findall(r'<h[23][^>]*id="([ivx]+-(?:[a-z]\d*|\d+))"', document)
+    return [unit for unit in headings if not (
+        re.fullmatch(r'[ivx]+-[a-z]', unit)
+        and any(re.fullmatch(re.escape(unit) + r'\d+', child) for child in headings)
+    )]
 
 
 def main():
