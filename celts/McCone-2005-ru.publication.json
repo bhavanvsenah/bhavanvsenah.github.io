@@ -2,9 +2,9 @@
   "work": "Kim McCone, A First Old Irish Grammar and Reader (2005)",
   "status": "Альфа-версия — перевод не завершён.",
   "published_date": "2026-10-26",
-  "source_revision": "699d8326f93548c4af70d5f1f91d8c617ba1774c",
-  "source_sha256": "7ea07921e3761b52f55f52d728e3ddb9b284093db4db502fbabc6287eb986d4c",
-  "published_sha256": "e62061e81bc85f64a8e030e876228334e936226a6c7dc1bcdd01afe57f8c208a",
+  "source_revision": "0b9de63c335ea726d8854b35acd83c8047f1ae8b",
+  "source_sha256": "f91f35c953e8a0900a80f908850f53d9382bbe15d7108dd9d88fbcfb7cf994b0",
+  "published_sha256": "5652f4498d0b96cd41021b2b5906f9adc4fda43f2b95955e1f532a4e262e5086",
   "markdown": {
     "01-preliminaries.md": "92daa81c342c8e6d6296e98c42246637ab668108923f8b52b43396cbc280d600",
     "02-noun-adjective-article.md": "9db52959466c84bce64e4cda5d1c54020f99a40c057ca8b41091253ace7fbf42",
@@ -17,7 +17,7 @@
     "09-future-stem.md": "d729a26c481e141d08e96db2de1deda127e9254485df52667e1fd76fe97338e6",
     "10-augment.md": "5919ba172697d05f6689a3e62dbf70cd80fcf597650acec7b336243693cebdd7",
     "11-further-reading.md": "847eed2352410b7145e2d6d7c716e0f7cfa9fede9dd4b09863a493f6249138e2",
-    "12-middle-irish.md": "c64ea6c30c9571cd2190a75d5ad57532c90ebfce4a4864193272019f784e6049"
+    "12-middle-irish.md": "6549dd8d7a16d119610abe1281a80b32dd3ecf59e1def5f7e408c54840ee0f17"
   },
   "units": [
     "i-a1",
@@ -144,6 +144,10 @@
     "xii-c5",
     "xii-c6",
     "xii-c7",
-    "xii-c8"
+    "xii-c8",
+    "xii-c9",
+    "xii-c10",
+    "xii-d1",
+    "xii-d2"
   ]
 }
