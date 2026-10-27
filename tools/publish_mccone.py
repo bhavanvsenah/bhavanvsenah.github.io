@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BOOK = 'Маккон-2005_Грамматика-и-хрестоматия'
 OUTPUT = ROOT / 'celts/McCone-2005-ru.html'
 RECEIPT = ROOT / 'celts/McCone-2005-ru.publication.json'
-STATUS = 'Альфа-версия — перевод не завершён.'
+STATUS = 'Полный перевод — предварительная редакция'
 
 
 def git(repo, *args):
@@ -56,9 +56,11 @@ def main():
         raise SystemExit('В свитке найден локальный адрес или путь')
     marker = '<p class="edition-scope">'
     if original.count(marker) != 1:
-        raise SystemExit('Не найдена единственная отметка неполноты перевода')
-    published = original.replace(marker, marker + STATUS + ' ', 1)
-    published = published.replace('</head>', '<meta name="description" content="Ким Маккон. Русский научный перевод грамматики и хрестоматии древнеирландского языка. Альфа-версия, перевод не завершён."></head>', 1)
+        raise SystemExit('Не найдена единственная отметка редакционного статуса')
+    if 'Русский перевод книги выполнен полностью.' not in original:
+        raise SystemExit('Исходник не подтверждает полноту перевода')
+    published = original.replace(marker, marker + STATUS + '. ', 1)
+    published = published.replace('</head>', '<meta name="description" content="Ким Маккон. Полный русский перевод грамматики, хрестоматии и словаря древнеирландского языка. Предварительная редакция; итоговая повторная выверка остаётся отдельной стадией."></head>', 1)
     # All scholarly content and navigation resources remain byte-identical.
     if published.split('<main id="translation">', 1)[1] != original.split('<main id="translation">', 1)[1]:
         raise SystemExit('При импорте изменился текст книги')
@@ -76,8 +78,8 @@ def main():
     matches = [b for c in catalog['categories'] for b in c['books'] if b.get('id') == 'mccone-2005']
     if len(matches) != 1 or matches[0].get('href') != 'celts/McCone-2005-ru.html':
         raise SystemExit('Некорректная запись Маккона в каталоге')
-    if matches[0].get('status') != STATUS.lower().rstrip('.'):
-        raise SystemExit('Маккон должен сохранять альфа-статус незавершённого перевода')
+    if matches[0].get('status') != STATUS:
+        raise SystemExit('Некорректный статус полного перевода в каталоге')
     index_path = ROOT / 'index.html'
     index = index_path.read_text()
     pattern = r'(<section[^>]+data-catalog="celts"[\s\S]*?<time datetime=")[^"]+(">)[^<]+(</time>)'
