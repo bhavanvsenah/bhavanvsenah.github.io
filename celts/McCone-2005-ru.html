@@ -196,6 +196,19 @@ main h1,main h2,main h3{text-wrap:balance}
 nav.toc h2{font-weight:normal;font-size:1.15em}
 nav.toc .toc-level-2{margin-left:1rem}
 nav.toc .toc-level-3{margin-left:2rem}
+/* Единственное оглавление — структура печатной книги,с рабочими якорями. */
+nav.print-toc{max-width:76ch;margin-inline:auto;font-size:1em}
+nav.print-toc .toc-title{font-size:1.3em;margin:1.5rem 0;text-align:center}
+nav.print-toc .toc-chapter{font-size:1.08em;line-height:1.4;margin:1.6rem 0 .7rem;border:0;padding:0}
+nav.print-toc .toc-section{font-size:1em;line-height:1.4;margin:1rem 0 .6rem;border:0;padding:0}
+nav.print-toc .toc-unit{margin:.45rem 0;padding:0}
+nav.print-toc .toc-note{margin:.2rem 0 .6rem;padding-inline-start:1.2em;font-size:.9em;color:var(--muted)}
+nav.print-toc p{margin:0;text-indent:0;text-align:start}
+nav.print-toc .toc-note ol{margin:0;padding-inline-start:2em}
+nav.print-toc .toc-note ol>li::marker{content:"(" counter(list-item,lower-alpha) ") "}
+nav.print-toc a{display:inline;text-decoration:none}
+nav.print-toc a:hover,nav.print-toc a:focus-visible{text-decoration:underline}
+nav.print-toc a:focus-visible{outline:2px solid var(--link);outline-offset:3px}
 table{border-collapse:collapse;max-width:100%;font-size:.9em}
 th,td{padding:.35em .6em;border-bottom:1px solid var(--rule);vertical-align:top}
 .book-table{max-width:100%;overflow:visible;margin:1.3rem 0;border-left:0;padding-left:0}
@@ -236,187 +249,1024 @@ th,td{padding:.35em .6em;border-bottom:1px solid var(--rule);vertical-align:top}
 <h1>Начальная грамматика и хрестоматия древнеирландского языка</h1>
 <p class="book-original-title">A First Old Irish Grammar and Reader (2005)</p>
 <p class="edition-scope">Полный перевод — предварительная редакция. Русский перевод книги выполнен полностью. Предварительная редакция; итоговая повторная выверка всей книги остаётся отдельной стадией.</p></header>
-<nav class="toc" id="contents" aria-label="Оглавление"><h2>Содержание</h2><ul><li class="toc-level-1"><a href="#front-title">Начальная грамматика и хрестоматия древнеирландского языка</a></li>
-<li class="toc-level-1"><a href="#front-toc">Содержание</a></li>
-<li class="toc-level-1"><a href="#front-publications">Издания кафедры древнеирландского языка Национального университета Ирландии (Мейнут)</a></li>
-<li class="toc-level-2"><a href="#front-series-monographs">Maynooth Monographs (ISSN 0790-8806)</a></li>
-<li class="toc-level-2"><a href="#front-series-minor">Maynooth Monographs, Series Minor (ISSN 1393 368X)</a></li>
-<li class="toc-level-2"><a href="#front-series-linguistics">Maynooth Studies in Celtic Linguistics (ISSN 1393 3393; все в мягкой обложке)</a></li>
-<li class="toc-level-2"><a href="#front-series-texts">Maynooth Medieval Irish Texts (ISSN 1393-970X; все в мягкой обложке)</a></li>
-<li class="toc-level-1"><a href="#chapter-i">Глава I. Предварительные сведения</a></li>
-<li class="toc-level-2"><a href="#i-a">A. Введение</a></li>
-<li class="toc-level-3"><a href="#i-a1">A.1. Основные этапы развития ирландского языка</a></li>
-<li class="toc-level-3"><a href="#i-a2">A.2. Источники древнеирландского периода</a></li>
-<li class="toc-level-3"><a href="#i-a3">A.3. Древне- и среднеирландские тексты, сохранившиеся в позднейших рукописях</a></li>
-<li class="toc-level-3"><a href="#i-a4">A.4. Основные цели этой книги</a></li>
-<li class="toc-level-2"><a href="#i-b">B. Орфография и произношение</a></li>
-<li class="toc-level-3"><a href="#i-b1">B.1. Смычные и соответствующие щелевые согласные</a></li>
-<li class="toc-level-3"><a href="#i-b2">B.2. Носовые и плавные согласные</a></li>
-<li class="toc-level-3"><a href="#i-b3">B.3. Сибилянт и f</a></li>
-<li class="toc-level-3"><a href="#i-b4">B.4. Гласные под ударением и в конце слова</a></li>
-<li class="toc-level-3"><a href="#i-b5">B.5. «Широкие», или непалатальные, и «узкие», или палатальные, согласные</a></li>
-<li class="toc-level-3"><a href="#i-b6">B.6. Безударные гласные внутри слова</a></li>
-<li class="toc-level-3"><a href="#i-b7">B.7. Дифтонги</a></li>
-<li class="toc-level-3"><a href="#i-b8">B.8. Начальные мутации</a></li>
-<li class="toc-level-1"><a href="#chapter-ii">Глава II. Существительное, прилагательное и артикль</a></li>
-<li class="toc-level-2"><a href="#ii-a">A. Существительное</a></li>
-<li class="toc-level-3"><a href="#ii-a1">A.1. Основные категории</a></li>
-<li class="toc-level-3"><a href="#ii-a2">A.2. Основные типы склонения существительных</a></li>
-<li class="toc-level-3"><a href="#ii-a3">A.3. Полные парадигмы склонения</a></li>
-<li class="toc-level-3"><a href="#ii-a4">A.4. Дополнительные замечания о склонении существительных</a></li>
-<li class="toc-level-3"><a href="#ii-a5">A.5. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#ii-b">B. Прилагательные</a></li>
-<li class="toc-level-3"><a href="#ii-b1">B.1. Основные сведения</a></li>
-<li class="toc-level-3"><a href="#ii-b2">B.2. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#ii-b3">B.3. Степени сравнения</a></li>
-<li class="toc-level-3"><a href="#ii-b4">B.4. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#ii-c">C. ОПРЕДЕЛЁННЫЙ АРТИКЛЬ И МУТАЦИИ</a></li>
-<li class="toc-level-3"><a href="#ii-c1">C.1. Артикль</a></li>
-<li class="toc-level-3"><a href="#ii-c2">C.2. Мутации существительных и прилагательных</a></li>
-<li class="toc-level-3"><a href="#ii-c3">C.3. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-iii">Глава III. Глагол «быть» и порядок слов</a></li>
-<li class="toc-level-2"><a href="#iii-a">A. «Быть»</a></li>
-<li class="toc-level-3"><a href="#iii-a1">A.1. Основные времена и наклонения</a></li>
-<li class="toc-level-3"><a href="#iii-a2">A.2. Связка, субстантивный глагол и отглагольное имя</a></li>
-<li class="toc-level-3"><a href="#iii-a3">A.3. Парадигмы субстантивного глагола</a></li>
-<li class="toc-level-3"><a href="#iii-a4">A.4. Парадигмы связки</a></li>
-<li class="toc-level-3"><a href="#iii-a5">A.5. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#iii-b">B. Модели порядка слов</a></li>
-<li class="toc-level-3"><a href="#iii-b1">B.1. Основной порядок компонентов предложения или клаузы</a></li>
-<li class="toc-level-3"><a href="#iii-b2">B.2. Модели с выделением темы или фокуса</a></li>
-<li class="toc-level-3"><a href="#iii-b3">B.3. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-iv">Глава IV. Местоимения, предлоги и числительные</a></li>
-<li class="toc-level-2"><a href="#iv-a">A. Местоименные элементы</a></li>
-<li class="toc-level-3"><a href="#iv-a1">A.1. Самостоятельные личные местоимения</a></li>
-<li class="toc-level-3"><a href="#iv-a2">A.2. Различные добавочные элементы</a></li>
-<li class="toc-level-3"><a href="#iv-a3">A.3. Притяжательные местоимения</a></li>
-<li class="toc-level-3"><a href="#iv-a4">A.4. Местоимения и расщеплённое предложение</a></li>
-<li class="toc-level-3"><a href="#iv-a5">A.5. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#iv-a6">A.6. Суффигированные и инфигированные местоимения при глаголе «быть»</a></li>
-<li class="toc-level-3"><a href="#iv-a7">A.7. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#iv-b">B. Предлоги и их местоименные формы</a></li>
-<li class="toc-level-3"><a href="#iv-b1">B.1. Основная система</a></li>
-<li class="toc-level-3"><a href="#iv-b2">B.2. Парадигмы</a></li>
-<li class="toc-level-3"><a href="#iv-b3">B.3. Другие добавочные элементы</a></li>
-<li class="toc-level-3"><a href="#iv-b4">B.4. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#iv-c">C. Числительные</a></li>
-<li class="toc-level-3"><a href="#iv-c1">C.1. Количественные числительные</a></li>
-<li class="toc-level-3"><a href="#iv-c2">C.2. Порядковые числительные</a></li>
-<li class="toc-level-3"><a href="#iv-c3">C.3. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-v">Глава V. Основа настоящего времени, простые и сложные глаголы, объектные местоимения</a></li>
-<li class="toc-level-2"><a href="#v-a">A. Настоящее изъявительное слабых, сильных глаголов и глаголов с зиянием</a></li>
-<li class="toc-level-3"><a href="#v-a1">A.1. Основные сведения</a></li>
-<li class="toc-level-3"><a href="#v-a2">A.2. Настоящее время слабых, сильных глаголов и глаголов с зиянием; парадигмы</a></li>
-<li class="toc-level-3"><a href="#v-a3">A.3. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#v-b">B. Сложные глаголы</a></li>
-<li class="toc-level-3"><a href="#v-b1">B.1. Образование сложных глаголов</a></li>
-<li class="toc-level-3"><a href="#v-b2">B.2. Дейтеротонические и прототонические формы</a></li>
-<li class="toc-level-3"><a href="#v-b3">B.3. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#v-c">C. Суффигированные и инфигированные местоимения</a></li>
-<li class="toc-level-3"><a href="#v-c1">C.1. Основной ряд</a></li>
-<li class="toc-level-3"><a href="#v-c2">C.2. Суффигация местоимений</a></li>
-<li class="toc-level-3"><a href="#v-c3">C.3. Инфигация местоимений</a></li>
-<li class="toc-level-3"><a href="#v-c4">C.4. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#v-d">D. Повелительное наклонение</a></li>
-<li class="toc-level-3"><a href="#v-d1">D.1. Основное словоизменение</a></li>
-<li class="toc-level-3"><a href="#v-d2">D.2. Сложные формы и отрицание</a></li>
-<li class="toc-level-3"><a href="#v-d3">D.3. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#v-e">E. Имперфект изъявительного наклонения</a></li>
-<li class="toc-level-3"><a href="#v-e1">E.1. Формы</a></li>
-<li class="toc-level-3"><a href="#v-e2">E.2. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-vi">Глава VI. Основа активного претерита и относительные показатели</a></li>
-<li class="toc-level-2"><a href="#vi-a">A. Активный претерит</a></li>
-<li class="toc-level-3"><a href="#vi-a1">A.1. s- претерит</a></li>
-<li class="toc-level-3"><a href="#vi-a2">A.2. t- претерит</a></li>
-<li class="toc-level-3"><a href="#vi-a3">A.3. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#vi-a4">A.4. Бессуффиксальный претерит</a></li>
-<li class="toc-level-3"><a href="#vi-a5">A.5. Редуплицированные s- и t- претериты</a></li>
-<li class="toc-level-3"><a href="#vi-a6">A.6. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#vi-b">B. Относительные показатели</a></li>
-<li class="toc-level-3"><a href="#vi-b1">B.1. Основная система</a></li>
-<li class="toc-level-3"><a href="#vi-b2">B.2. Относительные окончания</a></li>
-<li class="toc-level-3"><a href="#vi-b3">B.3. Инфигированная относительная лениция</a></li>
-<li class="toc-level-3"><a href="#vi-b4">B.4. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#vi-b5">B.5. Инфигированная относительная назализация</a></li>
-<li class="toc-level-3"><a href="#vi-b6">B.6. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#vi-b7">B.7. Относительные формы объектных местоимений</a></li>
-<li class="toc-level-3"><a href="#vi-b8">B.8. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-vii">Глава VII. Пассив и депонент</a></li>
-<li class="toc-level-2"><a href="#vii-a">A. Пассив</a></li>
-<li class="toc-level-3"><a href="#vii-a1">A.1. Формы третьего лица настоящего изъявительного и повелительного наклонений</a></li>
-<li class="toc-level-3"><a href="#vii-a2">A.2. Первое и второе лица</a></li>
-<li class="toc-level-3"><a href="#vii-a3">A.3. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#vii-a4">A.4. Пассив имперфекта</a></li>
-<li class="toc-level-3"><a href="#vii-a5">A.5. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#vii-a6">A.6. Претерит пассива</a></li>
-<li class="toc-level-3"><a href="#vii-a7">A.7. Прошедшее пассивное причастие и глагольная форма долженствования</a></li>
-<li class="toc-level-3"><a href="#vii-a8">A.8. Практика чтения:</a></li>
-<li class="toc-level-2"><a href="#vii-b">B. Депонент</a></li>
-<li class="toc-level-3"><a href="#vii-b1">B.1. Настоящее время изъявительного наклонения, имперфект и повелительное наклонение</a></li>
-<li class="toc-level-3"><a href="#vii-b2">B.2. Претерит</a></li>
-<li class="toc-level-3"><a href="#vii-b3">B.3. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-viii">Глава VIII. Основа сослагательного наклонения</a></li>
-<li class="toc-level-2"><a href="#viii-1">1. Предварительные сведения</a></li>
-<li class="toc-level-2"><a href="#viii-2">2. a -сослагательное</a></li>
-<li class="toc-level-2"><a href="#viii-3">3. e -сослагательное</a></li>
-<li class="toc-level-2"><a href="#viii-4">4. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#viii-5">5. s- сослагательное</a></li>
-<li class="toc-level-2"><a href="#viii-6">6. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#viii-7">7. Сослагательное прошедшего времени</a></li>
-<li class="toc-level-2"><a href="#viii-8">8. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-ix">Глава IX. Основа будущего времени</a></li>
-<li class="toc-level-2"><a href="#ix-1">1. f -будущее</a></li>
-<li class="toc-level-2"><a href="#ix-2">2. Дополнительно о синкопе и её последствиях</a></li>
-<li class="toc-level-2"><a href="#ix-3">3. a -будущее</a></li>
-<li class="toc-level-2"><a href="#ix-4">4. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#ix-5">5. i -будущее</a></li>
-<li class="toc-level-2"><a href="#ix-6">6. s- будущее</a></li>
-<li class="toc-level-2"><a href="#ix-7">7. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#ix-8">8. Условное наклонение</a></li>
-<li class="toc-level-2"><a href="#ix-9">9. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-x">Глава X. Аугмент</a></li>
-<li class="toc-level-2"><a href="#x-1">1. Основные формы и функции</a></li>
-<li class="toc-level-2"><a href="#x-2">2. Аугмент ro</a></li>
-<li class="toc-level-2"><a href="#x-3">3. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#x-4">4. Другие формы с аугментом</a></li>
-<li class="toc-level-2"><a href="#x-5">5. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-xi">Глава XI. Дальнейшее чтение</a></li>
-<li class="toc-level-2"><a href="#xi-1">1. Некоторые рекомендации</a></li>
-<li class="toc-level-2"><a href="#xi-2">2. Практика чтения</a></li>
-<li class="toc-level-1"><a href="#chapter-xii">Глава XII. Введение в основы среднеирландского языка</a></li>
-<li class="toc-level-2"><a href="#xii-a">A. Введение</a></li>
-<li class="toc-level-2"><a href="#xii-b">B. Основные звуковые изменения</a></li>
-<li class="toc-level-3"><a href="#xii-b1">B.1. Слияние гласных проклитик и безударных конечных гласных</a></li>
-<li class="toc-level-3"><a href="#xii-b2">B.2. Сдвиги слогового центра</a></li>
-<li class="toc-level-3"><a href="#xii-b3">B.3. Утрата зияния и изменения системы дифтонгов</a></li>
-<li class="toc-level-3"><a href="#xii-b4">B.4. Сокращение проклитик</a></li>
-<li class="toc-level-3"><a href="#xii-b5">B.5. Согласные</a></li>
-<li class="toc-level-3"><a href="#xii-b6">B.6. Орфография</a></li>
-<li class="toc-level-2"><a href="#xii-c">C. Существенные морфологические изменения вне глагольной системы</a></li>
-<li class="toc-level-3"><a href="#xii-c1">C.1. Утрата среднего рода</a></li>
-<li class="toc-level-3"><a href="#xii-c2">C.2. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#xii-c3">C.3. Смешение форм именительного и винительного падежей</a></li>
-<li class="toc-level-3"><a href="#xii-c4">C.4. Nom./acc. pl. -C ə в противопоставлении gen. pl. -C</a></li>
-<li class="toc-level-3"><a href="#xii-c5">C.5. Изменения в склонении</a></li>
-<li class="toc-level-3"><a href="#xii-c6">C.6. Прилагательное и артикль</a></li>
-<li class="toc-level-3"><a href="#xii-c7">C.7. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#xii-c8">C.8. Числительные</a></li>
-<li class="toc-level-3"><a href="#xii-c9">C.9. Предлоги</a></li>
-<li class="toc-level-3"><a href="#xii-c10">C.10. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#xii-d">D. Личные местоимения и относительные показатели</a></li>
-<li class="toc-level-3"><a href="#xii-d1">D.1. Ударные самостоятельные личные местоимения</a></li>
-<li class="toc-level-3"><a href="#xii-d2">D.2. Суффигированные и инфигированные местоимения</a></li>
-<li class="toc-level-3"><a href="#xii-d3">D.3. Относительные показатели</a></li>
-<li class="toc-level-3"><a href="#xii-d4">D.4. Практика чтения</a></li>
-<li class="toc-level-2"><a href="#xii-e">E. Другие важнейшие изменения глагольной системы</a></li>
-<li class="toc-level-3"><a href="#xii-e1">E.1. Глагольные основы и личные окончания</a></li>
-<li class="toc-level-3"><a href="#xii-e2">E.2. Сложные глаголы</a></li>
-<li class="toc-level-3"><a href="#xii-e3">E.3. Аугмент</a></li>
-<li class="toc-level-3"><a href="#xii-e4">4. Связка</a></li>
-<li class="toc-level-2"><a href="#xii-f">F. Практика чтения</a></li>
-<li class="toc-level-3"><a href="#xii-f1">1.</a></li>
-<li class="toc-level-3"><a href="#xii-f2">2.</a></li>
-<li class="toc-level-1"><a href="#vocabulary">Словарь</a></li></ul></nav>
+<nav aria-labelledby="front-toc" class="toc print-toc" id="contents"><h2 class="toc-title" id="front-toc">
+Содержание
+</h2>
+<h2 class="toc-chapter" id="front-toc-i"><a href="#chapter-i">
+<strong>Глава I. Предварительные сведения</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-i-a"><a href="#i-a">
+<strong><em>I.A. Введение</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p003">
+<p class="book-lines"><a href="#i-a1">
+<strong>I.A.1.</strong> Основные этапы развития ирландского языка
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p004">
+<p class="book-lines"><a href="#i-a2">
+<strong>I.A.2.</strong> Источники древнеирландского периода
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p005">
+<p class="book-lines"><a href="#i-a3">
+<strong>I.A.3.</strong> Древне- и среднеирландские тексты, сохранившиеся в позднейших рукописях
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p006">
+<p class="book-lines"><a href="#i-a4">
+<strong>I.A.4.</strong> Основные цели этой книги
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-i-b"><a href="#i-b">
+<strong><em>I.B. Орфография и произношение</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p007">
+<p class="book-lines"><a href="#i-b1">
+<strong>I.B.1.</strong> Смычные и соответствующие щелевые согласные
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p008">
+<p class="book-lines"><a href="#i-b2">
+<strong>I.B.2.</strong> Носовые и плавные согласные
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p009">
+<p class="book-lines"><a href="#i-b3">
+<strong>I.B.3.</strong> Сибилянт и <em>f</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p010">
+<p class="book-lines"><a href="#i-b4">
+<strong>I.B.4.</strong> Гласные под ударением и в конце слова
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p011">
+<p class="book-lines"><a href="#i-b5">
+<strong>I.B.5.</strong> «Широкие», или непалатальные, и «узкие», или палатальные, согласные
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p012">
+<p class="book-lines"><a href="#i-b6">
+<strong>I.B.6.</strong> Безударные гласные внутри слова
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p013">
+<p class="book-lines"><a href="#i-b7">
+<strong>I.B.7.</strong> Дифтонги
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p014">
+<p class="book-lines"><a href="#i-b8">
+<strong>I.B.8.</strong> Начальные мутации
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-ii"><a href="#chapter-ii">
+<strong>Глава II. Существительное, прилагательное и артикль</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-ii-a"><a href="#ii-a">
+<strong><em>II.A. Существительное</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p015">
+<p class="book-lines"><a href="#ii-a1">
+<strong>II.A.1.</strong> Основные категории
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p016">
+<p class="book-lines">
+(род, число, падеж; также порядок слов, предлоги)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p017">
+<p class="book-lines"><a href="#ii-a2">
+<strong>II.A.2.</strong> Основные типы склонения существительных
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p018">
+<p class="book-lines"><a href="#ii-a3">
+<strong>II.A.3.</strong> Полные парадигмы склонения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p019">
+<p class="book-lines"><a href="#ii-a4">
+<strong>II.A.4.</strong> Дополнительные замечания о склонении существительных
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p020">
+<p class="book-lines">
+(средний род, изменения гласных, синкопа и двойственное число)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p021">
+<p class="book-lines"><a href="#ii-a5">
+<strong>II.A.5.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<p>
+<span id="front-pdf-002"></span>
+</p>
+<h3 class="toc-section" id="front-toc-ii-b"><a href="#ii-b">
+<strong><em>II.B. Прилагательные</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p022">
+<p class="book-lines"><a href="#ii-b1">
+<strong>II.B.1.</strong> Основные сведения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p023">
+<p class="book-lines">
+(род, число, падеж и склонения)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p024">
+<p class="book-lines"><a href="#ii-b2">
+<strong>II.B.2.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p025">
+<p class="book-lines">
+(включая замечания о порядке слов и силлабическом стихосложении)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p026">
+<p class="book-lines"><a href="#ii-b3">
+<strong>II.B.3.</strong> Степени сравнения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p027">
+<p class="book-lines">
+(положительная, сравнительная, превосходная и экватив)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p028">
+<p class="book-lines"><a href="#ii-b4">
+<strong>II.B.4.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-ii-c"><a href="#ii-c">
+<strong><em>II.C. Определённый артикль и мутации</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p029">
+<p class="book-lines"><a href="#ii-c1">
+<strong>II.C.1.</strong> Артикль
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p030">
+<p class="book-lines">
+(также образование наречий)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p031">
+<p class="book-lines"><a href="#ii-c2">
+<strong>II.C.2.</strong> Мутации существительных и прилагательных
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p032">
+<p class="book-lines"><a href="#ii-c3">
+<strong>II.C.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-iii"><a href="#chapter-iii">
+<strong>Глава III. Глагол «быть» и порядок слов</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-iii-a"><a href="#iii-a">
+<strong><em>III.A. «Быть»</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p033">
+<p class="book-lines"><a href="#iii-a1">
+<strong>III.A.1.</strong> Основные времена и наклонения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p034">
+<p class="book-lines"><a href="#iii-a2">
+<strong>III.A.2.</strong> Связка, субстантивный глагол и отглагольное имя
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p035">
+<p class="book-lines"><a href="#iii-a3">
+<strong>III.A.3.</strong> Парадигмы субстантивного глагола
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p036">
+<p class="book-lines"><a href="#iii-a4">
+<strong>III.A.4.</strong> Парадигмы связки
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p037">
+<p class="book-lines"><a href="#iii-a5">
+<strong>III.A.5</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p038">
+<p class="book-lines">
+(начинается с замечания об аугменте)
+</p>
+</div>
+<h3 class="toc-section" id="front-toc-iii-b"><a href="#iii-b">
+<strong><em>III.B. Модели порядка слов</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p039">
+<p class="book-lines"><a href="#iii-b1">
+<strong>III.B.1.</strong> Основной порядок компонентов предложения или клаузы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p040">
+<p class="book-lines"><a href="#iii-b2">
+<strong>III.B.2.</strong> Модели с выделением темы или фокуса
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p041">
+<p class="book-lines">
+(висячий именительный и расщеплённое предложение)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p042">
+<p class="book-lines"><a href="#iii-b3">
+<strong>III.B.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p043">
+<p class="book-lines">
+(включая замечание об аллитерации в стихах)
+</p>
+</div>
+<h2 class="toc-chapter" id="front-toc-iv"><a href="#chapter-iv">
+<strong>Глава IV. Местоимения, предлоги и числительные</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-iv-a"><a href="#iv-a">
+<strong><em>IV.A. Местоименные элементы</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p044">
+<p class="book-lines"><a href="#iv-a1">
+<strong>IV.A.1.</strong> Самостоятельные личные местоимения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p045">
+<p class="book-lines"><a href="#iv-a2">
+<strong>IV.A.2.</strong> Различные добавочные элементы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p046">
+<p class="book-lines">
+(эмфатические частицы, анафорическая частица и «сам»)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p047">
+<p class="book-lines"><a href="#iv-a3">
+<strong>IV.A.3.</strong> Притяжательные местоимения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p048">
+<p class="book-lines"><a href="#iv-a4">
+<strong>IV.A.4.</strong> Местоимения и расщеплённое предложение
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p049">
+<p class="book-lines"><a href="#iv-a5">
+<strong>IV.A.5.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p050">
+<p class="book-lines"><a href="#iv-a6">
+<strong>IV.A.6.</strong> Суффигированные и инфигированные местоимения при глаголе «быть»
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p051">
+<p class="book-lines"><a href="#iv-a7">
+<strong>IV.A.7.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-iv-b"><a href="#iv-b">
+<strong><em>IV.B. Предлоги и их местоименные формы</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p052">
+<p class="book-lines"><a href="#iv-b1">
+<strong>IV.B.1.</strong> Основная система
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p053">
+<p class="book-lines"><a href="#iv-b2">
+<strong>IV.B.2.</strong> Парадигмы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p054">
+<p class="book-lines"><a href="#iv-b3">
+<strong>IV.B.3.</strong> Другие добавочные элементы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p055">
+<p class="book-lines">
+(эмфатические частицы, анафорическая частица или местоимение, «этот» и «тот»)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p056">
+<p class="book-lines"><a href="#iv-b4">
+<strong>IV.B.4.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-iv-c"><a href="#iv-c">
+<strong><em>IV.C. Числительные</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p057">
+<p class="book-lines"><a href="#iv-c1">
+<strong>IV.C.1.</strong> Количественные числительные
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p058">
+<p class="book-lines"><a href="#iv-c2">
+<strong>IV.C.2.</strong> Порядковые числительные
+</a></p>
+</div>
+<p>
+<span id="front-pdf-003"></span>
+</p>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p059">
+<p class="book-lines"><a href="#iv-c3">
+<strong>IV.C.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-v"><a href="#chapter-v">
+<strong>Глава V. Основа настоящего времени, простые и сложные глаголы, объектные</strong> <strong>местоимения</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-v-a"><a href="#v-a">
+<strong><em>V.A. Настоящее изъявительное слабых, сильных глаголов и глаголов с зиянием</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p060">
+<p class="book-lines"><a href="#v-a1">
+<strong>V.A.1.</strong> Основные сведения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p061">
+<p class="book-lines">
+(независимые и зависимые формы, конъюнктные частицы, абсолютные и конъюнктные окончания)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p062">
+<p class="book-lines"><a href="#v-a2">
+<strong>V.A.2.</strong> Настоящее время слабых, сильных глаголов и глаголов с зиянием; парадигмы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p063">
+<p class="book-lines">
+(с дополнительными замечаниями о 1sg., 2sg., делениции, 3sg. и чередованиях гласных)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p064">
+<p class="book-lines"><a href="#v-a3">
+<strong>V.A.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p065">
+<p class="book-lines">
+(включая дополнительное замечание о метрике)
+</p>
+</div>
+<h3 class="toc-section" id="front-toc-v-b"><a href="#v-b">
+<strong><em>V.B. Сложные глаголы</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p066">
+<p class="book-lines"><a href="#v-b1">
+<strong>V.B.1.</strong> Образование сложных глаголов
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p067">
+<p class="book-lines"><a href="#v-b2">
+<strong>V.B.2.</strong> Дейтеротонические и прототонические формы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p068">
+<p class="book-lines"><a href="#v-b3">
+<strong>V.B.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-v-c"><a href="#v-c">
+<strong><em>V.C. Суффигированные и инфигированные местоимения</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p069">
+<p class="book-lines"><a href="#v-c1">
+<strong>V.C.1.</strong> Основной ряд
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p070">
+<p class="book-lines"><a href="#v-c2">
+<strong>V.C.2.</strong> Суффигация местоимений
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p071">
+<p class="book-lines"><a href="#v-c3">
+<strong>V.C.3.</strong> Инфигация местоимений
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p072">
+<p class="book-lines">
+(частица <em>no</em>, инфигация в целом, местоимения классов A и B)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p073">
+<p class="book-lines"><a href="#v-c4">
+<strong>V.C.4.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p074">
+<p class="book-lines">
+(включая дополнительные подробности метрики)
+</p>
+</div>
+<h3 class="toc-section" id="front-toc-v-d"><a href="#v-d">
+<strong><em>V.D. Повелительное наклонение</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p075">
+<p class="book-lines"><a href="#v-d1">
+<strong>V.D.1.</strong> Основное словоизменение
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p076">
+<p class="book-lines"><a href="#v-d2">
+<strong>V.D.2.</strong> Сложные формы и отрицание
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p077">
+<p class="book-lines"><a href="#v-d3">
+<strong>V.D.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-v-e"><a href="#v-e">
+<strong><em>V.E. Имперфект изъявительного наклонения</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p078">
+<p class="book-lines"><a href="#v-e1">
+<strong>V.E.1.</strong> Формы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p079">
+<p class="book-lines"><a href="#v-e2">
+<strong>V.E.2.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-vi"><a href="#chapter-vi">
+<strong>Глава VI. Основа активного претерита и относительные показатели</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-vi-a"><a href="#vi-a">
+<strong><em>VI.A. Активный претерит</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p080">
+<p class="book-lines"><a href="#vi-a1">
+<strong>VI.A.1.</strong> <em>s</em>-претерит
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p081">
+<p class="book-lines"><a href="#vi-a2">
+<strong>VI.A.2.</strong> <em>t</em>-претерит
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p082">
+<p class="book-lines"><a href="#vi-a3">
+<strong>VI.A.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p083">
+<p class="book-lines"><a href="#vi-a4">
+<strong>VI.A.4.</strong> Бессуффиксальный претерит
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p084">
+<p class="book-lines">
+(редуплицированные, <em>á-</em>, долготные и супплетивные варианты)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p085">
+<p class="book-lines"><a href="#vi-a5">
+<strong>VI.A.5.</strong> Редуплицированные <em>s</em>- и <em>t</em>-претериты
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p086">
+<p class="book-lines"><a href="#vi-a6">
+<strong>VI.A.6.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-vi-b"><a href="#vi-b">
+<strong><em>VI.B. Относительные показатели</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p087">
+<p class="book-lines"><a href="#vi-b1">
+<strong>VI.B.1.</strong> Основная система
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p088">
+<p class="book-lines"><a href="#vi-b2">
+<strong>VI.B.2.</strong> Относительные окончания
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p089">
+<p class="book-lines"><a href="#vi-b3">
+<strong>VI.B.3.</strong> Инфигированная относительная лениция
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p090">
+<p class="book-lines">
+(включая употребление частицы <em>no</em>)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p091">
+<p class="book-lines"><a href="#vi-b4">
+<strong>VI.B.4.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p092">
+<p class="book-lines"><a href="#vi-b5">
+<strong>VI.B.5.</strong> Инфигированная относительная назализация
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p093">
+<p class="book-lines"><a href="#vi-b6">
+<strong>VI.B.6.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p094">
+<p class="book-lines">
+(включая замечание об основных чертах раннего древнеирландского)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p095">
+<p class="book-lines"><a href="#vi-b7">
+<strong>VI.B.7.</strong> Относительные формы объектных местоимений <span id="front-pdf-004"></span> (инфигированные местоимения класса C)
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p096">
+<p class="book-lines"><a href="#vi-b8">
+<strong>VI.B.8.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-vii"><a href="#chapter-vii">
+<strong>Глава VII. Пассив и депонент</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-vii-a"><a href="#vii-a">
+<strong><em>VII.A. Пассив</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p097">
+<p class="book-lines"><a href="#vii-a1">
+<strong>VII.A.1.</strong> Формы третьего лица настоящего изъявительного и повелительного наклонений
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p098">
+<p class="book-lines"><a href="#vii-a2">
+<strong>VII.A.2.</strong> Первое и второе лица
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p099">
+<p class="book-lines"><a href="#vii-a3">
+<strong>VII.A.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p100">
+<p class="book-lines"><a href="#vii-a4">
+<strong>VII.A.4.</strong> Пассив имперфекта
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p101">
+<p class="book-lines"><a href="#vii-a5">
+<strong>VII.A.5.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p102">
+<p class="book-lines"><a href="#vii-a6">
+<strong>VII.A.6.</strong> Претерит пассива
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p103">
+<p class="book-lines"><a href="#vii-a7">
+<strong>VII.A.7.</strong> Прошедшее пассивное причастие и глагольная форма долженствования
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p104">
+<p class="book-lines"><a href="#vii-a8">
+<strong>VII.A.8.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-vii-b"><a href="#vii-b">
+<strong><em>VII.B. Депонент</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p105">
+<p class="book-lines"><a href="#vii-b1">
+<strong>VII.B.1.</strong> Настоящее время изъявительного наклонения, имперфект и повелительное наклонение
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p106">
+<p class="book-lines">
+(также обычные активные окончания вместо депонентных, в том числе с суффигированным местоимением)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p107">
+<p class="book-lines"><a href="#vii-b2">
+<strong>VII.B.2.</strong> Претерит
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p108">
+<p class="book-lines"><a href="#vii-b3">
+<strong>VII.B.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p109">
+<p class="book-lines">
+(включая замечание о размерах, основанных на ударении и аллитерации)
+</p>
+</div>
+<h2 class="toc-chapter" id="front-toc-viii"><a href="#chapter-viii">
+<strong>Глава VIII. Основа сослагательного наклонения</strong>
+</a></h2>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p110">
+<p class="book-lines"><a href="#viii-1">
+<strong>VIII.1.</strong> Предварительные сведения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p111">
+<p class="book-lines">
+(настоящее/прошедшее время, функция и основные основы)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p112">
+<p class="book-lines"><a href="#viii-2">
+<strong>VIII.2.</strong> <em>a</em>-сослагательное
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p113">
+<p class="book-lines"><a href="#viii-3">
+<strong>VIII.3.</strong> <em>e</em>-сослагательное
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p114">
+<p class="book-lines"><a href="#viii-4">
+<strong>VIII.4.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p115">
+<p class="book-lines"><a href="#viii-5">
+<strong>VIII.5.</strong> <em>s</em>-сослагательное
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p116">
+<p class="book-lines"><a href="#viii-6">
+<strong>VIII.6.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p117">
+<p class="book-lines"><a href="#viii-7">
+<strong>VIII.7.</strong> Сослагательное прошедшего времени
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p118">
+<p class="book-lines"><a href="#viii-8">
+<strong>VIII.8.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-ix"><a href="#chapter-ix">
+<strong>Глава IX. Основа будущего времени</strong>
+</a></h2>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p119">
+<p class="book-lines"><a href="#ix-1">
+<strong>IX.1.</strong> <em>f</em>-будущее
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p120">
+<p class="book-lines"><a href="#ix-2">
+<strong>IX.2.</strong> Дополнительно о синкопе и её последствиях
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p121">
+<p class="book-lines">
+(оглушение, ассимиляция качества, делениция и эпентеза)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p122">
+<p class="book-lines"><a href="#ix-3">
+<strong>IX.3.</strong> <em>a</em>-будущее
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p123">
+<p class="book-lines"><a href="#ix-4">
+<strong>IX.4.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p124">
+<p class="book-lines"><a href="#ix-5">
+<strong>IX.5.</strong> <em>i</em>-будущее
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p125">
+<p class="book-lines"><a href="#ix-6">
+<strong>IX.6.</strong> <em>s</em>-будущее
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p126">
+<p class="book-lines"><a href="#ix-7">
+<strong>IX.7.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p127">
+<p class="book-lines"><a href="#ix-8">
+<strong>IX.8.</strong> Условное наклонение
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p128">
+<p class="book-lines"><a href="#ix-9">
+<strong>IX.9.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-x"><a href="#chapter-x">
+<strong>Глава X. Аугмент</strong>
+</a></h2>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p129">
+<p class="book-lines"><a href="#x-1">
+<strong>X.1.</strong> Основные формы и функции
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p130">
+<p class="book-lines"><a href="#x-2">
+<strong>X.2.</strong> Аугмент <em>ro</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p131">
+<p class="book-lines">
+(превербальный, превокалический и проклитический)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p132">
+<p class="book-lines"><a href="#x-3">
+<strong>X.3.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<p>
+<span id="front-pdf-005"></span>
+</p>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p133">
+<p class="book-lines"><a href="#x-4">
+<strong>X.4.</strong> Другие формы с аугментом
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p134">
+<p class="book-lines">
+(<em>ad</em>, <em>com</em>, другие превербы и супплетивизм)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p135">
+<p class="book-lines"><a href="#x-5">
+<strong>X.5.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-xi"><a href="#chapter-xi">
+<strong>Глава XI. Дальнейшее чтение</strong>
+</a></h2>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p136">
+<p class="book-lines"><a href="#xi-1">
+<strong>XI.1.</strong> Некоторые рекомендации
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p137">
+<p class="book-lines"><a href="#xi-2">
+<strong>XI.2.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p138">
+<p class="book-lines">
+(<em>Aided Cheltchair maic Uthechair</em>)
+</p>
+</div>
+<h2 class="toc-chapter" id="front-toc-xii"><a href="#chapter-xii">
+<strong>Глава XII. Введение в основы среднеирландского языка</strong>
+</a></h2>
+<h3 class="toc-section" id="front-toc-xii-a"><a href="#xii-a">
+<strong><em>XII.A. Введение</em></strong>
+</a></h3>
+<h3 class="toc-section" id="front-toc-xii-b"><a href="#xii-b">
+<strong><em>XII.B. Основные звуковые изменения</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p139">
+<p class="book-lines"><a href="#xii-b1">
+<strong>XII.B.1.</strong> Слияние гласных проклитик и безударных конечных гласных
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p140">
+<p class="book-lines"><a href="#xii-b2">
+<strong>XII.B.2.</strong> Сдвиги слогового центра
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p141">
+<p class="book-lines"><a href="#xii-b3">
+<strong>XII.B.3.</strong> Утрата зияния и изменения системы дифтонгов
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p142">
+<p class="book-lines"><a href="#xii-b4">
+<strong>XII.B.4.</strong> Сокращение проклитик
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p143">
+<p class="book-lines"><a href="#xii-b5">
+<strong>XII.B.5.</strong> Согласные
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p144">
+<p class="book-lines"><a href="#xii-b6">
+<strong>XII.B.6.</strong> Орфография
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-xii-c"><a href="#xii-c">
+<strong><em>XII.C. Существенные морфологические изменения вне глагольной системы</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p145">
+<p class="book-lines"><a href="#xii-c1">
+<strong>XII.C.1.</strong> Утрата среднего рода
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p146">
+<p class="book-lines">
+(и замечание о гиперкорректной назализации)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p147">
+<p class="book-lines"><a href="#xii-c2">
+<strong>XII.C.2.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p148">
+<p class="book-lines"><a href="#xii-c3">
+<strong>XII.C.3.</strong> Смешение форм именительного и винительного падежей
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p149">
+<p class="book-lines"><a href="#xii-c4">
+<strong>XII.C.4.</strong> Nom./acc. pl. -Cə в противопоставлении gen. pl. -C
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p150">
+<p class="book-lines"><a href="#xii-c5">
+<strong>XII.C.5.</strong> Изменения в склонении
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p151">
+<p class="book-lines"><a href="#xii-c6">
+<strong>XII.C.6.</strong> Прилагательное и артикль
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p152">
+<p class="book-lines">
+(включая образование наречий)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p153">
+<p class="book-lines"><a href="#xii-c7">
+<strong>XII.C.7.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p154">
+<p class="book-lines"><a href="#xii-c8">
+<strong>XII.C.8.</strong> Числительные
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p155">
+<p class="book-lines"><a href="#xii-c9">
+<strong>XII.C.9.</strong> Предлоги
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p156">
+<p class="book-lines">
+(включая местоименные формы)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p157">
+<p class="book-lines"><a href="#xii-c10">
+<strong>XII.C.10.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-xii-d"><a href="#xii-d">
+<strong><em>XII.D. Личные местоимения и относительное маркирование</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p158">
+<p class="book-lines"><a href="#xii-d1">
+<strong>XII.D.1.</strong> Ударные самостоятельные личные местоимения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p159">
+<p class="book-lines"><a href="#xii-d2">
+<strong>XII.D.2.</strong> Суффигированные и инфигированные местоимения
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p160">
+<p class="book-lines">
+(включая застывание neut. sg. форм и протетическое <em>f-</em>)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p161">
+<p class="book-lines"><a href="#xii-d3">
+<strong>XII.D.3.</strong> Относительное маркирование
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p162">
+<p class="book-lines"><a href="#xii-d4">
+<strong>XII.D.4.</strong> <em>Практика чтения</em>
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p163">
+<p class="book-lines">
+(включая дополнительные замечания о силлабических размерах)
+</p>
+</div>
+<h3 class="toc-section" id="front-toc-xii-e"><a href="#xii-e">
+<strong><em>XII.E. Другие важнейшие изменения глагольной системы</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p164">
+<p class="book-lines"><a href="#xii-e1">
+<strong>XII.E.1.</strong> Глагольные основы и личные окончания
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p165">
+<p class="book-lines">
+<ol type="a">
+<li>Распространение слабых основ за счёт сильных
+</li></ol></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p166">
+<p class="book-lines">
+<ol start="2" type="a">
+<li>Окончания пассива, депонента и 1pl.
+</li></ol></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p167">
+<p class="book-lines">
+<ol start="3" type="a">
+<li>Настоящее время изъявительного наклонения
+</li></ol></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p168">
+<p class="book-lines">
+<ol start="4" type="a">
+<li>Настоящее время сослагательного наклонения
+</li></ol></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p169">
+<p class="book-lines">
+<ol start="5" type="a">
+<li>Будущее время
+</li></ol></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p170">
+<p class="book-lines">
+<ol start="6" type="a">
+<li>Активный претерит
+</li></ol></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p171">
+<p class="book-lines">
+<ol start="7" type="a">
+<li>Пассивный претерит
+</li></ol></p>
+</div>
+<p>
+<span id="front-pdf-006"></span>
+</p>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p172">
+<p class="book-lines">
+<ol start="8" type="a">
+<li>Окончания повелительного наклонения и имперфекта
+</li></ol></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p173">
+<p class="book-lines"><a href="#xii-e2">
+<strong>XII.E.2.</strong> Сложные глаголы
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-note" id="front-p174">
+<p class="book-lines">
+(удвоенные начальные превербы и новые простые глаголы вместо прежних сложных)
+</p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p175">
+<p class="book-lines"><a href="#xii-e3">
+<strong>XII.E.3.</strong> Аугмент
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p176">
+<p class="book-lines"><a href="#xii-e4">
+<strong>XII.E.4.</strong> Связка
+</a></p>
+</div>
+<h3 class="toc-section" id="front-toc-xii-f"><a href="#xii-f">
+<strong><em>XII.F. Практика чтения</em></strong>
+</a></h3>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p177">
+<p class="book-lines"><a href="#xii-f1">
+<strong>XII.F.1.</strong> Стихотворение, иллюстрирующее различные размеры.
+</a></p>
+</div>
+<div class="stanza-text book-paragraph front-entry book-lines toc-unit" id="front-p178">
+<p class="book-lines"><a href="#xii-f2">
+<strong>XII.F.2.</strong> <em>Comthóth Lóegairi</em> ‘Обращение Lóegaire’
+</a></p>
+</div>
+<h2 class="toc-chapter" id="front-toc-vocabulary"><a href="#vocabulary">
+Словарь
+</a></h2>
+</nav>
 <main id="translation"><section class="front-matter" id="front-matter">
 <p>
 <span id="front-pdf-001"></span>
@@ -434,1023 +1284,6 @@ th,td{padding:.35em .6em;border-bottom:1px solid var(--rule);vertical-align:top}
 Ким Маккон
 </p>
 </div>
-<h1 class="stanza-text" id="front-toc">
-Содержание
-</h1>
-<h2 class="stanza-text" id="front-toc-i">
-<strong>Глава I. Предварительные сведения</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-i-a">
-<strong><em>I.A. Введение</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p003">
-<p class="book-lines">
-<strong>I.A.1.</strong> Основные этапы развития ирландского языка
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p004">
-<p class="book-lines">
-<strong>I.A.2.</strong> Источники древнеирландского периода
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p005">
-<p class="book-lines">
-<strong>I.A.3.</strong> Древне- и среднеирландские тексты, сохранившиеся в позднейших рукописях
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p006">
-<p class="book-lines">
-<strong>I.A.4.</strong> Основные цели этой книги
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-i-b">
-<strong><em>I.B. Орфография и произношение</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p007">
-<p class="book-lines">
-<strong>I.B.1.</strong> Смычные и соответствующие щелевые согласные
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p008">
-<p class="book-lines">
-<strong>I.B.2.</strong> Носовые и плавные согласные
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p009">
-<p class="book-lines">
-<strong>I.B.3.</strong> Сибилянт и <em>f</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p010">
-<p class="book-lines">
-<strong>I.B.4.</strong> Гласные под ударением и в конце слова
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p011">
-<p class="book-lines">
-<strong>I.B.5.</strong> «Широкие», или непалатальные, и «узкие», или палатальные, согласные
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p012">
-<p class="book-lines">
-<strong>I.B.6.</strong> Безударные гласные внутри слова
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p013">
-<p class="book-lines">
-<strong>I.B.7.</strong> Дифтонги
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p014">
-<p class="book-lines">
-<strong>I.B.8.</strong> Начальные мутации
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-ii">
-<strong>Глава II. Существительное, прилагательное и артикль</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-ii-a">
-<strong><em>II.A. Существительное</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p015">
-<p class="book-lines">
-<strong>II.A.1.</strong> Основные категории
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p016">
-<p class="book-lines">
-(род, число, падеж; также порядок слов, предлоги)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p017">
-<p class="book-lines">
-<strong>II.A.2.</strong> Основные типы склонения существительных
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p018">
-<p class="book-lines">
-<strong>II.A.3.</strong> Полные парадигмы склонения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p019">
-<p class="book-lines">
-<strong>II.A.4.</strong> Дополнительные замечания о склонении существительных
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p020">
-<p class="book-lines">
-(средний род, изменения гласных, синкопа и двойственное число)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p021">
-<p class="book-lines">
-<strong>II.A.5.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<p>
-<span id="front-pdf-002"></span>
-</p>
-<h3 class="stanza-text" id="front-toc-ii-b">
-<strong><em>II.B. Прилагательные</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p022">
-<p class="book-lines">
-<strong>II.B.1.</strong> Основные сведения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p023">
-<p class="book-lines">
-(род, число, падеж и склонения)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p024">
-<p class="book-lines">
-<strong>II.B.2.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p025">
-<p class="book-lines">
-(включая замечания о порядке слов и силлабическом стихосложении)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p026">
-<p class="book-lines">
-<strong>II.B.3.</strong> Степени сравнения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p027">
-<p class="book-lines">
-(положительная, сравнительная, превосходная и экватив)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p028">
-<p class="book-lines">
-<strong>II.B.4.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-ii-c">
-<strong><em>II.C. Определённый артикль и мутации</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p029">
-<p class="book-lines">
-<strong>II.C.1.</strong> Артикль
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p030">
-<p class="book-lines">
-(также образование наречий)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p031">
-<p class="book-lines">
-<strong>II.C.2.</strong> Мутации существительных и прилагательных
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p032">
-<p class="book-lines">
-<strong>II.C.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-iii">
-<strong>Глава III. Глагол «быть» и порядок слов</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-iii-a">
-<strong><em>III.A. «Быть»</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p033">
-<p class="book-lines">
-<strong>III.A.1.</strong> Основные времена и наклонения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p034">
-<p class="book-lines">
-<strong>III.A.2.</strong> Связка, субстантивный глагол и отглагольное имя
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p035">
-<p class="book-lines">
-<strong>III.A.3.</strong> Парадигмы субстантивного глагола
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p036">
-<p class="book-lines">
-<strong>III.A.4.</strong> Парадигмы связки
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p037">
-<p class="book-lines">
-<strong>III.A.5</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p038">
-<p class="book-lines">
-(начинается с замечания об аугменте)
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-iii-b">
-<strong><em>III.B. Модели порядка слов</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p039">
-<p class="book-lines">
-<strong>III.B.1.</strong> Основной порядок компонентов предложения или клаузы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p040">
-<p class="book-lines">
-<strong>III.B.2.</strong> Модели с выделением темы или фокуса
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p041">
-<p class="book-lines">
-(висячий именительный и расщеплённое предложение)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p042">
-<p class="book-lines">
-<strong>III.B.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p043">
-<p class="book-lines">
-(включая замечание об аллитерации в стихах)
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-iv">
-<strong>Глава IV. Местоимения, предлоги и числительные</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-iv-a">
-<strong><em>IV.A. Местоименные элементы</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p044">
-<p class="book-lines">
-<strong>IV.A.1.</strong> Самостоятельные личные местоимения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p045">
-<p class="book-lines">
-<strong>IV.A.2.</strong> Различные добавочные элементы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p046">
-<p class="book-lines">
-(эмфатические частицы, анафорическая частица и «сам»)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p047">
-<p class="book-lines">
-<strong>IV.A.3.</strong> Притяжательные местоимения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p048">
-<p class="book-lines">
-<strong>IV.A.4.</strong> Местоимения и расщеплённое предложение
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p049">
-<p class="book-lines">
-<strong>IV.A.5.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p050">
-<p class="book-lines">
-<strong>IV.A.6.</strong> Суффигированные и инфигированные местоимения при глаголе «быть»
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p051">
-<p class="book-lines">
-<strong>IV.A.7.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-iv-b">
-<strong><em>IV.B. Предлоги и их местоименные формы</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p052">
-<p class="book-lines">
-<strong>IV.B.1.</strong> Основная система
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p053">
-<p class="book-lines">
-<strong>IV.B.2.</strong> Парадигмы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p054">
-<p class="book-lines">
-<strong>IV.B.3.</strong> Другие добавочные элементы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p055">
-<p class="book-lines">
-(эмфатические частицы, анафорическая частица или местоимение, «этот» и «тот»)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p056">
-<p class="book-lines">
-<strong>IV.B.4.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-iv-c">
-<strong><em>IV.C. Числительные</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p057">
-<p class="book-lines">
-<strong>IV.C.1.</strong> Количественные числительные
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p058">
-<p class="book-lines">
-<strong>IV.C.2.</strong> Порядковые числительные
-</p>
-</div>
-<p>
-<span id="front-pdf-003"></span>
-</p>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p059">
-<p class="book-lines">
-<strong>IV.C.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-v">
-<strong>Глава V. Основа настоящего времени, простые и сложные глаголы, объектные</strong> <strong>местоимения</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-v-a">
-<strong><em>V.A. Настоящее изъявительное слабых, сильных глаголов и глаголов с зиянием</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p060">
-<p class="book-lines">
-<strong>V.A.1.</strong> Основные сведения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p061">
-<p class="book-lines">
-(независимые и зависимые формы, конъюнктные частицы, абсолютные и конъюнктные окончания)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p062">
-<p class="book-lines">
-<strong>V.A.2.</strong> Настоящее время слабых, сильных глаголов и глаголов с зиянием; парадигмы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p063">
-<p class="book-lines">
-(с дополнительными замечаниями о 1sg., 2sg., делениции, 3sg. и чередованиях гласных)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p064">
-<p class="book-lines">
-<strong>V.A.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p065">
-<p class="book-lines">
-(включая дополнительное замечание о метрике)
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-v-b">
-<strong><em>V.B. Сложные глаголы</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p066">
-<p class="book-lines">
-<strong>V.B.1.</strong> Образование сложных глаголов
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p067">
-<p class="book-lines">
-<strong>V.B.2.</strong> Дейтеротонические и прототонические формы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p068">
-<p class="book-lines">
-<strong>V.B.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-v-c">
-<strong><em>V.C. Суффигированные и инфигированные местоимения</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p069">
-<p class="book-lines">
-<strong>V.C.1.</strong> Основной ряд
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p070">
-<p class="book-lines">
-<strong>V.C.2.</strong> Суффигация местоимений
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p071">
-<p class="book-lines">
-<strong>V.C.3.</strong> Инфигация местоимений
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p072">
-<p class="book-lines">
-(частица <em>no</em>, инфигация в целом, местоимения классов A и B)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p073">
-<p class="book-lines">
-<strong>V.C.4.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p074">
-<p class="book-lines">
-(включая дополнительные подробности метрики)
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-v-d">
-<strong><em>V.D. Повелительное наклонение</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p075">
-<p class="book-lines">
-<strong>V.D.1.</strong> Основное словоизменение
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p076">
-<p class="book-lines">
-<strong>V.D.2.</strong> Сложные формы и отрицание
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p077">
-<p class="book-lines">
-<strong>V.D.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-v-e">
-<strong><em>V.E. Имперфект изъявительного наклонения</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p078">
-<p class="book-lines">
-<strong>V.E.1.</strong> Формы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p079">
-<p class="book-lines">
-<strong>V.E.2.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-vi">
-<strong>Глава VI. Основа активного претерита и относительные показатели</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-vi-a">
-<strong><em>VI.A. Активный претерит</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p080">
-<p class="book-lines">
-<strong>VI.A.1.</strong> <em>s</em>-претерит
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p081">
-<p class="book-lines">
-<strong>VI.A.2.</strong> <em>t</em>-претерит
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p082">
-<p class="book-lines">
-<strong>VI.A.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p083">
-<p class="book-lines">
-<strong>VI.A.4.</strong> Бессуффиксальный претерит
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p084">
-<p class="book-lines">
-(редуплицированные, <em>á-</em>, долготные и супплетивные варианты)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p085">
-<p class="book-lines">
-<strong>VI.A.5.</strong> Редуплицированные <em>s</em>- и <em>t</em>-претериты
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p086">
-<p class="book-lines">
-<strong>VI.A.6.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-vi-b">
-<strong><em>VI.B. Относительные показатели</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p087">
-<p class="book-lines">
-<strong>VI.B.1.</strong> Основная система
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p088">
-<p class="book-lines">
-<strong>VI.B.2.</strong> Относительные окончания
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p089">
-<p class="book-lines">
-<strong>VI.B.3.</strong> Инфигированная относительная лениция
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p090">
-<p class="book-lines">
-(включая употребление частицы <em>no</em>)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p091">
-<p class="book-lines">
-<strong>VI.B.4.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p092">
-<p class="book-lines">
-<strong>VI.B.5.</strong> Инфигированная относительная назализация
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p093">
-<p class="book-lines">
-<strong>VI.B.6.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p094">
-<p class="book-lines">
-(включая замечание об основных чертах раннего древнеирландского)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p095">
-<p class="book-lines">
-<strong>VI.B.7.</strong> Относительные формы объектных местоимений <span id="front-pdf-004"></span> (инфигированные местоимения класса C)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p096">
-<p class="book-lines">
-<strong>VI.B.8.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-vii">
-<strong>Глава VII. Пассив и депонент</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-vii-a">
-<strong><em>VII.A. Пассив</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p097">
-<p class="book-lines">
-<strong>VII.A.1.</strong> Формы третьего лица настоящего изъявительного и повелительного наклонений
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p098">
-<p class="book-lines">
-<strong>VII.A.2.</strong> Первое и второе лица
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p099">
-<p class="book-lines">
-<strong>VII.A.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p100">
-<p class="book-lines">
-<strong>VII.A.4.</strong> Пассив имперфекта
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p101">
-<p class="book-lines">
-<strong>VII.A.5.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p102">
-<p class="book-lines">
-<strong>VII.A.6.</strong> Претерит пассива
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p103">
-<p class="book-lines">
-<strong>VII.A.7.</strong> Прошедшее пассивное причастие и глагольная форма долженствования
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p104">
-<p class="book-lines">
-<strong>VII.A.8.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-vii-b">
-<strong><em>VII.B. Депонент</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p105">
-<p class="book-lines">
-<strong>VII.B.1.</strong> Настоящее время изъявительного наклонения, имперфект и повелительное наклонение
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p106">
-<p class="book-lines">
-(также обычные активные окончания вместо депонентных, в том числе с суффигированным местоимением)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p107">
-<p class="book-lines">
-<strong>VII.B.2.</strong> Претерит
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p108">
-<p class="book-lines">
-<strong>VII.B.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p109">
-<p class="book-lines">
-(включая замечание о размерах, основанных на ударении и аллитерации)
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-viii">
-<strong>Глава VIII. Основа сослагательного наклонения</strong>
-</h2>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p110">
-<p class="book-lines">
-<strong>VIII.1.</strong> Предварительные сведения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p111">
-<p class="book-lines">
-(настоящее/прошедшее время, функция и основные основы)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p112">
-<p class="book-lines">
-<strong>VIII.2.</strong> <em>a</em>-сослагательное
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p113">
-<p class="book-lines">
-<strong>VIII.3.</strong> <em>e</em>-сослагательное
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p114">
-<p class="book-lines">
-<strong>VIII.4.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p115">
-<p class="book-lines">
-<strong>VIII.5.</strong> <em>s</em>-сослагательное
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p116">
-<p class="book-lines">
-<strong>VIII.6.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p117">
-<p class="book-lines">
-<strong>VIII.7.</strong> Сослагательное прошедшего времени
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p118">
-<p class="book-lines">
-<strong>VIII.8.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-ix">
-<strong>Глава IX. Основа будущего времени</strong>
-</h2>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p119">
-<p class="book-lines">
-<strong>IX.1.</strong> <em>f</em>-будущее
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p120">
-<p class="book-lines">
-<strong>IX.2.</strong> Дополнительно о синкопе и её последствиях
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p121">
-<p class="book-lines">
-(оглушение, ассимиляция качества, делениция и эпентеза)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p122">
-<p class="book-lines">
-<strong>IX.3.</strong> <em>a</em>-будущее
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p123">
-<p class="book-lines">
-<strong>IX.4.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p124">
-<p class="book-lines">
-<strong>IX.5.</strong> <em>i</em>-будущее
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p125">
-<p class="book-lines">
-<strong>IX.6.</strong> <em>s</em>-будущее
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p126">
-<p class="book-lines">
-<strong>IX.7.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p127">
-<p class="book-lines">
-<strong>IX.8.</strong> Условное наклонение
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p128">
-<p class="book-lines">
-<strong>IX.9.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-x">
-<strong>Глава X. Аугмент</strong>
-</h2>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p129">
-<p class="book-lines">
-<strong>X.1.</strong> Основные формы и функции
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p130">
-<p class="book-lines">
-<strong>X.2.</strong> Аугмент <em>ro</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p131">
-<p class="book-lines">
-(превербальный, превокалический и проклитический)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p132">
-<p class="book-lines">
-<strong>X.3.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<p>
-<span id="front-pdf-005"></span>
-</p>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p133">
-<p class="book-lines">
-<strong>X.4.</strong> Другие формы с аугментом
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p134">
-<p class="book-lines">
-(<em>ad</em>, <em>com</em>, другие превербы и супплетивизм)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p135">
-<p class="book-lines">
-<strong>X.5.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-xi">
-<strong>Глава XI. Дальнейшее чтение</strong>
-</h2>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p136">
-<p class="book-lines">
-<strong>XI.1.</strong> Некоторые рекомендации
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p137">
-<p class="book-lines">
-<strong>XI.2.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p138">
-<p class="book-lines">
-(<em>Aided Cheltchair maic Uthechair</em>)
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-xii">
-<strong>Глава XII. Введение в основы среднеирландского языка</strong>
-</h2>
-<h3 class="stanza-text" id="front-toc-xii-a">
-<strong><em>XII.A. Введение</em></strong>
-</h3>
-<h3 class="stanza-text" id="front-toc-xii-b">
-<strong><em>XII.B. Основные звуковые изменения</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p139">
-<p class="book-lines">
-<strong>XII.B.1.</strong> Слияние гласных проклитик и безударных конечных гласных
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p140">
-<p class="book-lines">
-<strong>XII.B.2.</strong> Сдвиги слогового центра
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p141">
-<p class="book-lines">
-<strong>XII.B.3.</strong> Утрата зияния и изменения системы дифтонгов
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p142">
-<p class="book-lines">
-<strong>XII.B.4.</strong> Сокращение проклитик
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p143">
-<p class="book-lines">
-<strong>XII.B.5.</strong> Согласные
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p144">
-<p class="book-lines">
-<strong>XII.B.6.</strong> Орфография
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-xii-c">
-<strong><em>XII.C. Существенные морфологические изменения вне глагольной системы</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p145">
-<p class="book-lines">
-<strong>XII.C.1.</strong> Утрата среднего рода
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p146">
-<p class="book-lines">
-(и замечание о гиперкорректной назализации)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p147">
-<p class="book-lines">
-<strong>XII.C.2.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p148">
-<p class="book-lines">
-<strong>XII.C.3.</strong> Смешение форм именительного и винительного падежей
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p149">
-<p class="book-lines">
-<strong>XII.C.4.</strong> Nom./acc. pl. -Cə в противопоставлении gen. pl. -C
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p150">
-<p class="book-lines">
-<strong>XII.C.5.</strong> Изменения в склонении
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p151">
-<p class="book-lines">
-<strong>XII.C.6.</strong> Прилагательное и артикль
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p152">
-<p class="book-lines">
-(включая образование наречий)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p153">
-<p class="book-lines">
-<strong>XII.C.7.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p154">
-<p class="book-lines">
-<strong>XII.C.8.</strong> Числительные
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p155">
-<p class="book-lines">
-<strong>XII.C.9.</strong> Предлоги
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p156">
-<p class="book-lines">
-(включая местоименные формы)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p157">
-<p class="book-lines">
-<strong>XII.C.10.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-xii-d">
-<strong><em>XII.D. Личные местоимения и относительное маркирование</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p158">
-<p class="book-lines">
-<strong>XII.D.1.</strong> Ударные самостоятельные личные местоимения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p159">
-<p class="book-lines">
-<strong>XII.D.2.</strong> Суффигированные и инфигированные местоимения
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p160">
-<p class="book-lines">
-(включая застывание neut. sg. форм и протетическое <em>f-</em>)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p161">
-<p class="book-lines">
-<strong>XII.D.3.</strong> Относительное маркирование
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p162">
-<p class="book-lines">
-<strong>XII.D.4.</strong> <em>Практика чтения</em>
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p163">
-<p class="book-lines">
-(включая дополнительные замечания о силлабических размерах)
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-xii-e">
-<strong><em>XII.E. Другие важнейшие изменения глагольной системы</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p164">
-<p class="book-lines">
-<strong>XII.E.1.</strong> Глагольные основы и личные окончания
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p165">
-<p class="book-lines">
-<ol type="a">
-<li>Распространение слабых основ за счёт сильных
-</li></ol></p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p166">
-<p class="book-lines">
-<ol start="2" type="a">
-<li>Окончания пассива, депонента и 1pl.
-</li></ol></p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p167">
-<p class="book-lines">
-<ol start="3" type="a">
-<li>Настоящее время изъявительного наклонения
-</li></ol></p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p168">
-<p class="book-lines">
-<ol start="4" type="a">
-<li>Настоящее время сослагательного наклонения
-</li></ol></p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p169">
-<p class="book-lines">
-<ol start="5" type="a">
-<li>Будущее время
-</li></ol></p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p170">
-<p class="book-lines">
-<ol start="6" type="a">
-<li>Активный претерит
-</li></ol></p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p171">
-<p class="book-lines">
-<ol start="7" type="a">
-<li>Пассивный претерит
-</li></ol></p>
-</div>
-<p>
-<span id="front-pdf-006"></span>
-</p>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p172">
-<p class="book-lines">
-<ol start="8" type="a">
-<li>Окончания повелительного наклонения и имперфекта
-</li></ol></p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p173">
-<p class="book-lines">
-<strong>XII.E.2.</strong> Сложные глаголы
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p174">
-<p class="book-lines">
-(удвоенные начальные превербы и новые простые глаголы вместо прежних сложных)
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p175">
-<p class="book-lines">
-<strong>XII.E.3.</strong> Аугмент
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p176">
-<p class="book-lines">
-<strong>XII.E.4.</strong> Связка
-</p>
-</div>
-<h3 class="stanza-text" id="front-toc-xii-f">
-<strong><em>XII.F. Практика чтения</em></strong>
-</h3>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p177">
-<p class="book-lines">
-<strong>XII.F.1.</strong> Стихотворение, иллюстрирующее различные размеры.
-</p>
-</div>
-<div class="stanza-text book-paragraph front-entry book-lines" id="front-p178">
-<p class="book-lines">
-<strong>XII.F.2.</strong> <em>Comthóth Lóegairi</em> ‘Обращение Lóegaire’
-</p>
-</div>
-<h2 class="stanza-text" id="front-toc-vocabulary">
-Словарь
-</h2>
 <h1 class="stanza-text" id="front-publications">
 Издания кафедры древнеирландского языка Национального университета Ирландии (Мейнут)
 </h1>
