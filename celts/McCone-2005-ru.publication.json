@@ -1,10 +1,10 @@
 {
   "work": "Kim McCone, A First Old Irish Grammar and Reader (2005)",
   "status": "Полный перевод — предварительная редакция",
-  "published_date": "2026-11-13",
-  "source_revision": "04f72783c3f67e24db8be998d39f2456adc63ca4",
-  "source_sha256": "28a49678f2e3ab18608dafb9e86b529304f8f6db5ee938e2080dde998ef31059",
-  "published_sha256": "d0d79ac7c98086546942fd9ecde84cc367ab6cc23daf4837bc7cc8f44f6df40e",
+  "published_date": "2026-11-15",
+  "source_revision": "92b90d5b7351eb5276e484aac8d3a697de082192",
+  "source_sha256": "fd04f1c16fc7321d068320fe0a2d1525484a8e601fa671cbe22be0ab397c422f",
+  "published_sha256": "4706c8be7ed98bca99e3bb4b1b0885eaabc7fa55db6b00158bf5365adf32ed81",
   "markdown": {
     "00-contents.md": "12a1885f7792244658476e4736f691180d0418deedba5b6a702a21be328619b2",
     "01-preliminaries.md": "c7dd0dba6d9e11a75e3f833897e13d98e3951535f4dc61ca259e48e1da67a157",
@@ -16,7 +16,7 @@
     "07-passive-deponent.md": "d04641bd3011e02447c2b926d8db698127b3927d41d3249d5b2fb488ee7d1c47",
     "08-subjunctive-stem.md": "3864ab606a03a5ed4f321caa667541b53dfb04591157a37ecbb5f4cd25e7fa39",
     "09-future-stem.md": "8df163beb1eccd95d4229ac487055d33b54af5ed857600bd51c861c0798f09cb",
-    "10-augment.md": "5919ba172697d05f6689a3e62dbf70cd80fcf597650acec7b336243693cebdd7",
+    "10-augment.md": "63c470d348957d7c6722e739ea6d8ec6b54b5b7f414b5bc9e17176c2dec786f4",
     "11-further-reading.md": "847eed2352410b7145e2d6d7c716e0f7cfa9fede9dd4b09863a493f6249138e2",
     "12-middle-irish.md": "db4e14f10e0036d9cdcc7f11e906d7702797a01972186d6b1d3d2e976b2fe9e6",
     "13-vocabulary.md": "de4f9393fc4cfd3907cd1e380fa81abff7ae3db141c73c97e48ce8c5132cef0f"
